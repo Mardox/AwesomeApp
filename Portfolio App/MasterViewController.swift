@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MasterViewController: UITableViewController {
+class MasterViewController: UITableViewController, UISplitViewControllerDelegate {
     
     
     let items = [
@@ -111,12 +111,10 @@ class MasterViewController: UITableViewController {
 
     // MARK: - Table View
     
-    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
-        
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.performSegueWithIdentifier(items[indexPath.item].menuName, sender: indexPath)
         
     }
-
     
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

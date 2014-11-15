@@ -12,14 +12,22 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
     var window: UIWindow?
-
+    var progressHud: MBProgressHUD?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        let splitViewController = self.window!.rootViewController as UISplitViewController
-        let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as UINavigationController
-        navigationController.topViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
-        splitViewController.delegate = self
+        
+        let splitViewController = self.window!.rootViewController as? UISplitViewController
+        let navigationController = splitViewController?.viewControllers[splitViewController!.viewControllers.count-1] as? UINavigationController
+        navigationController?.topViewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
+        splitViewController?.delegate = self
+        
+        
+        var navigationBarAppearace = UINavigationBar.appearance()
+        
+//        navigationBarAppearace.tintColor = UIColor.redColor()
+        navigationBarAppearace.barTintColor = UIColor(red: 0.2, green: 0.2, blue: 0.5, alpha: 1.0)
+        
         return true
     }
 
@@ -56,8 +64,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
                 //}
             }
         }
-        return false
+        return true
     }
+    
+    //Instance
+    private class func instance() -> AppDelegate{
+        return UIApplication.sharedApplication().delegate as AppDelegate
+    }
+
+    
+    
+    //Useful to show Progress-HUD
+    class func showProgressHudWithMessage(message:String) {
+        AppDelegate.instance().showProgressHudWithMessage(message)
+    }
+    
+    private func showProgressHudWithMessage(message:String) {
+        if progressHud != nil {
+            self.hideProgressHud()
+        }
+        progressHud = MBProgressHUD(window: self.window)
+        self.window?.addSubview(progressHud!)
+        progressHud?.labelText = message
+        //Show Now
+        progressHud?.show(true)
+    }
+    
+    //Useful to Hide Progress-HUD
+    class func hideProgressHud() {
+        AppDelegate.instance().hideProgressHud()
+    }
+    
+    private func hideProgressHud() {
+        progressHud?.removeFromSuperview()
+        progressHud = nil
+    }
+
 
 }
 

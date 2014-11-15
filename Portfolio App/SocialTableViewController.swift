@@ -10,6 +10,19 @@ import UIKit
 
 class SocialTableViewController: UITableViewController {
 
+    
+    let items = [
+        MenuItem(menuName: "Facebook", menuIcon: "Facebook", menuSubtitle: "Like us on Facebook"),
+        MenuItem(menuName: "Twitter", menuIcon: "Twitter", menuSubtitle: "Follow us on Twitter"),
+        MenuItem(menuName: "Google", menuIcon: "Google", menuSubtitle: "Find us on Google+"),
+        MenuItem(menuName: "Instagram", menuIcon: "Instagram", menuSubtitle: "Follow us on Instagram"),
+        MenuItem(menuName: "LinkedIn", menuIcon: "LinkedIn", menuSubtitle: "Join our professional network"),
+    ]
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,71 +40,46 @@ class SocialTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
+    // MARK: - Table View
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        self.performSegueWithIdentifier(items[indexPath.item].menuName, sender: indexPath)
+        
+    }
+    
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 0
+        return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return 0
+        return items.count
     }
-
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
-
-        // Configure the cell...
-
-        return cell
+        var cell:MenuTableViewCell? = tableView.dequeueReusableCellWithIdentifier("Cell") as? MenuTableViewCell
+        
+        cell!.menuCellTitle.text = self.items[indexPath.row].menuName as String
+        cell!.menuCellSubtitle.text = self.items[indexPath.row].menuSubtitle
+        cell!.menuCellImage.image  = UIImage(named: items[indexPath.row].menuIcon)!
+        return cell!;
+        
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
+    
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
+        // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
-
-    /*
-    // Override to support editing the table view.
+    
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            // Delete the row from the data source
+            //objects.removeObjectAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }
