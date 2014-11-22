@@ -32,33 +32,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LCR-NY-SO7">
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                            </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EtK-1b-yAE">
-                                <rect key="frame" x="0.0" y="64" width="414" height="185"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="116"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qme-wx-y2g">
-                                        <rect key="frame" x="128" y="46" width="270" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="6gL-9N-xqV"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <state key="normal" title="0413128463">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="callButton:" destination="JEX-9P-axG" eventType="touchUpInside" id="p2J-jk-sp0"/>
-                                        </connections>
-                                    </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Contact" translatesAutoresizingMaskIntoConstraints="NO" id="JYh-p6-GEt">
-                                        <rect key="frame" x="8" y="46" width="100" height="100"/>
+                                        <rect key="frame" x="8" y="8" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="jek-vW-xej"/>
                                             <constraint firstAttribute="height" constant="100" id="yIi-sg-cUV"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x3B-v3-TVK">
-                                        <rect key="frame" x="133" y="96" width="265" height="50"/>
+                                        <rect key="frame" x="116" y="58" width="290" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="J6I-C1-tzl"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="K7K-Px-Mpt"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <state key="normal" title="info@chimes.com">
@@ -68,29 +59,45 @@
                                             <action selector="emailButton:" destination="JEX-9P-axG" eventType="touchUpInside" id="oz7-eQ-1Tw"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qme-wx-y2g">
+                                        <rect key="frame" x="116" y="8" width="290" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="6gL-9N-xqV"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="b0f-IV-2s3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="0413128463">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="callButton:" destination="JEX-9P-axG" eventType="touchUpInside" id="p2J-jk-sp0"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.82000000000000006" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="qme-wx-y2g" firstAttribute="leading" secondItem="JYh-p6-GEt" secondAttribute="trailing" constant="20" id="Ad5-k2-SKx"/>
-                                    <constraint firstItem="x3B-v3-TVK" firstAttribute="leading" secondItem="JYh-p6-GEt" secondAttribute="trailing" constant="25" id="Esa-If-KQf"/>
-                                    <constraint firstItem="x3B-v3-TVK" firstAttribute="top" secondItem="qme-wx-y2g" secondAttribute="bottom" id="NUu-sq-ksm"/>
-                                    <constraint firstItem="qme-wx-y2g" firstAttribute="top" secondItem="EtK-1b-yAE" secondAttribute="top" constant="46" id="On0-Mu-cvW"/>
-                                    <constraint firstAttribute="height" constant="185" id="Qw7-1h-hqw"/>
-                                    <constraint firstItem="JYh-p6-GEt" firstAttribute="leading" secondItem="EtK-1b-yAE" secondAttribute="leading" constant="8" id="RL5-qP-5Cq"/>
-                                    <constraint firstAttribute="trailing" secondItem="qme-wx-y2g" secondAttribute="trailing" constant="16" id="ccz-f6-qga"/>
-                                    <constraint firstAttribute="trailing" secondItem="x3B-v3-TVK" secondAttribute="trailing" constant="16" id="u5T-GE-L6V"/>
-                                    <constraint firstItem="JYh-p6-GEt" firstAttribute="top" secondItem="EtK-1b-yAE" secondAttribute="top" constant="46" id="z0I-8i-H9T"/>
+                                    <constraint firstItem="x3B-v3-TVK" firstAttribute="leading" secondItem="JYh-p6-GEt" secondAttribute="trailing" constant="8" id="98L-ol-0dh"/>
+                                    <constraint firstItem="JYh-p6-GEt" firstAttribute="top" secondItem="EtK-1b-yAE" secondAttribute="top" constant="8" id="Bpl-RZ-ppW"/>
+                                    <constraint firstItem="qme-wx-y2g" firstAttribute="leading" secondItem="JYh-p6-GEt" secondAttribute="trailing" constant="8" id="Cjw-pI-Ty0"/>
+                                    <constraint firstAttribute="trailing" secondItem="x3B-v3-TVK" secondAttribute="trailing" constant="8" id="RiR-Xj-NFh"/>
+                                    <constraint firstItem="qme-wx-y2g" firstAttribute="top" secondItem="EtK-1b-yAE" secondAttribute="top" constant="8" id="TKs-XG-9KJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="qme-wx-y2g" secondAttribute="trailing" constant="8" id="aVc-3f-diG"/>
+                                    <constraint firstAttribute="bottom" secondItem="x3B-v3-TVK" secondAttribute="bottom" constant="8" id="fB2-ey-Rza"/>
+                                    <constraint firstAttribute="height" constant="116" id="lYM-D8-yGB"/>
+                                    <constraint firstItem="JYh-p6-GEt" firstAttribute="leading" secondItem="EtK-1b-yAE" secondAttribute="leading" constant="8" id="oLq-ea-p9J"/>
+                                    <constraint firstAttribute="bottom" secondItem="JYh-p6-GEt" secondAttribute="bottom" constant="8" id="vKq-yb-77a"/>
                                 </constraints>
                             </view>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LCR-NY-SO7">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
-                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="EtK-1b-yAE" secondAttribute="trailing" constant="-16" id="Mzq-my-2tU"/>
-                            <constraint firstItem="EtK-1b-yAE" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" id="PSB-Sk-yYR"/>
-                            <constraint firstItem="EtK-1b-yAE" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" constant="-16" id="jgp-5T-36u"/>
+                            <constraint firstItem="LCR-NY-SO7" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" constant="-16" id="2nS-nX-lTM"/>
+                            <constraint firstItem="GAO-Cl-Wes" firstAttribute="top" secondItem="LCR-NY-SO7" secondAttribute="bottom" id="A1S-vA-hqX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LCR-NY-SO7" secondAttribute="trailing" constant="-16" id="Zch-zd-BJ4"/>
+                            <constraint firstItem="LCR-NY-SO7" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" id="aNd-Y8-OaI"/>
+                            <constraint firstItem="EtK-1b-yAE" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" id="caZ-HM-FCi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EtK-1b-yAE" secondAttribute="trailing" constant="-16" id="i0g-Cc-mu7"/>
+                            <constraint firstItem="EtK-1b-yAE" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" constant="-16" id="wc1-7a-Svk"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
