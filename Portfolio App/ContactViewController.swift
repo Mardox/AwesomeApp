@@ -21,7 +21,21 @@ class ContactViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func callButton(sender: AnyObject) {
+        
+        let phone = "tel://0413128463"
+        let url:NSURL = NSURL(string:phone)!
+        UIApplication.sharedApplication().openURL(url)
+        
+    }
 
+    @IBAction func emailButton(sender: AnyObject) {
+        
+        let email = "hooman@speedapp.com.au"
+        let url = NSURL(string: "mailto:\(email)")
+        UIApplication.sharedApplication().openURL(url!)
+        
+    }
     /*
     // MARK: - Navigation
 

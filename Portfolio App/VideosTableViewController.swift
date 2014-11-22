@@ -45,10 +45,10 @@ class VideosTableViewController: UITableViewController, UITableViewDataSource, U
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        var nav = self.navigationController?.navigationBar
-        nav?.barStyle = UIBarStyle.Black
-        nav?.tintColor = UIColor.whiteColor()
-        nav?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.orangeColor()]
+//        var nav = self.navigationController?.navigationBar
+//        nav?.barStyle = UIBarStyle.Black
+//        nav?.tintColor = UIColor.whiteColor()
+//        nav?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.orangeColor()]
     }
 
     override func didReceiveMemoryWarning() {

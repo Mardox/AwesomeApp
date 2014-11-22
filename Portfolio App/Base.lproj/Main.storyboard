@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="H1p-Uh-vWS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="H1p-Uh-vWS">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -33,23 +32,88 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qme-wx-y2g">
-                                <rect key="frame" x="16" y="94" width="382" height="50"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wedding" translatesAutoresizingMaskIntoConstraints="NO" id="HZR-Yj-v1C">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="FK6-Ue-7Z3"/>
+                                    <constraint firstAttribute="height" constant="220" id="Jwz-kO-T3H"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Call Us Now : 0413128463">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Jwz-kO-T3H"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EtK-1b-yAE">
+                                <rect key="frame" x="0.0" y="64" width="414" height="185"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qme-wx-y2g">
+                                        <rect key="frame" x="128" y="46" width="270" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="6gL-9N-xqV"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="0413128463">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="callButton:" destination="JEX-9P-axG" eventType="touchUpInside" id="p2J-jk-sp0"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Contact" translatesAutoresizingMaskIntoConstraints="NO" id="JYh-p6-GEt">
+                                        <rect key="frame" x="8" y="46" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="jek-vW-xej"/>
+                                            <constraint firstAttribute="height" constant="100" id="yIi-sg-cUV"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x3B-v3-TVK">
+                                        <rect key="frame" x="133" y="96" width="265" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="J6I-C1-tzl"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <state key="normal" title="info@chimes.com">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="emailButton:" destination="JEX-9P-axG" eventType="touchUpInside" id="oz7-eQ-1Tw"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.82000000000000006" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="qme-wx-y2g" firstAttribute="leading" secondItem="JYh-p6-GEt" secondAttribute="trailing" constant="20" id="Ad5-k2-SKx"/>
+                                    <constraint firstItem="x3B-v3-TVK" firstAttribute="leading" secondItem="JYh-p6-GEt" secondAttribute="trailing" constant="25" id="Esa-If-KQf"/>
+                                    <constraint firstItem="x3B-v3-TVK" firstAttribute="top" secondItem="qme-wx-y2g" secondAttribute="bottom" id="NUu-sq-ksm"/>
+                                    <constraint firstItem="qme-wx-y2g" firstAttribute="top" secondItem="EtK-1b-yAE" secondAttribute="top" constant="46" id="On0-Mu-cvW"/>
+                                    <constraint firstAttribute="height" constant="185" id="Qw7-1h-hqw"/>
+                                    <constraint firstItem="JYh-p6-GEt" firstAttribute="leading" secondItem="EtK-1b-yAE" secondAttribute="leading" constant="8" id="RL5-qP-5Cq"/>
+                                    <constraint firstAttribute="trailing" secondItem="qme-wx-y2g" secondAttribute="trailing" constant="16" id="ccz-f6-qga"/>
+                                    <constraint firstAttribute="trailing" secondItem="x3B-v3-TVK" secondAttribute="trailing" constant="16" id="u5T-GE-L6V"/>
+                                    <constraint firstItem="JYh-p6-GEt" firstAttribute="top" secondItem="EtK-1b-yAE" secondAttribute="top" constant="46" id="z0I-8i-H9T"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qme-wx-y2g" firstAttribute="trailing" secondItem="svH-Pt-448" secondAttribute="trailingMargin" id="7lb-c9-Y6x"/>
-                            <constraint firstItem="qme-wx-y2g" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" id="IqD-Ul-Rdw"/>
-                            <constraint firstItem="qme-wx-y2g" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" constant="30" id="kR9-mz-t2S"/>
+                            <constraint firstItem="HZR-Yj-v1C" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" constant="-16" id="Dtv-mI-7CG"/>
+                            <constraint firstItem="HZR-Yj-v1C" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" constant="-16" id="JtM-AU-96m"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EtK-1b-yAE" secondAttribute="trailing" constant="-16" id="Mzq-my-2tU"/>
+                            <constraint firstItem="EtK-1b-yAE" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" id="PSB-Sk-yYR"/>
+                            <constraint firstItem="GAO-Cl-Wes" firstAttribute="top" secondItem="HZR-Yj-v1C" secondAttribute="bottom" id="TOj-6B-H7f"/>
+                            <constraint firstItem="HZR-Yj-v1C" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" id="Tji-mU-czU"/>
+                            <constraint firstItem="GAO-Cl-Wes" firstAttribute="top" secondItem="HZR-Yj-v1C" secondAttribute="bottom" id="WVJ-n2-Pxt"/>
+                            <constraint firstItem="HZR-Yj-v1C" firstAttribute="top" secondItem="svH-Pt-448" secondAttribute="topMargin" id="c4c-9M-fe1"/>
+                            <constraint firstItem="EtK-1b-yAE" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" constant="-16" id="jgp-5T-36u"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HZR-Yj-v1C" secondAttribute="trailing" constant="-16" id="sgK-1l-8eH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HZR-Yj-v1C" secondAttribute="trailing" constant="-16" id="uXe-VJ-Csr"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Tji-mU-czU"/>
+                                <exclude reference="TOj-6B-H7f"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Contact Us" id="mOI-FS-AaM"/>
@@ -96,7 +160,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVu-Wn-JDt">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVu-Wn-JDt">
                                             <rect key="frame" x="108" y="48" width="459" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="44" id="Kkg-do-VKD"/>
@@ -169,21 +233,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="150" id="uJj-AR-UET" customClass="GalleryTableViewCell" customModule="Portfolio_App" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="150" id="uJj-AR-UET" customClass="GalleryTableViewCell" customModule="Portfolio_App" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uJj-AR-UET" id="AqU-yW-BPw">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jnf-Sz-o9U"/>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXa-Ed-haB">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXa-Ed-haB">
                                             <rect key="frame" x="8" y="120" width="398" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="bzq-83-wqB"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                             <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <size key="shadowOffset" width="1" height="1"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jnf-Sz-o9U">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                                        </imageView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="eXa-Ed-haB" firstAttribute="leading" secondItem="AqU-yW-BPw" secondAttribute="leadingMargin" id="Id5-hp-WbQ"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Jnf-Sz-o9U" secondAttribute="trailing" constant="-8" id="UWq-yq-7IP"/>
+                                        <constraint firstItem="eXa-Ed-haB" firstAttribute="trailing" secondItem="AqU-yW-BPw" secondAttribute="trailingMargin" id="ZZK-mx-xQy"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Jnf-Sz-o9U" secondAttribute="bottom" constant="-8" id="fC7-f8-P5W"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="eXa-Ed-haB" secondAttribute="bottom" constant="1" id="mWd-rR-y4H"/>
+                                        <constraint firstItem="Jnf-Sz-o9U" firstAttribute="top" secondItem="AqU-yW-BPw" secondAttribute="topMargin" constant="-8" id="tKZ-fy-d9n"/>
+                                        <constraint firstItem="Jnf-Sz-o9U" firstAttribute="leading" secondItem="AqU-yW-BPw" secondAttribute="leadingMargin" constant="-8" id="wec-br-TPF"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="galleryCellImage" destination="Jnf-Sz-o9U" id="D7N-Ql-dFe"/>
@@ -350,7 +428,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="eIO-RI-0KT">
                                 <rect key="frame" x="16" y="258" width="382" height="458"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <string key="text">At Chimes photography we care about the experience and the quality of work we deliver. We want to make your wedding day as memorable as possiable...</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -506,7 +584,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="About" width="128" height="128"/>
+        <image name="About" width="512" height="512"/>
+        <image name="Contact" width="512" height="512"/>
+        <image name="wedding" width="472" height="315"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="YNR-lx-TL8"/>
