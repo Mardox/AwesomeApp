@@ -32,17 +32,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wedding" translatesAutoresizingMaskIntoConstraints="NO" id="HZR-Yj-v1C">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="220" id="Jwz-kO-T3H"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Jwz-kO-T3H"/>
-                                    </mask>
-                                </variation>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EtK-1b-yAE">
                                 <rect key="frame" x="0.0" y="64" width="414" height="185"/>
                                 <subviews>
@@ -93,30 +82,22 @@
                                     <constraint firstItem="JYh-p6-GEt" firstAttribute="top" secondItem="EtK-1b-yAE" secondAttribute="top" constant="46" id="z0I-8i-H9T"/>
                                 </constraints>
                             </view>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LCR-NY-SO7">
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="HZR-Yj-v1C" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" constant="-16" id="Dtv-mI-7CG"/>
-                            <constraint firstItem="HZR-Yj-v1C" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" constant="-16" id="JtM-AU-96m"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EtK-1b-yAE" secondAttribute="trailing" constant="-16" id="Mzq-my-2tU"/>
                             <constraint firstItem="EtK-1b-yAE" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" id="PSB-Sk-yYR"/>
-                            <constraint firstItem="GAO-Cl-Wes" firstAttribute="top" secondItem="HZR-Yj-v1C" secondAttribute="bottom" id="TOj-6B-H7f"/>
-                            <constraint firstItem="HZR-Yj-v1C" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" id="Tji-mU-czU"/>
-                            <constraint firstItem="GAO-Cl-Wes" firstAttribute="top" secondItem="HZR-Yj-v1C" secondAttribute="bottom" id="WVJ-n2-Pxt"/>
-                            <constraint firstItem="HZR-Yj-v1C" firstAttribute="top" secondItem="svH-Pt-448" secondAttribute="topMargin" id="c4c-9M-fe1"/>
                             <constraint firstItem="EtK-1b-yAE" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" constant="-16" id="jgp-5T-36u"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="HZR-Yj-v1C" secondAttribute="trailing" constant="-16" id="sgK-1l-8eH"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="HZR-Yj-v1C" secondAttribute="trailing" constant="-16" id="uXe-VJ-Csr"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="Tji-mU-czU"/>
-                                <exclude reference="TOj-6B-H7f"/>
-                            </mask>
-                        </variation>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Contact Us" id="mOI-FS-AaM"/>
+                    <connections>
+                        <outlet property="mapView" destination="LCR-NY-SO7" id="BQw-uF-boP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
             </objects>
@@ -586,7 +567,6 @@
     <resources>
         <image name="About" width="512" height="512"/>
         <image name="Contact" width="512" height="512"/>
-        <image name="wedding" width="472" height="315"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="YNR-lx-TL8"/>

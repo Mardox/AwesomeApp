@@ -73,7 +73,10 @@ class VideosTableViewController: UITableViewController, UITableViewDataSource, U
             totalRows = videoList.count+1
         }
         
-        return totalRows
+        //Uncomment the following for the endless scroll
+//        return totalRows
+        
+        return videoList.count
     }
 
     
@@ -82,12 +85,13 @@ class VideosTableViewController: UITableViewController, UITableViewDataSource, U
 
         var cell : VideoTableViewCell!
         
-        if (indexPath.row < videoList.count) {
-            cell = self.youTubeListTableViewCellAtIndexPath(indexPath)
-        }else {
-            cell = self.loadMoreTableViewCellAtIndexPath(indexPath)
-        }
+//        if (indexPath.row < videoList.count) {
+//            cell = self.youTubeListTableViewCellAtIndexPath(indexPath)
+//        }else {
+//            cell = self.loadMoreTableViewCellAtIndexPath(indexPath)
+//        }
         
+        cell = self.youTubeListTableViewCellAtIndexPath(indexPath)
         
         return cell
     }
