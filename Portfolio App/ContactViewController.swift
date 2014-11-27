@@ -9,17 +9,26 @@
 import UIKit
 import MapKit;
 
-class ContactViewController: UIViewController {
+class ContactViewController: UIViewController, UISplitViewControllerDelegate {
 
 
+    var dict : NSDictionary!
+    
+    
     @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.splitViewController?.delegate = self
+        
+        let path = NSBundle.mainBundle().pathForResource("Config", ofType: "plist")
+        self.dict = NSDictionary(contentsOfFile: path!) as NSDictionary!
+        
 
         // 1
         let location = CLLocationCoordinate2D(
-            latitude: 51.50007773,
-            longitude: -0.1246402
+            latitude: -33.867487,
+            longitude: 151.206990
         )
         // 2
         let span = MKCoordinateSpanMake(0.05, 0.05)
@@ -29,8 +38,8 @@ class ContactViewController: UIViewController {
         //3
         let annotation = MKPointAnnotation()
         annotation.setCoordinate(location)
-        annotation.title = "Chimes Photography"
-        annotation.subtitle = "Sydney"
+        annotation.title = dict.objectForKey("appName") as String
+        annotation.subtitle = dict.objectForKey("city") as String
         mapView.addAnnotation(annotation)
         
         // Do any additional setup after loading the view.
@@ -43,7 +52,8 @@ class ContactViewController: UIViewController {
     
     @IBAction func callButton(sender: AnyObject) {
         
-        let phone = "tel://0413128463"
+        let phonenumber = dict.objectForKey("phone") as String
+        let phone = "tel://\(phonenumber)"
         let url:NSURL = NSURL(string:phone)!
         UIApplication.sharedApplication().openURL(url)
         
@@ -51,7 +61,7 @@ class ContactViewController: UIViewController {
 
     @IBAction func emailButton(sender: AnyObject) {
         
-        let email = "hooman@speedapp.com.au"
+        let email = dict.objectForKey("email") as String
         let url = NSURL(string: "mailto:\(email)")
         UIApplication.sharedApplication().openURL(url!)
         

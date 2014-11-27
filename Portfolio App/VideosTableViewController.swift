@@ -9,9 +9,9 @@
 import UIKit
 import MediaPlayer
 
-public let searchYouTubeVideoUrlString : String = "https://gdata.youtube.com/feeds/api/playlists/PLlPfJp10zfshCSUKAEmixkCFG7SgvY3NZ"
 
-class VideosTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
+
+class VideosTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate, UISplitViewControllerDelegate {
     
     //Video Quality-Type
     enum VideoQualityType: Int {
@@ -19,6 +19,9 @@ class VideosTableViewController: UITableViewController, UITableViewDataSource, U
         Medium,
         Low
     }
+    
+    
+    var searchYouTubeVideoUrlString : String = ""
 
     
     //Property
@@ -36,6 +39,16 @@ class VideosTableViewController: UITableViewController, UITableViewDataSource, U
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        self.splitViewController?.delegate = self
+    
+        
+        let path = NSBundle.mainBundle().pathForResource("Config", ofType: "plist")
+        let dict = NSDictionary(contentsOfFile: path!) as NSDictionary!
+        
+        let youtubePlaylistID: String = dict.objectForKey("youtubePlaylistID") as String!
+
+        self.searchYouTubeVideoUrlString = "https://gdata.youtube.com/feeds/api/playlists/\(youtubePlaylistID)"
         
         currentPageNumber=0
         videoList = NSMutableArray()

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>phone</key>
+	<string>0413128463</string>
+	<key>city</key>
+	<string>Sydney</string>
+	<key>website</key>
+	<string>http://www.chimes.com</string>
+	<key>email</key>
+	<string>info@chimes.com</string>
+	<key>facebook</key>
+	<string>http://facebook.com/30daylabs</string>
+	<key>googlePlus</key>
+	<string></string>
+	<key>instagram</key>
+	<string></string>
+	<key>linkedin</key>
+	<string>http://linkedin.com/30daylabs</string>
+	<key>twitter</key>
+	<string>http://twitter.com/hooman.mardokhi</string>
+	<key>youtubePlaylistID</key>
+	<string>PLlPfJp10zfshCSUKAEmixkCFG7SgvY3NZ</string>
+	<key>color1</key>
+	<string>hooman</string>
+	<key>color2</key>
+	<string></string>
+	<key>color3</key>
+	<string></string>
+	<key>appName</key>
+	<string>Chimes Photography</string>
+</dict>
+</plist>

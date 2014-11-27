@@ -38,52 +38,6 @@ class SocialTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        var index = self.tableView.indexPathForSelectedRow()
-        var indexPath = index?.row
-        if indexPath == 1 {
-         
-            let phone = "http://facebook.com/30daylabs"
-            let url:NSURL = NSURL(string:phone)!
-            UIApplication.sharedApplication().openURL(url)
-            
-        }
-        
-        if segue.identifier == "Gallery" {
-            
-            var controller = segue.destinationViewController as? GalleryTableViewController
-            controller?.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-            controller?.navigationItem.leftItemsSupplementBackButton = true
-            //            }
-        }else if segue.identifier == "Videos" {
-            //            if let indexPath = self.menuTableView.indexPathForSelectedRow() {
-            
-            var controller = segue.destinationViewController as? VideosTableViewController
-            controller?.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-            controller?.navigationItem.leftItemsSupplementBackButton = true
-            //            }
-        }else if segue.identifier == "About" {
-            //            if let indexPath = self.menuTableView.indexPathForSelectedRow() {
-            
-            var controller = segue.destinationViewController as? AboutViewController
-            controller?.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-            controller?.navigationItem.leftItemsSupplementBackButton = true
-            //            }
-        }else if segue.identifier == "Contact" {
-            //            if let indexPath = self.menuTableView.indexPathForSelectedRow() {
-            
-            var controller = segue.destinationViewController as? ContactViewController
-            controller?.navigationItem.leftItemsSupplementBackButton = true
-            //            }
-        }else if segue.identifier == "Social" {
-            //            if let indexPath = self.menuTableView.indexPathForSelectedRow() {
-            
-            var controller = segue.destinationViewController as? SocialTableViewController
-            controller?.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-            controller?.navigationItem.leftItemsSupplementBackButton = true
-            //            }
-        }
-        
-        
         
     }
 
@@ -99,19 +53,22 @@ class SocialTableViewController: UITableViewController {
         
 //        self.performSegueWithIdentifier(items[indexPath.item].menuName, sender: indexPath)
         
+        let path = NSBundle.mainBundle().pathForResource("Config", ofType: "plist")
+        let dict = NSDictionary(contentsOfFile: path!) as NSDictionary!
+        
         var address = ""
         
         switch indexPath.row {
         case 0:
-            address = "http://facebook.com/30daylabs"
+            address = dict.objectForKey("facebook") as String
         case 1:
-            address = "http://twitter.com/30daylabs"
+            address = dict.objectForKey("twitter") as String
         case 2:
-            address = "http://google.com/30daylabs"
+            address = dict.objectForKey("googlePlus") as String
         case 3:
-            address = "http://instagram.com/30daylabs"
+            address = dict.objectForKey("instagram") as String
         case 4:
-            address = "http://linkedin.com/30daylabs"
+            address = dict.objectForKey("linkedin") as String
         default:
             println("This is not a valid menu")
         }

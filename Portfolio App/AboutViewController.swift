@@ -8,10 +8,12 @@
 
 import UIKit
 
-class AboutViewController: UIViewController {
+class AboutViewController: UIViewController, UISplitViewControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.splitViewController?.delegate = self
 
         // Do any additional setup after loading the view.
     }

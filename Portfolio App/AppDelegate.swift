@@ -23,6 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         splitViewController?.delegate = self
         
         
+        // let path = NSBundle.mainBundle().pathForResource("Config", ofType: "plist")
+        // let dict = NSDictionary(contentsOfFile: path!) as NSDictionary!
+        
         var navigationBarAppearace = UINavigationBar.appearance()
         
         navigationBarAppearace.tintColor = UIColor.whiteColor()

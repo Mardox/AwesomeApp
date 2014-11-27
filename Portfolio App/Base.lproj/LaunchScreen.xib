@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -16,14 +15,34 @@
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8xh-uf-muo">
                     <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                    <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="middleTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
+                            <rect key="frame" x="8" y="188" width="464" height="103"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="441" id="6oX-cg-fM2"/>
+                                <constraint firstAttribute="height" constant="103" id="gpv-oK-PpI"/>
+                                <constraint firstAttribute="height" constant="43" id="nuA-e8-X43"/>
+                            </constraints>
+                            <string key="text">Chimes 
+Photography</string>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                            <color key="textColor" red="0.54747415335335936" green="0.11259480514978414" blue="0.61294586489898983" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="6oX-cg-fM2"/>
+                                    <exclude reference="nuA-e8-X43"/>
+                                </mask>
+                            </variation>
+                        </label>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="0.73999999999999999" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="centerY" secondItem="kId-c2-rCX" secondAttribute="centerY" id="G0A-Lb-qJE"/>
+                        <constraint firstAttribute="trailing" secondItem="kId-c2-rCX" secondAttribute="trailing" constant="8" id="MBD-nj-a8g"/>
+                        <constraint firstItem="kId-c2-rCX" firstAttribute="leading" secondItem="8xh-uf-muo" secondAttribute="leading" constant="8" id="o0b-iT-f75"/>
+                    </constraints>
                 </view>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chimes Gallery" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
-                    <rect key="frame" x="20" y="140" width="441" height="43"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright (c) 2014 Speed App. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
                     <rect key="frame" x="20" y="439" width="441" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -34,8 +53,6 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="sTM-iv-5CJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="0cQ-g1-euV"/>
-                <constraint firstItem="kId-c2-rCX" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="1/3" constant="1" id="5cJ-9S-tgC"/>
-                <constraint firstAttribute="centerX" secondItem="kId-c2-rCX" secondAttribute="centerX" id="Koa-jz-hwk"/>
                 <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="20" id="Kzo-t9-V3l"/>
                 <constraint firstAttribute="trailing" secondItem="sTM-iv-5CJ" secondAttribute="trailing" id="L5s-Kd-ne2"/>
                 <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="MfP-vx-nX0"/>
@@ -44,7 +61,6 @@
                 <constraint firstAttribute="centerX" secondItem="8ie-xW-0ye" secondAttribute="centerX" id="ZEH-qu-HZ9"/>
                 <constraint firstItem="sTM-iv-5CJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="bmp-ZU-t2W"/>
                 <constraint firstAttribute="bottom" secondItem="8xh-uf-muo" secondAttribute="bottom" id="elS-a4-hu7"/>
-                <constraint firstItem="kId-c2-rCX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="fvb-Df-36g"/>
                 <constraint firstItem="8xh-uf-muo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="t59-ba-hMR"/>
                 <constraint firstAttribute="trailing" secondItem="8xh-uf-muo" secondAttribute="trailing" id="tFq-2D-4Op"/>
             </constraints>

@@ -37,6 +37,16 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var appName : String
+        
+        let path = NSBundle.mainBundle().pathForResource("Config", ofType: "plist")
+        let dict = NSDictionary(contentsOfFile: path!) as NSDictionary!
+        
+        let title: String = dict.objectForKey("appName") as String!
+        
+        self.title = title
+        
         // Do any additional setup after loading the view, typically from a nib.
         //self.navigationItem.leftBarButtonItem = self.editButtonItem()
 
