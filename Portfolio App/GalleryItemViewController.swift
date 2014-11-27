@@ -10,8 +10,23 @@ import UIKit
 
 class GalleryItemViewController: UIViewController {
 
+    
+    
+    var _imageIndex: AnyObject? {
+        didSet {
+            // Update the view.
+        }
+    }
+    
+    @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var demoImageName = "demo-\(_imageIndex as Int)"
+        imageView.image  = UIImage(named: demoImageName)!
+        
+        imageView.contentMode = UIViewContentMode.ScaleAspectFill
+        imageView.clipsToBounds = true
 
         // Do any additional setup after loading the view.
     }
@@ -20,6 +35,8 @@ class GalleryItemViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
     
 
     /*

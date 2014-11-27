@@ -107,6 +107,12 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
     }
     
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("Image", sender: indexPath)
+        
+    }
+
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        return self.itemList.count;
         return 5;
@@ -204,6 +210,11 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
         {
             var photoViewController = segue.destinationViewController as GalleryItemViewController
             //photoViewController.photoInfo = photoCell.photoInfo
+            
+            var index = self.tableView.indexPathForSelectedRow()
+            var indexPath = index?.row
+            
+            photoViewController._imageIndex = indexPath as Int!
         }
     }
     
