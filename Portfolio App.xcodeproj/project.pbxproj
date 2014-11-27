@@ -268,7 +268,7 @@
 				TargetAttributes = {
 					E289E9B81A162F7800BB14D8 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = 5XGLYGQBVD;
+						DevelopmentTeam = 8G525YCV42;
 					};
 					E289E9CF1A162F7800BB14D8 = {
 						CreatedOnToolsVersion = 6.1;
@@ -462,10 +462,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Portfolio App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Portfolio App";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Portfolio App/YouTubeParser/MR_YouTubePlayer-Bridging-Header.h";
 			};
 			name = Debug;
@@ -475,10 +477,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Portfolio App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Portfolio App";
+				PROVISIONING_PROFILE = "";
 				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "Portfolio App/YouTubeParser/MR_YouTubePlayer-Bridging-Header.h";
 			};
 			name = Release;
@@ -497,7 +501,7 @@
 				);
 				INFOPLIST_FILE = "Portfolio AppTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Portfolio AppTests";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Portfolio App.app/Portfolio App";
 			};
 			name = Debug;
@@ -512,7 +516,7 @@
 				);
 				INFOPLIST_FILE = "Portfolio AppTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Portfolio AppTests";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Portfolio App.app/Portfolio App";
 			};
 			name = Release;

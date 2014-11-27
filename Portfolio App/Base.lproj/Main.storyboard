@@ -199,7 +199,7 @@
                             <outlet property="delegate" destination="7bK-jq-Zjz" id="RA6-mI-bju"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Menu" id="Zdf-7t-Un8"/>
+                    <navigationItem key="navigationItem" title="Chimes Photography" id="Zdf-7t-Un8"/>
                     <connections>
                         <segue destination="vC3-pB-5Vb" kind="showDetail" identifier="Contact" id="jom-SE-2kx"/>
                         <segue destination="sEh-eV-mku" kind="showDetail" identifier="Gallery" id="YNR-lx-TL8"/>

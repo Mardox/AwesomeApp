@@ -9,7 +9,7 @@
 import UIKit
 import MediaPlayer
 
-public let searchYouTubeVideoUrlString : String = "http://gdata.youtube.com/feeds/api/videos"
+public let searchYouTubeVideoUrlString : String = "https://gdata.youtube.com/feeds/api/playlists/PLlPfJp10zfshCSUKAEmixkCFG7SgvY3NZ"
 
 class VideosTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -293,12 +293,12 @@ class VideosTableViewController: UITableViewController, UITableViewDataSource, U
         
         var dataDictionary = Dictionary<String, AnyObject>()
         
-        dataDictionary["orderby"] = "relevance" //"published"
+//        dataDictionary["orderby"] = "relevance" //"published"
         dataDictionary["v"] = "2"
         dataDictionary["alt"] = "json"
         dataDictionary["max-results"] = 25
         dataDictionary["start-index"] = currentPageNumber+1
-        dataDictionary["q"] = "wedding photography"
+        //dataDictionary["q"] = "PLlPfJp10zfshCSUKAEmixkCFG7SgvY3NZ"
         
         let url:NSURL = NSURL(string: searchYouTubeVideoUrlString)!
         MR_YouTubeApiManager.sharedInstance.callWebServiceWithUrlString(url, serviceType: "GET", ServiceParameters:dataDictionary, withCompletionHandler: { (responseObject, urlResponse, error) -> Void in
