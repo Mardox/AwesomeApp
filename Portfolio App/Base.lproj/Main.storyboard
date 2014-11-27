@@ -283,14 +283,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sNb-dW-0MR">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nsl-CT-lHx">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                            </imageView>
+                                <subviews>
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sNb-dW-0MR">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="sNb-dW-0MR" firstAttribute="centerX" secondItem="Nsl-CT-lHx" secondAttribute="centerX" id="651-Xc-CY2"/>
+                                    <constraint firstItem="sNb-dW-0MR" firstAttribute="top" secondItem="Nsl-CT-lHx" secondAttribute="top" id="cwh-sP-CHb"/>
+                                    <constraint firstAttribute="bottom" secondItem="sNb-dW-0MR" secondAttribute="bottom" id="fIR-YR-JU4"/>
+                                    <constraint firstItem="sNb-dW-0MR" firstAttribute="centerY" secondItem="Nsl-CT-lHx" secondAttribute="centerY" id="gWI-zY-xaf"/>
+                                    <constraint firstAttribute="trailing" secondItem="sNb-dW-0MR" secondAttribute="trailing" id="ol4-UQ-uAG"/>
+                                    <constraint firstItem="sNb-dW-0MR" firstAttribute="leading" secondItem="Nsl-CT-lHx" secondAttribute="leading" id="vzU-Op-onC"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Nsl-CT-lHx" firstAttribute="leading" secondItem="Juc-7F-u5g" secondAttribute="leadingMargin" constant="-16" id="QmO-N3-bIG"/>
+                            <constraint firstItem="lKv-j0-VCW" firstAttribute="top" secondItem="Nsl-CT-lHx" secondAttribute="bottom" id="i7U-ND-Ui7"/>
+                            <constraint firstItem="Nsl-CT-lHx" firstAttribute="top" secondItem="Juc-7F-u5g" secondAttribute="topMargin" id="oBZ-hI-dRF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Nsl-CT-lHx" secondAttribute="trailing" constant="-16" id="yEB-KO-rrs"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="imageView" destination="sNb-dW-0MR" id="1PB-EG-Usj"/>
+                        <outlet property="imageView" destination="sNb-dW-0MR" id="oPn-cU-T5m"/>
+                        <outlet property="scrollView" destination="Nsl-CT-lHx" id="lZ5-Lu-C5r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4cZ-EP-VlM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -622,6 +644,6 @@
         <image name="white-wedding" width="4104" height="2730"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YNR-lx-TL8"/>
+        <segue reference="LES-c1-c0G"/>
     </inferredMetricsTieBreakers>
 </document>

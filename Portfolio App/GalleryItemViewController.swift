@@ -8,15 +8,16 @@
 
 import UIKit
 
-class GalleryItemViewController: UIViewController {
-
-    
+class GalleryItemViewController: UIViewController, UIScrollViewDelegate {
     
     var _imageIndex: AnyObject? {
         didSet {
             // Update the view.
         }
     }
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    var currentScale: CGFloat!
     
     @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
@@ -25,8 +26,16 @@ class GalleryItemViewController: UIViewController {
         var demoImageName = "demo-\(_imageIndex as Int)"
         imageView.image  = UIImage(named: demoImageName)!
         
-        imageView.contentMode = UIViewContentMode.ScaleAspectFill
-        imageView.clipsToBounds = true
+//        imageView.contentMode = UIViewContentMode.ScaleAspectFill
+//        imageView.clipsToBounds = true
+        
+         view.backgroundColor = UIColor.whiteColor()
+        
+        
+        self.scrollView.minimumZoomScale=1;
+        self.scrollView.maximumZoomScale=6.0;
+//        self.scrollView.contentSize=CGSizeMake(1280, 960);
+        self.scrollView.delegate=self;
 
         // Do any additional setup after loading the view.
     }
@@ -36,6 +45,10 @@ class GalleryItemViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return self.imageView
+    }
     
     
 
