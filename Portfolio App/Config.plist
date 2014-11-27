@@ -2,6 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Gallery</key>
+	<string>Gallery</string>
+	<key>Videos</key>
+	<string>Videos</string>
+	<key>About</key>
+	<string>About</string>
+	<key>Contact</key>
+	<string>Contact</string>
+	<key>Social</key>
+	<string>Social</string>
 	<key>phone</key>
 	<string>0413128463</string>
 	<key>city</key>

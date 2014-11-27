@@ -13,12 +13,13 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
     
     let items = [
         MenuItem(menuName: "Gallery", menuIcon: "Gallery", menuSubtitle: "Have a look at our portfolio and get to know our work"),
-        
         MenuItem(menuName: "Videos", menuIcon: "Videos", menuSubtitle: "Check out our videos and get a taste of what we can do for you!"),
         MenuItem(menuName: "About", menuIcon: "About", menuSubtitle: "All about who we are and what we can do for you"),
         MenuItem(menuName: "Contact", menuIcon: "Contact", menuSubtitle: "Get in touch! We know that we can give you the best service"),
         MenuItem(menuName: "Social", menuIcon: "Social", menuSubtitle: "Follow us for the latest news and awesomeness"),
     ]
+    
+    var dict : NSDictionary!
     
     //MenuItem(menuName: "Poses", menuIcon: "Gallery", menuSubtitle: "Some of the beautiful and poses we suggest"),
 
@@ -41,7 +42,7 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
         var appName : String
         
         let path = NSBundle.mainBundle().pathForResource("Config", ofType: "plist")
-        let dict = NSDictionary(contentsOfFile: path!) as NSDictionary!
+        self.dict = NSDictionary(contentsOfFile: path!) as NSDictionary!
         
         let title: String = dict.objectForKey("appName") as String!
         
@@ -141,7 +142,7 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell:MenuTableViewCell? = tableView.dequeueReusableCellWithIdentifier("Cell") as? MenuTableViewCell
         
-        cell!.menuCellTitle.text = self.items[indexPath.row].menuName as String
+        cell!.menuCellTitle.text = dict.objectForKey(self.items[indexPath.row].menuName) as? String
         cell!.menuCellSubtitle.text = self.items[indexPath.row].menuSubtitle
         cell!.menuCellImage.image  = UIImage(named: items[indexPath.row].menuIcon)!
         return cell!;

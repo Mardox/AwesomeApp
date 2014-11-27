@@ -139,8 +139,8 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Cr-up-Bax" id="dIr-gm-ck4">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Zz-Bu-S6O">
-                                            <rect key="frame" x="108" y="8" width="459" height="40"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Zz-Bu-S6O">
+                                            <rect key="frame" x="108" y="8" width="273" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="LEz-pA-22M"/>
                                             </constraints>
@@ -148,8 +148,8 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVu-Wn-JDt">
-                                            <rect key="frame" x="108" y="48" width="459" height="44"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVu-Wn-JDt">
+                                            <rect key="frame" x="108" y="48" width="273" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="44" id="Kkg-do-VKD"/>
                                             </constraints>
@@ -638,6 +638,6 @@
         <image name="white-wedding" width="4104" height="2730"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LES-c1-c0G"/>
+        <segue reference="YNR-lx-TL8"/>
     </inferredMetricsTieBreakers>
 </document>
