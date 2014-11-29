@@ -4,8 +4,12 @@
 <dict>
 	<key>Gallery</key>
 	<string>Gallery</string>
+	<key>GalleryFlickrPhotosetID</key>
+	<string>72157628002777560</string>
 	<key>Tour</key>
 	<string>Tour</string>
+	<key>TourFlickrPhotosetID</key>
+	<string>72157624984190961</string>
 	<key>Videos</key>
 	<string>Videos</string>
 	<key>About</key>

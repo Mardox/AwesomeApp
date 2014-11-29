@@ -23,7 +23,7 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
         self.splitViewController?.delegate = self
         
         //fetch the data
-        //flickrFetch()
+        flickrFetch()
         
     }
     
@@ -43,10 +43,14 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
         //Photoset: https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=9fa7363b8b8c32d240ee853a2857b844&photoset_id=72157628002777560&format=json&nojsoncallback=1
     
         //Show Loading
-        AppDelegate.showProgressHudWithMessage("Loading...")
+        
+        let path = NSBundle.mainBundle().pathForResource("Config", ofType: "plist")
+        let dict = NSDictionary(contentsOfFile: path!) as NSDictionary!
+        
+        let GalleryFlickrPhotosetID: String = dict.objectForKey("GalleryFlickrPhotosetID") as String!
         
         
-        var url : String = "https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=66c04380d939320f757f730d84fb2f52&photoset_id=72157628002777560&format=json&nojsoncallback=1"
+        var url : String = "https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=66c04380d939320f757f730d84fb2f52&photoset_id=\(GalleryFlickrPhotosetID)&format=json&nojsoncallback=1"
         var request : NSMutableURLRequest = NSMutableURLRequest()
         request.URL = NSURL(string: url)
         request.HTTPMethod = "GET"
@@ -72,12 +76,15 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
                     self.itemList.addObject(dataDictionary)
                 }
                 
-                self.tableView.reloadData()
+                
+//                AppDelegate.showProgressHudWithMessage("Loading...")
                 
                 //Update UI in main-thread
                 dispatch_async(dispatch_get_main_queue(), {
                     //Hide Loading
 //                    AppDelegate.hideProgressHud()
+                    
+                    self.tableView.reloadData()
                 })
 
                 
@@ -114,8 +121,8 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
 
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return self.itemList.count;
-        return 10;
+        return self.itemList.count;
+//        return 10;
     }
     
     
@@ -125,16 +132,17 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
         let cell : GalleryTableViewCell? = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as? GalleryTableViewCell
         
         //assign the cell data
+
+        
+        cell!.galleryCellImage.contentMode = UIViewContentMode.ScaleAspectFill
+        cell!.galleryCellImage.clipsToBounds = true
+
         
         
 //        cell!.galleryCellTitle.text = self.items[indexPath.row].menuName as String
-        var demoImageName = "demo-\(indexPath.row)"
-        cell!.galleryCellImage.image  = UIImage(named: demoImageName)!
-        cell!.galleryCellImage.contentMode = UIViewContentMode.ScaleAspectFill
-        cell!.galleryCellImage.clipsToBounds = true
-        return cell!;
-
-        
+//        var demoImageName = "demo-\(indexPath.row)"
+//        cell!.galleryCellImage.image  = UIImage(named: demoImageName)!
+//        return cell!;
         
         
         
@@ -146,59 +154,43 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
         let id = itemList[indexPath.row]["id"] as String!
         let secret = itemList[indexPath.row]["secret"] as String!
         
-       // let imageURL = "https://farm\(farm).staticflickr.com/\(server)/\(id)_\(secret).jpg"
-        
-        // Grab the artworkUrl60 key to get an image URL for the app's thumbnail
         let urlString = "https://farm\(farm).staticflickr.com/\(server)/\(id)_\(secret).jpg"
+      
         
-        // Check our image cache for the existing key. This is just a dictionary of UIImages
-        //var image: UIImage? = self.imageCache.valueForKey(urlString) as? UIImage
+        
         var image = self.imageCache[urlString]
         
-        
         if( image == nil ) {
+            
             // If the image does not exist, we need to download it
             var imgURL: NSURL = NSURL(string: urlString)!
             
-            // Download an NSData representation of the image at the URL
             let request: NSURLRequest = NSURLRequest(URL: imgURL)
             NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse!,data: NSData!,error: NSError!) -> Void in
-                if error == nil {
+                if !(error? != nil) {
                     image = UIImage(data: data)
-                    
                     // Store the image in to our cache
                     self.imageCache[urlString] = image
-                    
                     dispatch_async(dispatch_get_main_queue(), {
-                        if let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) as? GalleryTableViewCell {
-                            cellToUpdate.galleryCellImage.image = image
-                            //cellToUpdate.galleryCellTitle.text = self.itemList[indexPath.row]["title"] as? String
-                        }
-                        AppDelegate.hideProgressHud()
+                        cell!.galleryCellImage.image = image
                     })
-                    
-                    
                 }
                 else {
                     println("Error: \(error.localizedDescription)")
                 }
             })
             
+        }else {
+            dispatch_async(dispatch_get_main_queue(), {
+                if let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) as? GalleryTableViewCell{
+                    cellToUpdate.galleryCellImage.image = image
+                }
+            })
         }
         
+        //AppDelegate.hideProgressHud()
         
-        
-//        let url = NSURL(string: imageURL as NSString)!
-//        var err: NSError?
-////        var imageData :NSData = NSData(contentsOfURL: url,options: NSDataReadingOptions.DataReadingMappedIfSafe, error: &err)!
-////        var bgImage = UIImage(data:imageData)
-////        
-////        cell.galleryCellImage.image = bgImage
-//        
-//        cell.galleryCellImage.contentMode = UIViewContentMode.ScaleAspectFill
-//        cell.galleryCellImage.clipsToBounds = true
-//        
-//        return cell;
+        return cell!;
     }
     
     
@@ -213,8 +205,16 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
             var index = self.tableView.indexPathForSelectedRow()
             var indexPath = index?.row
             
-            var imageName = "demo-\(indexPath!)"
-            photoViewController._imageName = imageName as String!
+            //var imageName = "demo-\(indexPath!)"
+            
+            let farm = itemList[indexPath!]["farm"] as String!
+            let server = itemList[indexPath!]["server"] as String!
+            let id = itemList[indexPath!]["id"] as String!
+            let secret = itemList[indexPath!]["secret"] as String!
+            
+            let imageUrl = "https://farm\(farm).staticflickr.com/\(server)/\(id)_\(secret).jpg"
+            photoViewController._imageUrl = imageUrl as String!
+            
         }
     }
     

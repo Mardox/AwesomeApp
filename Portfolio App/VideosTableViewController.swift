@@ -20,6 +20,8 @@ class VideosTableViewController: UITableViewController, UITableViewDataSource, U
         Low
     }
     
+    var imageCache = [String : UIImage]()
+    
     
     var searchYouTubeVideoUrlString : String = ""
 
@@ -171,12 +173,43 @@ class VideosTableViewController: UITableViewController, UITableViewDataSource, U
         cell.videoCellTitle.text = detailString
 //        cell.videoCellImage.downloadImageWithUrlString(videoList[indexPath.row]["imageUrl"] as NSString)
         
-        let url = NSURL(string: videoList[indexPath.row]["imageUrl"] as NSString)!
+        let urlString = videoList[indexPath.row]["imageUrl"] as NSString!
         var err: NSError?
-        var imageData :NSData = NSData(contentsOfURL: url,options: NSDataReadingOptions.DataReadingMappedIfSafe, error: &err)!
-        var bgImage = UIImage(data:imageData)
-  
-        cell.videoCellImage.image = bgImage
+        
+        
+        var image = self.imageCache[urlString]
+        
+        if( image == nil ) {
+            
+            // If the image does not exist, we need to download it
+            var imgURL: NSURL = NSURL(string: urlString)!
+            
+            let request: NSURLRequest = NSURLRequest(URL: imgURL)
+            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse!,data: NSData!,error: NSError!) -> Void in
+                if !(error? != nil) {
+                    image = UIImage(data: data)
+                    // Store the image in to our cache
+                    self.imageCache[urlString] = image
+                    dispatch_async(dispatch_get_main_queue(), {
+                        cell.videoCellImage.image = image
+                    })
+                }
+                else {
+                    println("Error: \(error.localizedDescription)")
+                }
+            })
+        
+        }else {
+            dispatch_async(dispatch_get_main_queue(), {
+                if let cellToUpdate = self.tableView.cellForRowAtIndexPath(indexPath) as? VideoTableViewCell{
+                    cellToUpdate.videoCellImage.image = image
+                }
+            })
+        }
+        
+        
+        
+        
         
         cell.videoCellImage.contentMode = UIViewContentMode.ScaleAspectFill
         cell.videoCellImage.clipsToBounds = true
