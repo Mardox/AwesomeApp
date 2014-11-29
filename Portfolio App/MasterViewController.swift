@@ -13,6 +13,7 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
     
     let items = [
         MenuItem(menuName: "Gallery", menuIcon: "Gallery", menuSubtitle: "Have a look at our portfolio and get to know our work"),
+        MenuItem(menuName: "Tour", menuIcon: "Tour", menuSubtitle: "Take a tour of our studio and equipment"),
         MenuItem(menuName: "Videos", menuIcon: "Videos", menuSubtitle: "Check out our videos and get a taste of what we can do for you!"),
         MenuItem(menuName: "About", menuIcon: "About", menuSubtitle: "All about who we are and what we can do for you"),
         MenuItem(menuName: "Contact", menuIcon: "Contact", menuSubtitle: "Get in touch! We know that we can give you the best service"),
@@ -89,34 +90,37 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
             var controller = segue.destinationViewController as? GalleryTableViewController
             controller?.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
             controller?.navigationItem.leftItemsSupplementBackButton = true
-            //            }
+
+        }else if segue.identifier == "Tour" {
+            
+            var controller = segue.destinationViewController as? TourTableViewController
+            controller?.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+            controller?.navigationItem.leftItemsSupplementBackButton = true
+
         }else if segue.identifier == "Videos" {
-            //            if let indexPath = self.menuTableView.indexPathForSelectedRow() {
+
             
             var controller = segue.destinationViewController as? VideosTableViewController
             controller?.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
             controller?.navigationItem.leftItemsSupplementBackButton = true
-            //            }
+
         }else if segue.identifier == "About" {
-            //            if let indexPath = self.menuTableView.indexPathForSelectedRow() {
-            
+           
             var controller = segue.destinationViewController as? AboutViewController
             controller?.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
             controller?.navigationItem.leftItemsSupplementBackButton = true
-            //            }
+          
         }else if segue.identifier == "Contact" {
-            //            if let indexPath = self.menuTableView.indexPathForSelectedRow() {
             
             var controller = segue.destinationViewController as? ContactViewController
             controller?.navigationItem.leftItemsSupplementBackButton = true
-            //            }
+           
         }else if segue.identifier == "Social" {
-            //            if let indexPath = self.menuTableView.indexPathForSelectedRow() {
-            
+           
             var controller = segue.destinationViewController as? SocialTableViewController
             controller?.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
             controller?.navigationItem.leftItemsSupplementBackButton = true
-            //            }
+           
         }
         
         

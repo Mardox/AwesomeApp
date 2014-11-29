@@ -4,6 +4,8 @@
 <dict>
 	<key>Gallery</key>
 	<string>Gallery</string>
+	<key>Tour</key>
+	<string>Tour</string>
 	<key>Videos</key>
 	<string>Videos</string>
 	<key>About</key>

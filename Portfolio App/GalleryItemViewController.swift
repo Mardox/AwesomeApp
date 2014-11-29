@@ -10,7 +10,7 @@ import UIKit
 
 class GalleryItemViewController: UIViewController, UIScrollViewDelegate {
     
-    var _imageIndex: AnyObject? {
+    var _imageName: AnyObject? {
         didSet {
             // Update the view.
         }
@@ -23,7 +23,7 @@ class GalleryItemViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var demoImageName = "demo-\(_imageIndex as Int)"
+        var demoImageName = "\(_imageName! as String)"
         imageView.image  = UIImage(named: demoImageName)!
         
 //        imageView.contentMode = UIViewContentMode.ScaleAspectFill

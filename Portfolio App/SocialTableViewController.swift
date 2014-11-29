@@ -38,6 +38,18 @@ class SocialTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
+        if segue.identifier == "Social"
+        {
+            var socialViewController = segue.destinationViewController as SocialWebViewViewController
+            
+            //photoViewController.photoInfo = photoCell.photoInfo
+            
+            var index = self.tableView.indexPathForSelectedRow()
+            var indexPath = index?.row
+            
+            socialViewController._socialIndex = indexPath as Int!
+        }
+        
         
     }
 
@@ -53,28 +65,7 @@ class SocialTableViewController: UITableViewController {
         
 //        self.performSegueWithIdentifier(items[indexPath.item].menuName, sender: indexPath)
         
-        let path = NSBundle.mainBundle().pathForResource("Config", ofType: "plist")
-        let dict = NSDictionary(contentsOfFile: path!) as NSDictionary!
-        
-        var address = ""
-        
-        switch indexPath.row {
-        case 0:
-            address = dict.objectForKey("facebook") as String
-        case 1:
-            address = dict.objectForKey("twitter") as String
-        case 2:
-            address = dict.objectForKey("googlePlus") as String
-        case 3:
-            address = dict.objectForKey("instagram") as String
-        case 4:
-            address = dict.objectForKey("linkedin") as String
-        default:
-            println("This is not a valid menu")
-        }
-        
-        let url:NSURL = NSURL(string:address)!
-        UIApplication.sharedApplication().openURL(url)
+       
         
         
     }

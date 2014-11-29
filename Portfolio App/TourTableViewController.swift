@@ -1,14 +1,14 @@
 //
-//  GalleryTableViewController.swift
+//  TourTableViewController.swift
 //  Portfolio App
 //
-//  Created by Hooman Mardokhi on 15/11/2014.
+//  Created by Hooman Mardokhi on 29/11/2014.
 //  Copyright (c) 2014 Hooman Mardokhi. All rights reserved.
 //
 
 import UIKit
 
-class GalleryTableViewController: UITableViewController, UITableViewDataSource,UITableViewDelegate, UISplitViewControllerDelegate  {
+class TourTableViewController: UITableViewController, UITableViewDataSource,UITableViewDelegate, UISplitViewControllerDelegate {
 
     
     
@@ -36,12 +36,12 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
     func flickrFetch(){
         
         // Make the API Call
-        // Flickr API Call: 
+        // Flickr API Call:
         //"https://api.flickr.com/services/rest/?method=flickr.people.getPublicPhotos&api_key=a8c6c2f1a0a11a20d5a07f5f21e6924f&user_id=56378615%40N07&format=json&nojsoncallback=1"
-       // getJSON(flickrAPI)
+        // getJSON(flickrAPI)
         
         //Photoset: https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=9fa7363b8b8c32d240ee853a2857b844&photoset_id=72157628002777560&format=json&nojsoncallback=1
-    
+        
         //Show Loading
         AppDelegate.showProgressHudWithMessage("Loading...")
         
@@ -57,7 +57,7 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
             
             if (jsonResult != nil) {
                 // process jsonResult
-//                println(jsonResult.objectForKey("photos")?.objectForKey("photo")?.count)
+                //                println(jsonResult.objectForKey("photos")?.objectForKey("photo")?.count)
                 
                 var dataDictionary = Dictionary<String, String>()
                 
@@ -77,9 +77,9 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
                 //Update UI in main-thread
                 dispatch_async(dispatch_get_main_queue(), {
                     //Hide Loading
-//                    AppDelegate.hideProgressHud()
+                    //                    AppDelegate.hideProgressHud()
                 })
-
+                
                 
             } else {
                 // couldn't load JSON, look at error
@@ -111,29 +111,29 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
         self.performSegueWithIdentifier("Image", sender: indexPath)
         
     }
-
+    
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return self.itemList.count;
-        return 10;
+        //        return self.itemList.count;
+        return 5;
     }
     
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-       
+        
         let cell : GalleryTableViewCell? = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as? GalleryTableViewCell
         
         //assign the cell data
         
         
-//        cell!.galleryCellTitle.text = self.items[indexPath.row].menuName as String
-        var demoImageName = "demo-\(indexPath.row)"
+        //        cell!.galleryCellTitle.text = self.items[indexPath.row].menuName as String
+        var demoImageName = "tour-\(indexPath.row)"
         cell!.galleryCellImage.image  = UIImage(named: demoImageName)!
         cell!.galleryCellImage.contentMode = UIViewContentMode.ScaleAspectFill
         cell!.galleryCellImage.clipsToBounds = true
         return cell!;
-
+        
         
         
         
@@ -146,7 +146,7 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
         let id = itemList[indexPath.row]["id"] as String!
         let secret = itemList[indexPath.row]["secret"] as String!
         
-       // let imageURL = "https://farm\(farm).staticflickr.com/\(server)/\(id)_\(secret).jpg"
+        // let imageURL = "https://farm\(farm).staticflickr.com/\(server)/\(id)_\(secret).jpg"
         
         // Grab the artworkUrl60 key to get an image URL for the app's thumbnail
         let urlString = "https://farm\(farm).staticflickr.com/\(server)/\(id)_\(secret).jpg"
@@ -188,17 +188,17 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
         
         
         
-//        let url = NSURL(string: imageURL as NSString)!
-//        var err: NSError?
-////        var imageData :NSData = NSData(contentsOfURL: url,options: NSDataReadingOptions.DataReadingMappedIfSafe, error: &err)!
-////        var bgImage = UIImage(data:imageData)
-////        
-////        cell.galleryCellImage.image = bgImage
-//        
-//        cell.galleryCellImage.contentMode = UIViewContentMode.ScaleAspectFill
-//        cell.galleryCellImage.clipsToBounds = true
-//        
-//        return cell;
+        //        let url = NSURL(string: imageURL as NSString)!
+        //        var err: NSError?
+        ////        var imageData :NSData = NSData(contentsOfURL: url,options: NSDataReadingOptions.DataReadingMappedIfSafe, error: &err)!
+        ////        var bgImage = UIImage(data:imageData)
+        ////
+        ////        cell.galleryCellImage.image = bgImage
+        //
+        //        cell.galleryCellImage.contentMode = UIViewContentMode.ScaleAspectFill
+        //        cell.galleryCellImage.clipsToBounds = true
+        //
+        //        return cell;
     }
     
     
@@ -213,12 +213,9 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
             var index = self.tableView.indexPathForSelectedRow()
             var indexPath = index?.row
             
-            var imageName = "demo-\(indexPath!)"
+            var imageName = "tour-\(indexPath!)"
             photoViewController._imageName = imageName as String!
         }
     }
-    
-    
-    
     
 }
