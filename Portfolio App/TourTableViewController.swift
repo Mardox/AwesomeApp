@@ -128,6 +128,8 @@ class TourTableViewController: UITableViewController, UITableViewDataSource,UITa
         let cell : GalleryTableViewCell? = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as? GalleryTableViewCell
         
         
+        cell!.galleryCellImage.image = nil
+        
         cell!.galleryCellImage.contentMode = UIViewContentMode.ScaleAspectFill
         cell!.galleryCellImage.clipsToBounds = true
         
@@ -175,6 +177,9 @@ class TourTableViewController: UITableViewController, UITableViewDataSource,UITa
         }
         
         //AppDelegate.hideProgressHud()
+        
+        
+        //cell?.galleryCellTitle.text = itemList[indexPath.row]["title"] as String!
         
         return cell!;
         

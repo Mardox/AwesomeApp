@@ -134,6 +134,8 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
         //assign the cell data
 
         
+        cell!.galleryCellImage.image = nil
+        
         cell!.galleryCellImage.contentMode = UIViewContentMode.ScaleAspectFill
         cell!.galleryCellImage.clipsToBounds = true
 
@@ -187,6 +189,8 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
                 }
             })
         }
+        
+        //cell?.galleryCellTitle.text = itemList[indexPath.row]["title"] as String!
         
         //AppDelegate.hideProgressHud()
         

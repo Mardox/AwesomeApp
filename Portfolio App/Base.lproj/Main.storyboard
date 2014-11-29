@@ -231,16 +231,39 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jnf-Sz-o9U">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
                                         </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yeM-F6-M04">
+                                            <rect key="frame" x="0.0" y="185" width="414" height="55"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPy-d0-sQa">
+                                                    <rect key="frame" x="8" y="8" width="398" height="39"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="0.48999999999999999" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="55" id="1YA-dH-Rol"/>
+                                                <constraint firstItem="wPy-d0-sQa" firstAttribute="top" secondItem="yeM-F6-M04" secondAttribute="top" constant="8" id="6pK-vR-PHu"/>
+                                                <constraint firstItem="wPy-d0-sQa" firstAttribute="leading" secondItem="yeM-F6-M04" secondAttribute="leading" constant="8" id="DC2-Jr-2Oq"/>
+                                                <constraint firstAttribute="trailing" secondItem="wPy-d0-sQa" secondAttribute="trailing" constant="8" id="ZGo-sh-MXN"/>
+                                                <constraint firstAttribute="bottom" secondItem="wPy-d0-sQa" secondAttribute="bottom" constant="8" id="rgM-7m-roM"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="Jnf-Sz-o9U" secondAttribute="trailing" constant="-8" id="UWq-yq-7IP"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="yeM-F6-M04" secondAttribute="bottom" constant="-8" id="b9t-XS-VQE"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Jnf-Sz-o9U" secondAttribute="bottom" constant="-8" id="fC7-f8-P5W"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="yeM-F6-M04" secondAttribute="trailing" constant="-8" id="rhO-Hk-Fgx"/>
                                         <constraint firstItem="Jnf-Sz-o9U" firstAttribute="top" secondItem="AqU-yW-BPw" secondAttribute="topMargin" constant="-8" id="tKZ-fy-d9n"/>
+                                        <constraint firstItem="yeM-F6-M04" firstAttribute="leading" secondItem="AqU-yW-BPw" secondAttribute="leadingMargin" constant="-8" id="tV5-BX-zXG"/>
                                         <constraint firstItem="Jnf-Sz-o9U" firstAttribute="leading" secondItem="AqU-yW-BPw" secondAttribute="leadingMargin" constant="-8" id="wec-br-TPF"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="galleryCellImage" destination="Jnf-Sz-o9U" id="D7N-Ql-dFe"/>
+                                    <outlet property="galleryCellTitle" destination="wPy-d0-sQa" id="Wnl-gm-a5x"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -750,6 +773,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="YNR-lx-TL8"/>
-        <segue reference="YKl-8A-jM9"/>
+        <segue reference="8Ag-rT-Vmp"/>
     </inferredMetricsTieBreakers>
 </document>
