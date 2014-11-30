@@ -16,6 +16,7 @@ class SocialTableViewController: UITableViewController {
         MenuItem(menuName: "Twitter", menuIcon: "Twitter", menuSubtitle: "Follow us on Twitter"),
         MenuItem(menuName: "Google", menuIcon: "Google", menuSubtitle: "Find us on Google+"),
         MenuItem(menuName: "Instagram", menuIcon: "Instagram", menuSubtitle: "Follow us on Instagram"),
+        MenuItem(menuName: "Pinterest", menuIcon: "Pinterest", menuSubtitle: "Checkout our pins on Pinterest"),
         MenuItem(menuName: "LinkedIn", menuIcon: "LinkedIn", menuSubtitle: "Join our professional network"),
     ]
     
@@ -40,14 +41,38 @@ class SocialTableViewController: UITableViewController {
         
         if segue.identifier == "Social"
         {
-            var socialViewController = segue.destinationViewController as SocialWebViewViewController
+            var socialViewController = segue.destinationViewController as WebViewViewController
             
             //photoViewController.photoInfo = photoCell.photoInfo
             
             var index = self.tableView.indexPathForSelectedRow()
             var indexPath = index?.row
             
-            socialViewController._socialIndex = indexPath as Int!
+            
+            let path = NSBundle.mainBundle().pathForResource("Config", ofType: "plist")
+            let dict = NSDictionary(contentsOfFile: path!) as NSDictionary!
+            
+            var address : String = ""
+            
+            switch indexPath! as Int {
+            case 0:
+                address = dict.objectForKey("facebook") as String
+            case 1:
+                address = dict.objectForKey("twitter") as String
+            case 2:
+                address = dict.objectForKey("googlePlus") as String
+            case 3:
+                address = dict.objectForKey("instagram") as String
+            case 4:
+                address = dict.objectForKey("pinterest") as String
+            case 5:
+                address = dict.objectForKey("linkedin") as String
+            default:
+                println("This is not a valid menu")
+            }
+
+            
+            socialViewController._webAddress = address as String!
         }
         
         

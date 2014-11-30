@@ -18,6 +18,8 @@
 	<string>Contact</string>
 	<key>Social</key>
 	<string>Social</string>
+	<key>Login</key>
+	<string>Login</string>
 	<key>phone</key>
 	<string>0413128463</string>
 	<key>city</key>
@@ -28,6 +30,8 @@
 	<string>info@chimes.com</string>
 	<key>facebook</key>
 	<string>http://facebook.com/30daylabs</string>
+	<key>pinterest</key>
+	<string>http://pinterest.com/hoomanmar</string>
 	<key>googlePlus</key>
 	<string></string>
 	<key>instagram</key>

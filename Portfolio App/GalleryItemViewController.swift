@@ -68,7 +68,7 @@ class GalleryItemViewController: UIViewController, UIScrollViewDelegate {
         
         
         self.scrollView.minimumZoomScale=1;
-        self.scrollView.maximumZoomScale=6.0;
+        self.scrollView.maximumZoomScale=4.0;
 //        self.scrollView.contentSize=CGSizeMake(1280, 960);
         self.scrollView.delegate=self;
 

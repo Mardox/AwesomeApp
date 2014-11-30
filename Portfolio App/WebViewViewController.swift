@@ -8,13 +8,13 @@
 
 import UIKit
 
-class SocialWebViewViewController: UIViewController, UISplitViewControllerDelegate {
+class WebViewViewController: UIViewController, UISplitViewControllerDelegate {
 
     
     
     @IBOutlet var webViewElement: UIWebView!
     
-    var _socialIndex: AnyObject? {
+    var _webAddress: AnyObject? {
         didSet {
             // Update the view.
         }
@@ -24,29 +24,7 @@ class SocialWebViewViewController: UIViewController, UISplitViewControllerDelega
     
     func loadAddressURL(){
         
-        let path = NSBundle.mainBundle().pathForResource("Config", ofType: "plist")
-        let dict = NSDictionary(contentsOfFile: path!) as NSDictionary!
-        
-        
-        
-        switch _socialIndex as Int {
-        case 0:
-            address = dict.objectForKey("facebook") as String
-        case 1:
-            address = dict.objectForKey("twitter") as String
-        case 2:
-            address = dict.objectForKey("googlePlus") as String
-        case 3:
-            address = dict.objectForKey("instagram") as String
-        case 4:
-            address = dict.objectForKey("linkedin") as String
-        default:
-            println("This is not a valid menu")
-        }
-        
-        
-        
-        let requesturl = NSURL(string: address)!
+        let requesturl = NSURL(string: _webAddress as String)!
         let request = NSURLRequest(URL: requesturl)
         webViewElement.loadRequest(request)
         
@@ -66,11 +44,24 @@ class SocialWebViewViewController: UIViewController, UISplitViewControllerDelega
         
         loadAddressURL()
 
+        //Looks for single or multiple taps.
+        var tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
+        self.view.addGestureRecognizer(tap)
+    }
+    
+    //Calls this function when the tap is recognized.
+    func DismissKeyboard(){
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        self.view.endEditing(true)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        self.view.endEditing(true)
     }
     
 

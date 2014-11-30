@@ -18,6 +18,7 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
         MenuItem(menuName: "About", menuIcon: "About", menuSubtitle: "All about who we are and what we can do for you"),
         MenuItem(menuName: "Contact", menuIcon: "Contact", menuSubtitle: "Get in touch! We know that we can give you the best service"),
         MenuItem(menuName: "Social", menuIcon: "Social", menuSubtitle: "Follow us for the latest news and awesomeness"),
+        MenuItem(menuName: "Login", menuIcon: "Login", menuSubtitle: "Order prints of your photos"),
     ]
     
     var dict : NSDictionary!
@@ -121,6 +122,13 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
             controller?.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
             controller?.navigationItem.leftItemsSupplementBackButton = true
            
+        }else if segue.identifier == "Login" {
+            
+            var controller = segue.destinationViewController as? WebViewViewController
+            controller?.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+            controller?.navigationItem.leftItemsSupplementBackButton = true
+            controller?._webAddress = "http://trainbit.co" as String!
+
         }
         
         
