@@ -20,6 +20,8 @@
 	<string>Social</string>
 	<key>Login</key>
 	<string>Login</string>
+	<key>LoginAddress</key>
+	<string>http://getbootstrap.com/examples/signin/</string>
 	<key>phone</key>
 	<string>0413128463</string>
 	<key>city</key>

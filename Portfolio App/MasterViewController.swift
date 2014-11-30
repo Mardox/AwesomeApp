@@ -127,7 +127,7 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
             var controller = segue.destinationViewController as? WebViewViewController
             controller?.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
             controller?.navigationItem.leftItemsSupplementBackButton = true
-            controller?._webAddress = "http://trainbit.co" as String!
+            controller?._webAddress = dict.objectForKey("LoginAddress") as String!
 
         }
         
