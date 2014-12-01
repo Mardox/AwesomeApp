@@ -14,8 +14,13 @@ class ContactViewController: UIViewController, UISplitViewControllerDelegate {
 
     var dict : NSDictionary!
     
-    
+    @IBOutlet var emailTextView: UIButton!
+    @IBOutlet var phoneTextView: UIButton!
     @IBOutlet weak var mapView: MKMapView!
+    
+    var email : String!
+    var phoneNumber : String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,6 +29,11 @@ class ContactViewController: UIViewController, UISplitViewControllerDelegate {
         let path = NSBundle.mainBundle().pathForResource("Config", ofType: "plist")
         self.dict = NSDictionary(contentsOfFile: path!) as NSDictionary!
         
+        self.email = self.dict.objectForKey("email") as String
+        self.phoneNumber = dict.objectForKey("phone") as String
+        
+        self.phoneTextView.setTitle(phoneNumber, forState: UIControlState.Normal)
+        self.emailTextView.setTitle(email, forState: UIControlState.Normal)
 
         // 1
         let location = CLLocationCoordinate2D(
@@ -52,8 +62,7 @@ class ContactViewController: UIViewController, UISplitViewControllerDelegate {
     
     @IBAction func callButton(sender: AnyObject) {
         
-        let phonenumber = dict.objectForKey("phone") as String
-        let phone = "tel://\(phonenumber)"
+        let phone = "tel://\(phoneNumber)"
         let url:NSURL = NSURL(string:phone)!
         UIApplication.sharedApplication().openURL(url)
         
@@ -61,7 +70,6 @@ class ContactViewController: UIViewController, UISplitViewControllerDelegate {
 
     @IBAction func emailButton(sender: AnyObject) {
         
-        let email = dict.objectForKey("email") as String
         let url = NSURL(string: "mailto:\(email)")
         UIApplication.sharedApplication().openURL(url!)
         

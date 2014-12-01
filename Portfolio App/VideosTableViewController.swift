@@ -168,7 +168,10 @@ class VideosTableViewController: UITableViewController, UITableViewDataSource, U
         
         //Configure the cell...
         
+        cell.videoCellImage.image = nil
+        
         //detailString
+        
         let detailString: NSString  = videoList[indexPath.row]["title"] as String
         cell.videoCellTitle.text = detailString
 //        cell.videoCellImage.downloadImageWithUrlString(videoList[indexPath.row]["imageUrl"] as NSString)

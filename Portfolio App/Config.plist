@@ -5,11 +5,11 @@
 	<key>Gallery</key>
 	<string>Gallery</string>
 	<key>GalleryFlickrPhotosetID</key>
-	<string>72157628002777560</string>
+	<string>72157622520234988</string>
 	<key>Tour</key>
 	<string>Tour</string>
 	<key>TourFlickrPhotosetID</key>
-	<string>72157624043029153</string>
+	<string>72157608697001644</string>
 	<key>Videos</key>
 	<string>Videos</string>
 	<key>About</key>
@@ -27,23 +27,23 @@
 	<key>city</key>
 	<string>Sydney</string>
 	<key>website</key>
-	<string>http://www.chimes.com</string>
+	<string>http://www.tattos.com</string>
 	<key>email</key>
-	<string>info@chimes.com</string>
+	<string>info@tattoos.com</string>
 	<key>facebook</key>
-	<string>http://facebook.com/30daylabs</string>
+	<string>http://facebook.com/tattoos</string>
 	<key>pinterest</key>
-	<string>http://pinterest.com/hoomanmar</string>
+	<string>http://pinterest.com/tattoo</string>
 	<key>googlePlus</key>
 	<string></string>
 	<key>instagram</key>
 	<string></string>
 	<key>linkedin</key>
-	<string>http://linkedin.com/30daylabs</string>
+	<string>http://linkedin.com/tattoo</string>
 	<key>twitter</key>
-	<string>http://twitter.com/hooman.mardokhi</string>
+	<string>http://twitter.com/tattoos</string>
 	<key>youtubePlaylistID</key>
-	<string>PLlPfJp10zfshCSUKAEmixkCFG7SgvY3NZ</string>
+	<string>PLQDhJ69UoMTMy-n9B60MWZ0FeEYAg5-RL</string>
 	<key>color1</key>
 	<string>hooman</string>
 	<key>color2</key>
@@ -51,6 +51,8 @@
 	<key>color3</key>
 	<string></string>
 	<key>appName</key>
-	<string>Chimes Photography</string>
+	<string>Tattoo Ink</string>
+	<key>description</key>
+	<string>At Chimes photography we care about the experience and the quality of work we deliver. As a professional wedding photographer in Sydney for many years We have excellent experience at all Sydney locations and venues, as well as Bowral in the Southern Highlands and the South Coast. The best Sydney wedding reception venues we have worked at include the Tea Room Gunners Barracks, Long Reef Golf Club, Taronga Zoo, Athol Hall, Sergeants Mess, Curzon Hall, QVB Tea Room and many others.</string>
 </dict>
 </plist>

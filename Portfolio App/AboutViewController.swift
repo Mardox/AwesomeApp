@@ -10,10 +10,20 @@ import UIKit
 
 class AboutViewController: UIViewController, UISplitViewControllerDelegate {
 
+    @IBOutlet var titleTetView: UILabel!
+    @IBOutlet var descriptionTextView: UITextView!
+    var dict : NSDictionary!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.splitViewController?.delegate = self
+        
+        let path = NSBundle.mainBundle().pathForResource("Config", ofType: "plist")
+        self.dict = NSDictionary(contentsOfFile: path!) as NSDictionary!
+        
+        self.titleTetView.text = self.dict.objectForKey("appName") as? String
+        self.descriptionTextView.text = self.dict.objectForKey("description") as? String
 
         // Do any additional setup after loading the view.
     }
