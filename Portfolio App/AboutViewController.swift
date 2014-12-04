@@ -25,6 +25,7 @@ class AboutViewController: UIViewController, UISplitViewControllerDelegate {
         self.titleTetView.text = self.dict.objectForKey("appName") as? String
         self.descriptionTextView.text = self.dict.objectForKey("description") as? String
 
+        self.descriptionTextView.sizeToFit()
         // Do any additional setup after loading the view.
     }
 

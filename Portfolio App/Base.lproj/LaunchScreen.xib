@@ -11,14 +11,14 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sTM-iv-5CJ">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Girl" translatesAutoresizingMaskIntoConstraints="NO" id="sTM-iv-5CJ">
                     <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8xh-uf-muo">
                     <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                     <subviews>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tattoo Ink" textAlignment="center" lineBreakMode="middleTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
-                            <rect key="frame" x="8" y="188" width="464" height="103"/>
+                            <rect key="frame" x="8" y="80" width="464" height="103"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="103" id="gpv-oK-PpI"/>
                             </constraints>
@@ -31,8 +31,14 @@
                     <constraints>
                         <constraint firstAttribute="centerY" secondItem="kId-c2-rCX" secondAttribute="centerY" id="G0A-Lb-qJE"/>
                         <constraint firstAttribute="trailing" secondItem="kId-c2-rCX" secondAttribute="trailing" constant="8" id="MBD-nj-a8g"/>
+                        <constraint firstItem="kId-c2-rCX" firstAttribute="top" secondItem="8xh-uf-muo" secondAttribute="top" constant="80" id="ivr-if-O16"/>
                         <constraint firstItem="kId-c2-rCX" firstAttribute="leading" secondItem="8xh-uf-muo" secondAttribute="leading" constant="8" id="o0b-iT-f75"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="G0A-Lb-qJE"/>
+                        </mask>
+                    </variation>
                 </view>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright (c) 2014 Speed App. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
                     <rect key="frame" x="20" y="439" width="441" height="20.5"/>
@@ -60,4 +66,7 @@
             <point key="canvasLocation" x="548" y="455"/>
         </view>
     </objects>
+    <resources>
+        <image name="Girl" width="1440" height="900"/>
+    </resources>
 </document>

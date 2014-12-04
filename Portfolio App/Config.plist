@@ -29,9 +29,9 @@
 	<key>website</key>
 	<string>http://www.tattos.com</string>
 	<key>email</key>
-	<string>info@tattoos.com</string>
+	<string>info@tattooink.com</string>
 	<key>facebook</key>
-	<string>http://facebook.com/tattoos</string>
+	<string>https://www.facebook.com/Tattoo</string>
 	<key>pinterest</key>
 	<string>http://pinterest.com/tattoo</string>
 	<key>googlePlus</key>
@@ -53,6 +53,8 @@
 	<key>appName</key>
 	<string>Tattoo Ink</string>
 	<key>description</key>
-	<string>At Chimes photography we care about the experience and the quality of work we deliver. As a professional wedding photographer in Sydney for many years We have excellent experience at all Sydney locations and venues, as well as Bowral in the Southern Highlands and the South Coast. The best Sydney wedding reception venues we have worked at include the Tea Room Gunners Barracks, Long Reef Golf Club, Taronga Zoo, Athol Hall, Sergeants Mess, Curzon Hall, QVB Tea Room and many others.</string>
+	<string>Specializing in custom design and creative tattooing, as well as body piercing in a state of the art studio.
+We pride ourselves on being the friendliest tattoo and piercing studio that most people have ever entered. Many of our clients tell us stories about their experiences in other shops, of unfriendly or downright surly attitudes from the artists, often even a lack of respect for the clients’ ideas and input. Many of these customers tell us that they chose our studio because we were the cleanest and most understanding ones who then were amazed by the quality of our work. Our studio environment allows our clients to relax during their tattoo or piercing procedure, enjoying good conversation and company. Our clients come from all walks of life and we enjoy meeting different people everyday, often gaining new friends in the process.
+We also regularly draw clients in from out of town/state and even from overseas.</string>
 </dict>
 </plist>
