@@ -11,6 +11,12 @@ import UIKit
 class GalleryTableViewController: UITableViewController, UITableViewDataSource,UITableViewDelegate, UISplitViewControllerDelegate  {
 
     
+    var _albumID: AnyObject? {
+        didSet {
+            // Update the view.
+        }
+    }
+    
     
     private var itemList = NSMutableArray()
     let jsonFinalResult: NSDictionary!
@@ -20,6 +26,7 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
         self.splitViewController?.delegate = self
         
         //fetch the data
@@ -33,21 +40,17 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
     }
     
     
+    func splitViewController(svc: UISplitViewController, shouldHideViewController vc: UIViewController, inOrientation orientation: UIInterfaceOrientation) -> Bool {
+        return false
+    }
+    
+    
     func flickrFetch(){
         
         // Make the API Call
         // Flickr API Call: 
-        //"https://api.flickr.com/services/rest/?method=flickr.people.getPublicPhotos&api_key=a8c6c2f1a0a11a20d5a07f5f21e6924f&user_id=56378615%40N07&format=json&nojsoncallback=1"
-       // getJSON(flickrAPI)
-        
-        //Photoset: https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=9fa7363b8b8c32d240ee853a2857b844&photoset_id=72157628002777560&format=json&nojsoncallback=1
-    
-        //Show Loading
-        
-        let path = NSBundle.mainBundle().pathForResource("Config", ofType: "plist")
-        let dict = NSDictionary(contentsOfFile: path!) as NSDictionary!
-        
-        let GalleryFlickrPhotosetID: String = dict.objectForKey("GalleryFlickrPhotosetID") as String!
+
+        let GalleryFlickrPhotosetID: String = self._albumID as String!
         
         
         var url : String = "https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=66c04380d939320f757f730d84fb2f52&photoset_id=\(GalleryFlickrPhotosetID)&format=json&nojsoncallback=1"
@@ -204,6 +207,7 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
         if segue.identifier == "Image"
         {
             var photoViewController = segue.destinationViewController as GalleryItemViewController
+            
             //photoViewController.photoInfo = photoCell.photoInfo
             
             var index = self.tableView.indexPathForSelectedRow()

@@ -8,22 +8,12 @@
 
 import UIKit
 
-class MasterViewController: UITableViewController, UISplitViewControllerDelegate {
-    
-    
-    let items = [
-        MenuItem(menuName: "Gallery", menuIcon: "Gallery", menuSubtitle: "Have a look at our portfolio and get to know our work"),
-        MenuItem(menuName: "Tour", menuIcon: "Tour", menuSubtitle: "Take a tour of our studio and equipment"),
-        MenuItem(menuName: "Videos", menuIcon: "Videos", menuSubtitle: "Check out our videos and get a taste of what we can do for you!"),
-        MenuItem(menuName: "About", menuIcon: "About", menuSubtitle: "All about who we are and what we can do for you"),
-        MenuItem(menuName: "Contact", menuIcon: "Contact", menuSubtitle: "Get in touch! We know that we can give you the best service"),
-        MenuItem(menuName: "Social", menuIcon: "Social", menuSubtitle: "Follow us for the latest news and awesomeness"),
-        MenuItem(menuName: "Login", menuIcon: "Login", menuSubtitle: "Order prints of your photos"),
-    ]
+class MasterViewController: UITableViewController {
     
     var dict : NSDictionary!
     
-    //MenuItem(menuName: "Poses", menuIcon: "Gallery", menuSubtitle: "Some of the beautiful and poses we suggest"),
+    var playlists: [Dictionary<String, String>] = []
+    var playlistDetails = [String: String]()
 
 
     var detailViewController: GalleryTableViewController? = nil
@@ -39,6 +29,7 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
     }
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         var appName : String
@@ -49,88 +40,95 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
         let title: String = dict.objectForKey("appName") as String!
         
         self.title = title
-        
-        // Do any additional setup after loading the view, typically from a nib.
-        //self.navigationItem.leftBarButtonItem = self.editButtonItem()
 
-//        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
-//        self.navigationItem.rightBarButtonItem = addButton
-//        if let split = self.splitViewController {
-//            let controllers = split.viewControllers
-//            self.detailViewController = controllers[controllers.count-1].topViewController as? GalleryTableViewController
-//        }
+        self.playlists = dict.objectForKey("Menu") as Array<Dictionary<String, String>>
+        
+        
+        //Load the first detail view in the plist
+        var currentPlaylist = self.playlists[0] as Dictionary
+        var indexPath : NSIndexPath =  NSIndexPath(forRow: 0, inSection: 0)
+        if currentPlaylist["Type"] == "Video" {
+            self.performSegueWithIdentifier("Videos", sender: indexPath)
+        }else if currentPlaylist["Type"] == "Website" {
+            self.performSegueWithIdentifier("Website", sender: indexPath)
+        }else if currentPlaylist["Type"] == "Flickr" {
+            self.performSegueWithIdentifier("Gallery", sender: indexPath)
+        }
+
+        
     }
+    
+//    func splitViewController(svc: UISplitViewController, shouldHideViewController vc: UIViewController, inOrientation orientation: UIInterfaceOrientation) -> Bool {
+//        return false
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
-//    func insertNewObject(sender: AnyObject) {
-//        objects.insertObject(NSDate(), atIndex: 0)
-//        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-//        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-//    }
-
-    // MARK: - Segues
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "showDetail" {
-//            if let indexPath = self.tableView.indexPathForSelectedRow() {
-//                let object = objects[indexPath.row] as NSDate
-//                let controller = (segue.destinationViewController as UINavigationController).topViewController as DetailViewController
-//                controller.detailItem = object
-//                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-//                controller.navigationItem.leftItemsSupplementBackButton = true
-//            }
-//        }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         
         
-        if segue.identifier == "Gallery" {
+        var currentMenu = self.playlists[sender.row] as Dictionary
+        
+        if segue.identifier == "Website" {
             
-            var controller = segue.destinationViewController as? GalleryTableViewController
-            controller?.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-            controller?.navigationItem.leftItemsSupplementBackButton = true
-
-        }else if segue.identifier == "Tour" {
+            var controller = (segue.destinationViewController as? UINavigationController)?.topViewController as WebViewViewController
+            controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+            controller.navigationItem.leftItemsSupplementBackButton = true
+            controller._webAddress = currentMenu["Url"] as String!
             
-            var controller = segue.destinationViewController as? TourTableViewController
-            controller?.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-            controller?.navigationItem.leftItemsSupplementBackButton = true
-
         }else if segue.identifier == "Videos" {
-
             
-            var controller = segue.destinationViewController as? VideosTableViewController
-            controller?.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-            controller?.navigationItem.leftItemsSupplementBackButton = true
-
-        }else if segue.identifier == "About" {
-           
-            var controller = segue.destinationViewController as? AboutViewController
-            controller?.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-            controller?.navigationItem.leftItemsSupplementBackButton = true
-          
-        }else if segue.identifier == "Contact" {
+            var controller = (segue.destinationViewController as? UINavigationController)?.topViewController as VideosTableViewController
+            controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+            controller.navigationItem.leftItemsSupplementBackButton = true
+            controller._playlistID = currentMenu["PlaylistID"] as String!
             
-            var controller = segue.destinationViewController as? ContactViewController
-            controller?.navigationItem.leftItemsSupplementBackButton = true
-           
-        }else if segue.identifier == "Social" {
-           
-            var controller = segue.destinationViewController as? SocialTableViewController
-            controller?.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-            controller?.navigationItem.leftItemsSupplementBackButton = true
-           
-        }else if segue.identifier == "Login" {
-            
-            var controller = segue.destinationViewController as? WebViewViewController
-            controller?.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-            controller?.navigationItem.leftItemsSupplementBackButton = true
-            controller?._webAddress = dict.objectForKey("LoginAddress") as String!
-
+        }else if segue.identifier == "Gallery" {
+        
+            var controller = (segue.destinationViewController as? UINavigationController)?.topViewController as GalleryTableViewController
+            controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+            controller.navigationItem.leftItemsSupplementBackButton = true
+            controller._albumID = currentMenu["AlbumID"] as String!
+        
         }
         
+        
+//        
+//        if segue.identifier == "Gallery" {
+//            
+//            var controller = segue.destinationViewController as? GalleryTableViewController
+//            controller?.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+//            controller?.navigationItem.leftItemsSupplementBackButton = true
+//
+//        }else if segue.identifier == "About" {
+//           
+//            var controller = segue.destinationViewController as? AboutViewController
+//            controller?.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+//            controller?.navigationItem.leftItemsSupplementBackButton = true
+//          
+//        }else if segue.identifier == "Contact" {
+//            
+//            var controller = segue.destinationViewController as? ContactViewController
+//            controller?.navigationItem.leftItemsSupplementBackButton = true
+//           
+//        }else if segue.identifier == "Social" {
+//           
+//            var controller = segue.destinationViewController as? SocialTableViewController
+//            controller?.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+//            controller?.navigationItem.leftItemsSupplementBackButton = true
+//           
+//        }else if segue.identifier == "Login" {
+//            
+//            var controller = segue.destinationViewController as? WebViewViewController
+//            controller?.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+//            controller?.navigationItem.leftItemsSupplementBackButton = true
+//            controller?._webAddress = dict.objectForKey("LoginAddress") as String!
+//
+//        }
+//        
         
         
     }
@@ -138,7 +136,16 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
     // MARK: - Table View
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier(items[indexPath.item].menuName, sender: indexPath)
+        
+        var currentPlaylist = self.playlists[indexPath.row] as Dictionary
+        if currentPlaylist["Type"] == "Video" {
+            self.performSegueWithIdentifier("Videos", sender: indexPath)
+        }else if currentPlaylist["Type"] == "Website" {
+            self.performSegueWithIdentifier("Website", sender: indexPath)
+        }else if currentPlaylist["Type"] == "Flickr" {
+            self.performSegueWithIdentifier("Gallery", sender: indexPath)
+        }
+        
         
     }
     
@@ -148,15 +155,20 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return playlists.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell:MenuTableViewCell? = tableView.dequeueReusableCellWithIdentifier("Cell") as? MenuTableViewCell
         
-        cell!.menuCellTitle.text = dict.objectForKey(self.items[indexPath.row].menuName) as? String
-        cell!.menuCellSubtitle.text = self.items[indexPath.row].menuSubtitle
-        cell!.menuCellImage.image  = UIImage(named: items[indexPath.row].menuIcon)!
+        var currentPlaylist = playlists[indexPath.row] as Dictionary
+//        let menuNames = [String](playlists.keys)
+        
+        cell!.menuCellTitle.text = currentPlaylist["Title"] as String!
+        
+//        cell!.menuCellTitle.text = dict.objectForKey(self.items[indexPath.row].menuName) as? String
+        cell!.menuCellSubtitle.text = currentPlaylist["Subtitle"]
+        cell!.menuCellImage.image  = UIImage(named: currentPlaylist["Icon"] as String!)!
         return cell!;
         
     }

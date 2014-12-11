@@ -19,8 +19,6 @@
 		E289E9E71A16C51D00BB14D8 /* GalleryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E289E9E61A16C51D00BB14D8 /* GalleryTableViewController.swift */; };
 		E289E9E91A16C52C00BB14D8 /* VideosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E289E9E81A16C52C00BB14D8 /* VideosTableViewController.swift */; };
 		E289E9EB1A16C54200BB14D8 /* SocialTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E289E9EA1A16C54200BB14D8 /* SocialTableViewController.swift */; };
-		E289E9EE1A16C56200BB14D8 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E289E9ED1A16C56200BB14D8 /* ContactViewController.swift */; };
-		E289E9F01A16C56E00BB14D8 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E289E9EF1A16C56E00BB14D8 /* AboutViewController.swift */; };
 		E289E9F21A16C60D00BB14D8 /* GalleryItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E289E9F11A16C60D00BB14D8 /* GalleryItemViewController.swift */; };
 		E289E9F41A16CCF300BB14D8 /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E289E9F31A16CCF300BB14D8 /* VideoTableViewCell.swift */; };
 		E289E9FB1A16D00800BB14D8 /* HCYoutubeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E289E9F91A16D00800BB14D8 /* HCYoutubeParser.m */; };
@@ -29,7 +27,6 @@
 		E289EA061A16D1DA00BB14D8 /* ImageDownloadingTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E289EA031A16D1DA00BB14D8 /* ImageDownloadingTask.swift */; };
 		E289EA071A16D1DA00BB14D8 /* MR_YouTubeApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E289EA041A16D1DA00BB14D8 /* MR_YouTubeApiManager.swift */; };
 		E2C52F301A293DE500E4FAB9 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C52F2F1A293DE500E4FAB9 /* WebViewViewController.swift */; };
-		E2C52F491A29553C00E4FAB9 /* TourTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C52F481A29553C00E4FAB9 /* TourTableViewController.swift */; };
 		E2E21BC01A1750D5001216D0 /* GalleryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E21BBF1A1750D5001216D0 /* GalleryTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,8 +57,6 @@
 		E289E9E61A16C51D00BB14D8 /* GalleryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryTableViewController.swift; sourceTree = "<group>"; };
 		E289E9E81A16C52C00BB14D8 /* VideosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosTableViewController.swift; sourceTree = "<group>"; };
 		E289E9EA1A16C54200BB14D8 /* SocialTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialTableViewController.swift; sourceTree = "<group>"; };
-		E289E9ED1A16C56200BB14D8 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
-		E289E9EF1A16C56E00BB14D8 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		E289E9F11A16C60D00BB14D8 /* GalleryItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryItemViewController.swift; sourceTree = "<group>"; };
 		E289E9F31A16CCF300BB14D8 /* VideoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
 		E289E9F81A16D00800BB14D8 /* HCYoutubeParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCYoutubeParser.h; sourceTree = "<group>"; };
@@ -73,7 +68,6 @@
 		E289EA031A16D1DA00BB14D8 /* ImageDownloadingTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloadingTask.swift; sourceTree = "<group>"; };
 		E289EA041A16D1DA00BB14D8 /* MR_YouTubeApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MR_YouTubeApiManager.swift; sourceTree = "<group>"; };
 		E2C52F2F1A293DE500E4FAB9 /* WebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
-		E2C52F481A29553C00E4FAB9 /* TourTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourTableViewController.swift; sourceTree = "<group>"; };
 		E2E21BBF1A1750D5001216D0 /* GalleryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,10 +117,10 @@
 				E289E9C41A162F7800BB14D8 /* Main.storyboard */,
 				E289E9C71A162F7800BB14D8 /* Images.xcassets */,
 				E289E9C91A162F7800BB14D8 /* LaunchScreen.xib */,
-				E2E21BC11A1753BF001216D0 /* Youtube */,
 				E289E9BC1A162F7800BB14D8 /* Supporting Files */,
 				E289E9E01A16392D00BB14D8 /* MenuItem.swift */,
 				E289E9FD1A16D16600BB14D8 /* ProgressHud */,
+				E2E21BC11A1753BF001216D0 /* Youtube */,
 				E289E9E21A16B4C300BB14D8 /* TableViewCells */,
 			);
 			path = "Portfolio App";
@@ -174,7 +168,6 @@
 				E289E9E61A16C51D00BB14D8 /* GalleryTableViewController.swift */,
 				E289E9E81A16C52C00BB14D8 /* VideosTableViewController.swift */,
 				E289E9EA1A16C54200BB14D8 /* SocialTableViewController.swift */,
-				E2C52F481A29553C00E4FAB9 /* TourTableViewController.swift */,
 			);
 			name = TableViewControllers;
 			sourceTree = "<group>";
@@ -182,8 +175,6 @@
 		E289E9EC1A16C54900BB14D8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				E289E9ED1A16C56200BB14D8 /* ContactViewController.swift */,
-				E289E9EF1A16C56E00BB14D8 /* AboutViewController.swift */,
 				E289E9F11A16C60D00BB14D8 /* GalleryItemViewController.swift */,
 				E2C52F2F1A293DE500E4FAB9 /* WebViewViewController.swift */,
 			);
@@ -332,19 +323,16 @@
 			files = (
 				E289EA051A16D1DA00BB14D8 /* HttpServiceDataTask.swift in Sources */,
 				E289EA061A16D1DA00BB14D8 /* ImageDownloadingTask.swift in Sources */,
-				E2C52F491A29553C00E4FAB9 /* TourTableViewController.swift in Sources */,
 				E289E9F21A16C60D00BB14D8 /* GalleryItemViewController.swift in Sources */,
 				E289E9E71A16C51D00BB14D8 /* GalleryTableViewController.swift in Sources */,
 				E289E9E11A16392D00BB14D8 /* MenuItem.swift in Sources */,
 				E289E9F41A16CCF300BB14D8 /* VideoTableViewCell.swift in Sources */,
 				E289E9C11A162F7800BB14D8 /* MasterViewController.swift in Sources */,
 				E289E9EB1A16C54200BB14D8 /* SocialTableViewController.swift in Sources */,
-				E289E9EE1A16C56200BB14D8 /* ContactViewController.swift in Sources */,
 				E2E21BC01A1750D5001216D0 /* GalleryTableViewCell.swift in Sources */,
 				E289E9E91A16C52C00BB14D8 /* VideosTableViewController.swift in Sources */,
 				E289E9BF1A162F7800BB14D8 /* AppDelegate.swift in Sources */,
 				E2C52F301A293DE500E4FAB9 /* WebViewViewController.swift in Sources */,
-				E289E9F01A16C56E00BB14D8 /* AboutViewController.swift in Sources */,
 				E289E9E41A16B4F300BB14D8 /* MenuTableViewCell.swift in Sources */,
 				E289EA071A16D1DA00BB14D8 /* MR_YouTubeApiManager.swift in Sources */,
 				E289E9FB1A16D00800BB14D8 /* HCYoutubeParser.m in Sources */,

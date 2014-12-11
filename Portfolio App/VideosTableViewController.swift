@@ -13,6 +13,14 @@ import MediaPlayer
 
 class VideosTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate, UISplitViewControllerDelegate {
     
+  
+    var _playlistID: AnyObject? {
+        didSet {
+            // Update the view.
+        }
+    }
+    
+    
     //Video Quality-Type
     enum VideoQualityType: Int {
         case Hd720 = 1,
@@ -21,8 +29,6 @@ class VideosTableViewController: UITableViewController, UITableViewDataSource, U
     }
     
     var imageCache = [String : UIImage]()
-    
-    
     var searchYouTubeVideoUrlString : String = ""
 
     
@@ -37,34 +43,30 @@ class VideosTableViewController: UITableViewController, UITableViewDataSource, U
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+         self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+//         self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         self.splitViewController?.delegate = self
-    
-        
-        let path = NSBundle.mainBundle().pathForResource("Config", ofType: "plist")
-        let dict = NSDictionary(contentsOfFile: path!) as NSDictionary!
-        
-        let youtubePlaylistID: String = dict.objectForKey("youtubePlaylistID") as String!
 
-        self.searchYouTubeVideoUrlString = "https://gdata.youtube.com/feeds/api/playlists/\(youtubePlaylistID)"
-        
-        currentPageNumber=0
-        videoList = NSMutableArray()
-        self.fetchVideoDetails()
     }
     
+
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-//        var nav = self.navigationController?.navigationBar
-//        nav?.barStyle = UIBarStyle.Black
-//        nav?.tintColor = UIColor.whiteColor()
-//        nav?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.orangeColor()]
+        let playlistID = _playlistID as String!
+        self.searchYouTubeVideoUrlString = "https://gdata.youtube.com/feeds/api/playlists/\(playlistID)"
+        currentPageNumber=0
+        videoList = NSMutableArray()
+        self.fetchVideoDetails()
+        
     }
+    
+//    func splitViewController(svc: UISplitViewController, shouldHideViewController vc: UIViewController, inOrientation orientation: UIInterfaceOrientation) -> Bool {
+//        return true
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -49,6 +49,11 @@ class WebViewViewController: UIViewController, UISplitViewControllerDelegate {
         self.view.addGestureRecognizer(tap)
     }
     
+    func splitViewController(svc: UISplitViewController, shouldHideViewController vc: UIViewController, inOrientation orientation: UIInterfaceOrientation) -> Bool {
+        return false
+    }
+    
+    
     //Calls this function when the tap is recognized.
     func DismissKeyboard(){
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
