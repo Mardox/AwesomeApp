@@ -12,6 +12,7 @@ class VideoTableViewCell: UITableViewCell {
 
     @IBOutlet weak var videoCellTitle: UILabel!
     @IBOutlet weak var videoCellImage: UIImageView!
+    @IBOutlet var loadingIndicator: UIActivityIndicatorView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

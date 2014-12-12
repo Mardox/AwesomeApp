@@ -12,6 +12,7 @@ class GalleryTableViewCell: UITableViewCell {
 
     @IBOutlet weak var galleryCellImage: UIImageView!
     @IBOutlet weak var galleryCellTitle: UILabel!
+    @IBOutlet var loadingIndicator: UIActivityIndicatorView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

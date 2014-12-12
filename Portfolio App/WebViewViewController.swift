@@ -47,11 +47,15 @@ class WebViewViewController: UIViewController, UISplitViewControllerDelegate {
         //Looks for single or multiple taps.
         var tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
         self.view.addGestureRecognizer(tap)
+        
+        
+        
+        
     }
     
-    func splitViewController(svc: UISplitViewController, shouldHideViewController vc: UIViewController, inOrientation orientation: UIInterfaceOrientation) -> Bool {
-        return false
-    }
+//    func splitViewController(svc: UISplitViewController, shouldHideViewController vc: UIViewController, inOrientation orientation: UIInterfaceOrientation) -> Bool {
+//        return false
+//    }
     
     
     //Calls this function when the tap is recognized.

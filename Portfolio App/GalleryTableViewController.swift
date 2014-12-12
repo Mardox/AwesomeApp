@@ -40,9 +40,9 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
     }
     
     
-    func splitViewController(svc: UISplitViewController, shouldHideViewController vc: UIViewController, inOrientation orientation: UIInterfaceOrientation) -> Bool {
-        return false
-    }
+//    func splitViewController(svc: UISplitViewController, shouldHideViewController vc: UIViewController, inOrientation orientation: UIInterfaceOrientation) -> Bool {
+//        return false
+//    }
     
     
     func flickrFetch(){
@@ -138,7 +138,6 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
 
         
         cell!.galleryCellImage.image = nil
-        
         cell!.galleryCellImage.contentMode = UIViewContentMode.ScaleAspectFill
         cell!.galleryCellImage.clipsToBounds = true
 
@@ -178,6 +177,7 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
                     self.imageCache[urlString] = image
                     dispatch_async(dispatch_get_main_queue(), {
                         cell!.galleryCellImage.image = image
+                        cell!.loadingIndicator.hidden=true
                     })
                 }
                 else {

@@ -37,11 +37,15 @@ class SocialTableViewController: UITableViewController {
     }
 
     
+//    func splitViewController(svc: UISplitViewController, shouldHideViewController vc: UIViewController, inOrientation orientation: UIInterfaceOrientation) -> Bool {
+//        return false
+//    }
+//    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "Social"
         {
-            var socialViewController = segue.destinationViewController as WebViewViewController
+            var socialViewController = (segue.destinationViewController as? UINavigationController)?.topViewController as WebViewViewController
             
             //photoViewController.photoInfo = photoCell.photoInfo
             

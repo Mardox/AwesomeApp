@@ -12,7 +12,6 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
     var window: UIWindow?
-    var progressHud: MBProgressHUD?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -59,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 //                }
             }
         }
-        return true
+        return false
     }
     
     //Instance
@@ -67,32 +66,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         return UIApplication.sharedApplication().delegate as AppDelegate
     }
 
-    
-    
-    //Useful to show Progress-HUD
-    class func showProgressHudWithMessage(message:String) {
-        AppDelegate.instance().showProgressHudWithMessage(message)
-    }
-    
-    private func showProgressHudWithMessage(message:String) {
-        if progressHud != nil {
-            self.hideProgressHud()
+    class func probabilityCalculator()->Bool{
+        
+        let path = NSBundle.mainBundle().pathForResource("Config", ofType: "plist")
+        let dict = NSDictionary(contentsOfFile: path!) as NSDictionary!
+        
+        let probability = dict.objectForKey("Admob_probability") as Double!
+        let probabilityConstant = Int(probability * 10)
+        var randomNumber = Int(arc4random_uniform(10))
+        
+        if randomNumber < probabilityConstant {
+            return true
+        }else{
+            return false
         }
-        progressHud = MBProgressHUD(window: self.window)
-        self.window?.addSubview(progressHud!)
-        progressHud?.labelText = message
-        //Show Now
-        progressHud?.show(true)
-    }
-    
-    //Useful to Hide Progress-HUD
-    class func hideProgressHud() {
-        AppDelegate.instance().hideProgressHud()
-    }
-    
-    private func hideProgressHud() {
-        progressHud?.removeFromSuperview()
-        progressHud = nil
+        
     }
 
 

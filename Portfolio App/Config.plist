@@ -10,23 +10,23 @@
 			<key>PlaylistID</key>
 			<string>PLbMVogVj5nJRgBjyxu0PfH3Ucdq_mDo4o</string>
 			<key>Title</key>
-			<string>More Vids</string>
+			<string>YouTube</string>
 			<key>Subtitle</key>
-			<string>Check this collection out</string>
+			<string>Checkout thsese awesome videos</string>
 			<key>Icon</key>
-			<string>Videos</string>
+			<string>YouTube</string>
 		</dict>
 		<dict>
 			<key>Type</key>
 			<string>Website</string>
 			<key>Url</key>
-			<string>http://google.com.au</string>
+			<string>http://hoomanmardokhi.com</string>
 			<key>Title</key>
-			<string>More Vids</string>
+			<string>Website</string>
 			<key>Subtitle</key>
-			<string>Check this collection out</string>
+			<string>Checkout this awesome website</string>
 			<key>Icon</key>
-			<string>Videos</string>
+			<string>Web</string>
 		</dict>
 		<dict>
 			<key>Type</key>
@@ -36,28 +36,44 @@
 			<key>Title</key>
 			<string>Flickr</string>
 			<key>Subtitle</key>
-			<string>A ton of videos</string>
+			<string>Ton of awesome images in one place</string>
 			<key>Icon</key>
-			<string>Videos</string>
+			<string>Gallery</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>Social</string>
+			<key>AlbumID</key>
+			<string>72157622520234988</string>
+			<key>Title</key>
+			<string>Social</string>
+			<key>Subtitle</key>
+			<string>Like, follow and connect with us on your favourite social network</string>
+			<key>Icon</key>
+			<string>Social</string>
 		</dict>
 	</array>
 	<key>facebook</key>
-	<string>https://www.facebook.com/Tattoo</string>
+	<string>https://www.facebook.com/30daylabs</string>
 	<key>pinterest</key>
-	<string>http://pinterest.com/tattoo</string>
+	<string>http://pinterest.com/30daylabs</string>
 	<key>googlePlus</key>
 	<string></string>
 	<key>instagram</key>
 	<string></string>
 	<key>linkedin</key>
-	<string>http://linkedin.com/tattoo</string>
+	<string>http://linkedin.com/30daylabs</string>
 	<key>twitter</key>
-	<string>http://twitter.com/tattoos</string>
+	<string>http://twitter.com/30daylabs</string>
 	<key>appName</key>
 	<string>My Collection</string>
 	<key>description</key>
 	<string>Specializing in custom design and creative tattooing, as well as body piercing in a state of the art studio.
 We pride ourselves on being the friendliest tattoo and piercing studio that most people have ever entered. Many of our clients tell us stories about their experiences in other shops, of unfriendly or downright surly attitudes from the artists, often even a lack of respect for the clients’ ideas and input. Many of these customers tell us that they chose our studio because we were the cleanest and most understanding ones who then were amazed by the quality of our work. Our studio environment allows our clients to relax during their tattoo or piercing procedure, enjoying good conversation and company. Our clients come from all walks of life and we enjoy meeting different people everyday, often gaining new friends in the process.
 We also regularly draw clients in from out of town/state and even from overseas.</string>
+	<key>Admob_Interstitial_ID</key>
+	<string>ca-app-pub-7607380003153721/6164025093</string>
+	<key>Admob_probability</key>
+	<real>0.5</real>
 </dict>
 </plist>

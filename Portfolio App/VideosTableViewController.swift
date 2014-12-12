@@ -11,8 +11,13 @@ import MediaPlayer
 
 
 
-class VideosTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate, UISplitViewControllerDelegate {
+class VideosTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate, UISplitViewControllerDelegate, GADBannerViewDelegate, GADInterstitialDelegate {
     
+    
+    var bannerView:GADBannerView?
+    var interstitial:GADInterstitial?
+    
+    var dict : NSDictionary!
   
     var _playlistID: AnyObject? {
         didSet {
@@ -37,22 +42,75 @@ class VideosTableViewController: UITableViewController, UITableViewDataSource, U
     private var currentPageNumber:Int = 0
     private var selectedRow:Int = -1
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let path = NSBundle.mainBundle().pathForResource("Config", ofType: "plist")
+        self.dict = NSDictionary(contentsOfFile: path!) as NSDictionary!
 
         // Uncomment the following line to preserve selection between presentations
          self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-//         self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         self.splitViewController?.delegate = self
+        
+        interstitial = createAndLoadInterstitial()
+        
+
 
     }
     
-
+    
+    //Interstitial func
+    func createAndLoadInterstitial()->GADInterstitial {
+        println("createAndLoadInterstitial")
+        var interstitial = GADInterstitial()
+        interstitial.delegate = self
+        interstitial.adUnitID = self.dict.objectForKey("Admob_Interstitial_ID") as String!
+        interstitial.loadRequest(GADRequest())
+        
+        return interstitial
+    }
+    
+    func presentInterstitial() {
+        if let isReady = interstitial?.isReady {
+            interstitial?.presentFromRootViewController(self)
+        }
+    }
+    
+    //Interstitial delegate
+    func interstitial(ad: GADInterstitial!, didFailToReceiveAdWithError error: GADRequestError!) {
+        println("interstitialDidFailToReceiveAdWithError:\(error.localizedDescription)")
+        interstitial = createAndLoadInterstitial()
+    }
+    
+    func interstitialDidReceiveAd(ad: GADInterstitial!) {
+        println("interstitialDidReceiveAd")
+    }
+    
+    func interstitialWillDismissScreen(ad: GADInterstitial!) {
+        println("interstitialWillDismissScreen")
+        interstitial = createAndLoadInterstitial()
+    }
+    
+    func interstitialDidDismissScreen(ad: GADInterstitial!) {
+        println("interstitialDidDismissScreen")
+        
+        //play the video
+        
+        
+    }
+    
+    func interstitialWillLeaveApplication(ad: GADInterstitial!) {
+        println("interstitialWillLeaveApplication")
+    }
+    
+    func interstitialWillPresentScreen(ad: GADInterstitial!) {
+        println("interstitialWillPresentScreen")
+    }
+    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -169,14 +227,13 @@ class VideosTableViewController: UITableViewController, UITableViewDataSource, U
         let cell : VideoTableViewCell=tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as VideoTableViewCell
         
         //Configure the cell...
-        
         cell.videoCellImage.image = nil
         
         //detailString
         
         let detailString: NSString  = videoList[indexPath.row]["title"] as String
         cell.videoCellTitle.text = detailString
-//        cell.videoCellImage.downloadImageWithUrlString(videoList[indexPath.row]["imageUrl"] as NSString)
+        //cell.videoCellImage.downloadImageWithUrlString(videoList[indexPath.row]["imageUrl"] as NSString)
         
         let urlString = videoList[indexPath.row]["imageUrl"] as NSString!
         var err: NSError?
@@ -197,6 +254,7 @@ class VideosTableViewController: UITableViewController, UITableViewDataSource, U
                     self.imageCache[urlString] = image
                     dispatch_async(dispatch_get_main_queue(), {
                         cell.videoCellImage.image = image
+                        cell.loadingIndicator.hidden = true
                     })
                 }
                 else {
@@ -211,10 +269,6 @@ class VideosTableViewController: UITableViewController, UITableViewDataSource, U
                 }
             })
         }
-        
-        
-        
-        
         
         cell.videoCellImage.contentMode = UIViewContentMode.ScaleAspectFill
         cell.videoCellImage.clipsToBounds = true
@@ -247,6 +301,11 @@ class VideosTableViewController: UITableViewController, UITableViewDataSource, U
         selectedRow=indexPath.row
         
         self.playVideoWithVideoQualityType(VideoQualityType.Medium)
+        
+        
+        //calculate the probability of the ad
+        //if the ad is true then show the ad
+        //if not then play the video
         
 //        var alert = UIAlertController(title: "Choose Format", message: "", preferredStyle: UIAlertControllerStyle.Alert)
 //        alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Cancel, handler:alertViewCancelButtonHandler))
@@ -340,7 +399,7 @@ class VideosTableViewController: UITableViewController, UITableViewDataSource, U
     private func fetchVideoDetails()
     {
         //Show Loading
-        AppDelegate.showProgressHudWithMessage("Loading...")
+//        AppDelegate.showProgressHudWithMessage("Loading...")
         
         var dataDictionary = Dictionary<String, AnyObject>()
         
@@ -374,7 +433,7 @@ class VideosTableViewController: UITableViewController, UITableViewDataSource, U
             //Update UI in main-thread
             dispatch_async(dispatch_get_main_queue(), {
                 //Hide Loading
-                AppDelegate.hideProgressHud()
+//                AppDelegate.hideProgressHud()
             })
         })
     }

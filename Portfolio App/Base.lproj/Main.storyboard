@@ -29,7 +29,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <segue destination="RMx-3f-FxP" kind="relationship" relationship="masterViewController" id="BlO-5A-QYV"/>
-                        <segue destination="7bK-jq-Zjz" kind="relationship" relationship="detailViewController" id="kcV-JS-fct"/>
+                        <segue destination="7bK-jq-Zjz" kind="relationship" relationship="detailViewController" id="b7g-QR-Dlx"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZU-Oi-B1e" sceneMemberID="firstResponder"/>
@@ -112,8 +112,8 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Chimes Photography" id="Zdf-7t-Un8"/>
                     <connections>
-                        <segue destination="sEh-eV-mku" kind="showDetail" identifier="Gallery" id="YNR-lx-TL8"/>
-                        <segue destination="5uz-cb-SsG" kind="showDetail" identifier="Videos" id="vJ3-XJ-DjF"/>
+                        <segue destination="sEh-eV-mku" kind="showDetail" identifier="Flickr" id="YNR-lx-TL8"/>
+                        <segue destination="5uz-cb-SsG" kind="showDetail" identifier="Video" id="vJ3-XJ-DjF"/>
                         <segue destination="GuW-hd-M89" kind="show" identifier="Social" id="ZJH-DF-bfp"/>
                         <segue destination="Od9-GC-8Zt" kind="showDetail" identifier="Website" id="vvA-oK-Ctj"/>
                     </connections>
@@ -139,10 +139,10 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jnf-Sz-o9U">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
                                         </imageView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yeM-F6-M04">
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yeM-F6-M04">
                                             <rect key="frame" x="0.0" y="185" width="414" height="55"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPy-d0-sQa">
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPy-d0-sQa">
                                                     <rect key="frame" x="8" y="8" width="398" height="39"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -158,20 +158,26 @@
                                                 <constraint firstAttribute="bottom" secondItem="wPy-d0-sQa" secondAttribute="bottom" constant="8" id="rgM-7m-roM"/>
                                             </constraints>
                                         </view>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="3wa-ck-KvO">
+                                            <rect key="frame" x="197" y="110" width="20" height="20"/>
+                                        </activityIndicatorView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="Jnf-Sz-o9U" secondAttribute="trailing" constant="-8" id="UWq-yq-7IP"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="yeM-F6-M04" secondAttribute="bottom" constant="-8" id="b9t-XS-VQE"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Jnf-Sz-o9U" secondAttribute="bottom" constant="-8" id="fC7-f8-P5W"/>
+                                        <constraint firstAttribute="centerY" secondItem="3wa-ck-KvO" secondAttribute="centerY" id="gdb-wx-McX"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="yeM-F6-M04" secondAttribute="trailing" constant="-8" id="rhO-Hk-Fgx"/>
                                         <constraint firstItem="Jnf-Sz-o9U" firstAttribute="top" secondItem="AqU-yW-BPw" secondAttribute="topMargin" constant="-8" id="tKZ-fy-d9n"/>
                                         <constraint firstItem="yeM-F6-M04" firstAttribute="leading" secondItem="AqU-yW-BPw" secondAttribute="leadingMargin" constant="-8" id="tV5-BX-zXG"/>
+                                        <constraint firstAttribute="centerX" secondItem="3wa-ck-KvO" secondAttribute="centerX" id="tuV-Qr-jtE"/>
                                         <constraint firstItem="Jnf-Sz-o9U" firstAttribute="leading" secondItem="AqU-yW-BPw" secondAttribute="leadingMargin" constant="-8" id="wec-br-TPF"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="galleryCellImage" destination="Jnf-Sz-o9U" id="D7N-Ql-dFe"/>
                                     <outlet property="galleryCellTitle" destination="wPy-d0-sQa" id="Wnl-gm-a5x"/>
+                                    <outlet property="loadingIndicator" destination="3wa-ck-KvO" id="mYc-c4-B54"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -209,13 +215,18 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <gestureRecognizers/>
                                     </imageView>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Lkj-tC-YIO">
+                                        <rect key="frame" x="197" y="358" width="20" height="20"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="Lkj-tC-YIO" secondAttribute="centerY" id="3Pg-d4-c3e"/>
                                     <constraint firstItem="sNb-dW-0MR" firstAttribute="centerX" secondItem="Nsl-CT-lHx" secondAttribute="centerX" id="651-Xc-CY2"/>
                                     <constraint firstItem="sNb-dW-0MR" firstAttribute="top" secondItem="Nsl-CT-lHx" secondAttribute="top" id="cwh-sP-CHb"/>
                                     <constraint firstAttribute="bottom" secondItem="sNb-dW-0MR" secondAttribute="bottom" id="fIR-YR-JU4"/>
                                     <constraint firstItem="sNb-dW-0MR" firstAttribute="centerY" secondItem="Nsl-CT-lHx" secondAttribute="centerY" id="gWI-zY-xaf"/>
                                     <constraint firstAttribute="trailing" secondItem="sNb-dW-0MR" secondAttribute="trailing" id="ol4-UQ-uAG"/>
+                                    <constraint firstAttribute="centerX" secondItem="Lkj-tC-YIO" secondAttribute="centerX" id="opW-Ll-xfs"/>
                                     <constraint firstItem="sNb-dW-0MR" firstAttribute="leading" secondItem="Nsl-CT-lHx" secondAttribute="leading" id="vzU-Op-onC"/>
                                 </constraints>
                             </scrollView>
@@ -230,6 +241,7 @@
                     </view>
                     <connections>
                         <outlet property="imageView" destination="sNb-dW-0MR" id="oPn-cU-T5m"/>
+                        <outlet property="loadingIndicator" destination="Lkj-tC-YIO" id="khY-TZ-K2H"/>
                         <outlet property="scrollView" destination="Nsl-CT-lHx" id="lZ5-Lu-C5r"/>
                     </connections>
                 </viewController>
@@ -294,18 +306,24 @@
                                                 <constraint firstItem="Oto-0e-lO9" firstAttribute="leading" secondItem="rYe-lb-hO1" secondAttribute="leading" constant="8" id="imt-zk-oB0"/>
                                             </constraints>
                                         </view>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="tKd-oB-2pr">
+                                            <rect key="frame" x="197" y="95" width="20" height="20"/>
+                                        </activityIndicatorView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="QIh-9j-8fU" firstAttribute="leading" secondItem="yn7-bD-r0N" secondAttribute="leadingMargin" constant="-8" id="KS8-EW-oAR"/>
+                                        <constraint firstAttribute="centerY" secondItem="tKd-oB-2pr" secondAttribute="centerY" id="abU-ee-j04"/>
                                         <constraint firstItem="rYe-lb-hO1" firstAttribute="top" secondItem="yn7-bD-r0N" secondAttribute="topMargin" constant="-8" id="beI-G8-TOq"/>
                                         <constraint firstItem="QIh-9j-8fU" firstAttribute="top" secondItem="yn7-bD-r0N" secondAttribute="topMargin" constant="-8" id="bzc-2U-mZE"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="QIh-9j-8fU" secondAttribute="bottom" constant="-8" id="fdn-x0-AzH"/>
                                         <constraint firstItem="rYe-lb-hO1" firstAttribute="leading" secondItem="yn7-bD-r0N" secondAttribute="leadingMargin" constant="-8" id="p2B-rh-Ef0"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="rYe-lb-hO1" secondAttribute="trailing" constant="-8" id="rKg-Yt-GI2"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="QIh-9j-8fU" secondAttribute="trailing" constant="-8" id="sN9-VW-ZzH"/>
+                                        <constraint firstAttribute="centerX" secondItem="tKd-oB-2pr" secondAttribute="centerX" id="tBi-p0-jXO"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="loadingIndicator" destination="tKd-oB-2pr" id="Z9D-11-DR0"/>
                                     <outlet property="videoCellImage" destination="QIh-9j-8fU" id="Luv-D9-f5N"/>
                                     <outlet property="videoCellTitle" destination="Oto-0e-lO9" id="G9J-Xr-7im"/>
                                 </connections>
@@ -432,7 +450,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hRf-cc-lV4">
+                            <webView contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="hRf-cc-lV4">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
@@ -505,7 +523,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="kcV-JS-fct"/>
+        <segue reference="tsl-Nk-0bq"/>
         <segue reference="vvA-oK-Ctj"/>
     </inferredMetricsTieBreakers>
 </document>

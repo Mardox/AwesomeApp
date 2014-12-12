@@ -15,12 +15,16 @@ class GalleryItemViewController: UIViewController, UIScrollViewDelegate {
             // Update the view.
         }
     }
+    
+    @IBOutlet var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var scrollView: UIScrollView!
     
     var currentScale: CGFloat!
     var imageCache = [String : UIImage]()
     
     @IBOutlet weak var imageView: UIImageView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,6 +47,7 @@ class GalleryItemViewController: UIViewController, UIScrollViewDelegate {
                     self.imageCache[urlString] = image
                     dispatch_async(dispatch_get_main_queue(), {
                         self.imageView.image = image
+                        self.loadingIndicator.hidden=true
                     })
                 }
                 else {

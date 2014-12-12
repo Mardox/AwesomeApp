@@ -7,8 +7,20 @@
 //
 
 import UIKit
+import iAd
 
-class MasterViewController: UITableViewController {
+class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInterstitialDelegate, ADBannerViewDelegate {
+    
+    
+    var iAdSupported = false
+    var iAdView:ADBannerView?
+    var bannerView:GADBannerView?
+    var interstitial:GADInterstitial?
+    var timer:NSTimer?
+    var loadRequestAllowed = true
+    var bannerDisplayed = false
+    let statusbarHeight:CGFloat = 20.0
+    
     
     var dict : NSDictionary!
     
@@ -31,9 +43,7 @@ class MasterViewController: UITableViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
         var appName : String
-        
         let path = NSBundle.mainBundle().pathForResource("Config", ofType: "plist")
         self.dict = NSDictionary(contentsOfFile: path!) as NSDictionary!
         
@@ -48,19 +58,74 @@ class MasterViewController: UITableViewController {
         var currentPlaylist = self.playlists[0] as Dictionary
         var indexPath : NSIndexPath =  NSIndexPath(forRow: 0, inSection: 0)
         if currentPlaylist["Type"] == "Video" {
-            self.performSegueWithIdentifier("Videos", sender: indexPath)
+            self.performSegueWithIdentifier("Video", sender: indexPath)
         }else if currentPlaylist["Type"] == "Website" {
             self.performSegueWithIdentifier("Website", sender: indexPath)
         }else if currentPlaylist["Type"] == "Flickr" {
-            self.performSegueWithIdentifier("Gallery", sender: indexPath)
+            self.performSegueWithIdentifier("Flickr", sender: indexPath)
+        }else if currentPlaylist["Type"] == "Social" {
+            self.performSegueWithIdentifier("Social", sender: indexPath)
         }
 
         
+        interstitial = createAndLoadInterstitial()
+        
+        
     }
     
-//    func splitViewController(svc: UISplitViewController, shouldHideViewController vc: UIViewController, inOrientation orientation: UIInterfaceOrientation) -> Bool {
-//        return false
-//    }
+    
+    
+    
+    
+    
+    //Interstitial func
+    func createAndLoadInterstitial()->GADInterstitial {
+        println("createAndLoadInterstitial")
+        var interstitial = GADInterstitial()
+        interstitial.delegate = self
+        interstitial.adUnitID = self.dict.objectForKey("Admob_Interstitial_ID") as String!
+        interstitial.loadRequest(GADRequest())
+        
+        return interstitial
+    }
+    
+    func presentInterstitial() {
+        if let isReady = interstitial?.isReady {
+            interstitial?.presentFromRootViewController(self)
+        }
+    }
+    
+    //Interstitial delegate
+    func interstitial(ad: GADInterstitial!, didFailToReceiveAdWithError error: GADRequestError!) {
+        println("interstitialDidFailToReceiveAdWithError:\(error.localizedDescription)")
+        interstitial = createAndLoadInterstitial()
+    }
+    
+    func interstitialDidReceiveAd(ad: GADInterstitial!) {
+        println("interstitialDidReceiveAd")
+    }
+    
+    func interstitialWillDismissScreen(ad: GADInterstitial!) {
+        println("interstitialWillDismissScreen")
+        interstitial = createAndLoadInterstitial()
+    }
+    
+    func interstitialDidDismissScreen(ad: GADInterstitial!) {
+        println("interstitialDidDismissScreen")
+    }
+    
+    func interstitialWillLeaveApplication(ad: GADInterstitial!) {
+        println("interstitialWillLeaveApplication")
+    }
+    
+    func interstitialWillPresentScreen(ad: GADInterstitial!) {
+        println("interstitialWillPresentScreen")
+    }
+    
+    
+    func splitViewController(svc: UISplitViewController, shouldHideViewController vc: UIViewController, inOrientation orientation: UIInterfaceOrientation) -> Bool {
+        return true
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -78,72 +143,57 @@ class MasterViewController: UITableViewController {
             controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
             controller.navigationItem.leftItemsSupplementBackButton = true
             controller._webAddress = currentMenu["Url"] as String!
+            displayAd()
             
-        }else if segue.identifier == "Videos" {
+        }else if segue.identifier == "Video" {
             
             var controller = (segue.destinationViewController as? UINavigationController)?.topViewController as VideosTableViewController
             controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
             controller.navigationItem.leftItemsSupplementBackButton = true
             controller._playlistID = currentMenu["PlaylistID"] as String!
+            displayAd()
             
-        }else if segue.identifier == "Gallery" {
+        }else if segue.identifier == "Flickr" {
         
             var controller = (segue.destinationViewController as? UINavigationController)?.topViewController as GalleryTableViewController
             controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
             controller.navigationItem.leftItemsSupplementBackButton = true
             controller._albumID = currentMenu["AlbumID"] as String!
-        
+            displayAd()
+            
+        }else if segue.identifier == "Social" {
+
+            var controller = segue.destinationViewController as? SocialTableViewController
+            controller?.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+            controller?.navigationItem.leftItemsSupplementBackButton = true
+           
         }
         
-        
-//        
-//        if segue.identifier == "Gallery" {
-//            
-//            var controller = segue.destinationViewController as? GalleryTableViewController
-//            controller?.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-//            controller?.navigationItem.leftItemsSupplementBackButton = true
-//
-//        }else if segue.identifier == "About" {
-//           
-//            var controller = segue.destinationViewController as? AboutViewController
-//            controller?.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-//            controller?.navigationItem.leftItemsSupplementBackButton = true
-//          
-//        }else if segue.identifier == "Contact" {
-//            
-//            var controller = segue.destinationViewController as? ContactViewController
-//            controller?.navigationItem.leftItemsSupplementBackButton = true
-//           
-//        }else if segue.identifier == "Social" {
-//           
-//            var controller = segue.destinationViewController as? SocialTableViewController
-//            controller?.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-//            controller?.navigationItem.leftItemsSupplementBackButton = true
-//           
-//        }else if segue.identifier == "Login" {
-//            
-//            var controller = segue.destinationViewController as? WebViewViewController
-//            controller?.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-//            controller?.navigationItem.leftItemsSupplementBackButton = true
-//            controller?._webAddress = dict.objectForKey("LoginAddress") as String!
-//
-//        }
-//        
         
         
     }
 
+    
+    func displayAd(){
+        if AppDelegate.probabilityCalculator(){
+            presentInterstitial()
+        }
+    }
+    
+    
     // MARK: - Table View
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         var currentPlaylist = self.playlists[indexPath.row] as Dictionary
         if currentPlaylist["Type"] == "Video" {
-            self.performSegueWithIdentifier("Videos", sender: indexPath)
+            self.performSegueWithIdentifier("Video", sender: indexPath)
         }else if currentPlaylist["Type"] == "Website" {
             self.performSegueWithIdentifier("Website", sender: indexPath)
         }else if currentPlaylist["Type"] == "Flickr" {
-            self.performSegueWithIdentifier("Gallery", sender: indexPath)
+            self.performSegueWithIdentifier("Flickr", sender: indexPath)
+        }else if currentPlaylist["Type"] == "Social" {
+            self.performSegueWithIdentifier("Social", sender: indexPath)
         }
         
         
