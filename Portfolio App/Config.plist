@@ -38,7 +38,7 @@
 			<key>Subtitle</key>
 			<string>Ton of awesome images in one place</string>
 			<key>Icon</key>
-			<string>Gallery</string>
+			<string>Flickr</string>
 		</dict>
 		<dict>
 			<key>Type</key>
@@ -53,27 +53,86 @@
 			<string>Social</string>
 		</dict>
 	</array>
-	<key>facebook</key>
-	<string>https://www.facebook.com/30daylabs</string>
-	<key>pinterest</key>
-	<string>http://pinterest.com/30daylabs</string>
-	<key>googlePlus</key>
-	<string></string>
-	<key>instagram</key>
-	<string></string>
-	<key>linkedin</key>
-	<string>http://linkedin.com/30daylabs</string>
-	<key>twitter</key>
-	<string>http://twitter.com/30daylabs</string>
+	<key>Social Menu</key>
+	<array>
+		<dict>
+			<key>Icon</key>
+			<string>Youtube</string>
+			<key>Title</key>
+			<string>YouTube</string>
+			<key>Subtitle</key>
+			<string>Subscribe to Us on Youtube</string>
+			<key>Url</key>
+			<string>http://youtube.com/hoomanmar</string>
+		</dict>
+		<dict>
+			<key>Icon</key>
+			<string>Google+</string>
+			<key>Title</key>
+			<string>Google+</string>
+			<key>Subtitle</key>
+			<string>Follow us on Google+</string>
+			<key>Url</key>
+			<string>http://google.com/plus</string>
+		</dict>
+		<dict>
+			<key>Icon</key>
+			<string>LinkedIn</string>
+			<key>Title</key>
+			<string>LinkedIn</string>
+			<key>Subtitle</key>
+			<string>Connect with us on LinkedIn</string>
+			<key>Url</key>
+			<string>http://linkedin.com/30daylabs</string>
+		</dict>
+		<dict>
+			<key>Icon</key>
+			<string>Twitter</string>
+			<key>Title</key>
+			<string>Twitter</string>
+			<key>Subtitle</key>
+			<string>Follow us on Twitter</string>
+			<key>Url</key>
+			<string>http://twitter.com/hooman_mardokhi</string>
+		</dict>
+		<dict>
+			<key>Icon</key>
+			<string>Instagram</string>
+			<key>Title</key>
+			<string>Instagram</string>
+			<key>Subtitle</key>
+			<string>Follow us on Instagram</string>
+			<key>Url</key>
+			<string>http://facebook.com/30daylabs</string>
+		</dict>
+		<dict>
+			<key>Icon</key>
+			<string>Pinterest</string>
+			<key>Title</key>
+			<string>Pinterest</string>
+			<key>Subtitle</key>
+			<string>Follow our Boards on Pinterest</string>
+			<key>Url</key>
+			<string>http://pintrest.com</string>
+		</dict>
+		<dict>
+			<key>Icon</key>
+			<string>Facebook</string>
+			<key>Title</key>
+			<string>Facebook</string>
+			<key>Subtitle</key>
+			<string>Like us on facebook</string>
+			<key>Url</key>
+			<string>http://facebook.com/30daylabs</string>
+		</dict>
+	</array>
 	<key>appName</key>
 	<string>My Collection</string>
-	<key>description</key>
-	<string>Specializing in custom design and creative tattooing, as well as body piercing in a state of the art studio.
-We pride ourselves on being the friendliest tattoo and piercing studio that most people have ever entered. Many of our clients tell us stories about their experiences in other shops, of unfriendly or downright surly attitudes from the artists, often even a lack of respect for the clients’ ideas and input. Many of these customers tell us that they chose our studio because we were the cleanest and most understanding ones who then were amazed by the quality of our work. Our studio environment allows our clients to relax during their tattoo or piercing procedure, enjoying good conversation and company. Our clients come from all walks of life and we enjoy meeting different people everyday, often gaining new friends in the process.
-We also regularly draw clients in from out of town/state and even from overseas.</string>
 	<key>Admob_Interstitial_ID</key>
 	<string>ca-app-pub-7607380003153721/6164025093</string>
 	<key>Admob_probability</key>
 	<real>0.5</real>
+	<key>Internal WebView</key>
+	<true/>
 </dict>
 </plist>

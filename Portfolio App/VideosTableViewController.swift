@@ -307,12 +307,6 @@ class VideosTableViewController: UITableViewController, UITableViewDataSource, U
         //if the ad is true then show the ad
         //if not then play the video
         
-//        var alert = UIAlertController(title: "Choose Format", message: "", preferredStyle: UIAlertControllerStyle.Alert)
-//        alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Cancel, handler:alertViewCancelButtonHandler))
-//        alert.addAction(UIAlertAction(title: "Hd720", style: UIAlertActionStyle.Default, handler:hd720QualityButtonHandler))
-//        alert.addAction(UIAlertAction(title: "Medium", style: UIAlertActionStyle.Default, handler:mediumQualityButtonHandler))
-//        alert.addAction(UIAlertAction(title: "Low", style: UIAlertActionStyle.Default, handler:lowQualityButtonHandler))
-//        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     //***********************************************************************

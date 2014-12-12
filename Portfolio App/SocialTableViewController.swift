@@ -20,15 +20,19 @@ class SocialTableViewController: UITableViewController {
         MenuItem(menuName: "LinkedIn", menuIcon: "LinkedIn", menuSubtitle: "Join our professional network"),
     ]
     
+    var dict : NSDictionary!
+    var menus: [Dictionary<String, String>] = []
+    var menuDetails = [String: String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Load up the social
+        let path = NSBundle.mainBundle().pathForResource("Config", ofType: "plist")
+        self.dict = NSDictionary(contentsOfFile: path!) as NSDictionary!
+        let title: String = dict.objectForKey("appName") as String!
+        self.menus = dict.objectForKey("Social Menu") as Array<Dictionary<String, String>>
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,46 +41,35 @@ class SocialTableViewController: UITableViewController {
     }
 
     
-//    func splitViewController(svc: UISplitViewController, shouldHideViewController vc: UIViewController, inOrientation orientation: UIInterfaceOrientation) -> Bool {
-//        return false
-//    }
-//    
+    //    func splitViewController(svc: UISplitViewController, shouldHideViewController vc: UIViewController, inOrientation orientation: UIInterfaceOrientation) -> Bool {
+    //        return false
+    //    }
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "Social"
         {
-            var socialViewController = (segue.destinationViewController as? UINavigationController)?.topViewController as WebViewViewController
-            
-            //photoViewController.photoInfo = photoCell.photoInfo
             
             var index = self.tableView.indexPathForSelectedRow()
             var indexPath = index?.row
             
-            
-            let path = NSBundle.mainBundle().pathForResource("Config", ofType: "plist")
-            let dict = NSDictionary(contentsOfFile: path!) as NSDictionary!
-            
             var address : String = ""
             
-            switch indexPath! as Int {
-            case 0:
-                address = dict.objectForKey("facebook") as String
-            case 1:
-                address = dict.objectForKey("twitter") as String
-            case 2:
-                address = dict.objectForKey("googlePlus") as String
-            case 3:
-                address = dict.objectForKey("instagram") as String
-            case 4:
-                address = dict.objectForKey("pinterest") as String
-            case 5:
-                address = dict.objectForKey("linkedin") as String
-            default:
-                println("This is not a valid menu")
-            }
-
+            var currentMenu = menus[indexPath!] as Dictionary
+            address = currentMenu["Url"] as String!
             
-            socialViewController._webAddress = address as String!
+            var browser = self.dict.objectForKey("Internal WebView") as Bool!
+            if (browser == true){
+                var socialViewController = (segue.destinationViewController as? UINavigationController)?.topViewController as WebViewViewController
+                socialViewController.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+                socialViewController.navigationItem.leftItemsSupplementBackButton = true
+                socialViewController._webAddress = address as String!
+            }else{
+                var url : NSURL
+                url = NSURL(string: address)!
+                UIApplication.sharedApplication().openURL(url)
+            }
+            
         }
         
         
@@ -92,11 +85,20 @@ class SocialTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-//        self.performSegueWithIdentifier(items[indexPath.item].menuName, sender: indexPath)
-        
-       
-        
-        
+        var currentMenu = self.menus[indexPath.row] as Dictionary
+
+        var address : String =  currentMenu["Url"] as String!
+        var browser = self.dict.objectForKey("Internal WebView") as Bool!
+
+        if (browser == true){
+            self.performSegueWithIdentifier("Social", sender: indexPath)
+        }else{
+            var url : NSURL
+            url = NSURL(string: address)!
+            UIApplication.sharedApplication().openURL(url)
+        }
+    
+    
     }
     
     
@@ -105,15 +107,16 @@ class SocialTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return menus.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell:MenuTableViewCell? = tableView.dequeueReusableCellWithIdentifier("Cell") as? MenuTableViewCell
         
-        cell!.menuCellTitle.text = self.items[indexPath.row].menuName as String
-        cell!.menuCellSubtitle.text = self.items[indexPath.row].menuSubtitle
-        cell!.menuCellImage.image  = UIImage(named: items[indexPath.row].menuIcon)!
+        var currentMenu = menus[indexPath.row] as Dictionary
+        cell!.menuCellTitle.text = currentMenu["Title"] as String!
+        cell!.menuCellSubtitle.text = currentMenu["Subtitle"]
+        cell!.menuCellImage.image  = UIImage(named: currentMenu["Icon"] as String!)!
         return cell!;
         
     }

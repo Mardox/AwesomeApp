@@ -63,8 +63,6 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
             let jsonResult: NSDictionary! = NSJSONSerialization.JSONObjectWithData(data, options:NSJSONReadingOptions.MutableContainers, error: error) as? NSDictionary
             
             if (jsonResult != nil) {
-                // process jsonResult
-//                println(jsonResult.objectForKey("photos")?.objectForKey("photo")?.count)
                 
                 var dataDictionary = Dictionary<String, String>()
                 
@@ -79,14 +77,8 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
                     self.itemList.addObject(dataDictionary)
                 }
                 
-                
-//                AppDelegate.showProgressHudWithMessage("Loading...")
-                
                 //Update UI in main-thread
                 dispatch_async(dispatch_get_main_queue(), {
-                    //Hide Loading
-//                    AppDelegate.hideProgressHud()
-                    
                     self.tableView.reloadData()
                 })
 
@@ -97,9 +89,7 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
             
             
         })
-        
-        
-        
+
         // Refresh the tableview
         
     }
@@ -140,14 +130,6 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
         cell!.galleryCellImage.image = nil
         cell!.galleryCellImage.contentMode = UIViewContentMode.ScaleAspectFill
         cell!.galleryCellImage.clipsToBounds = true
-
-        
-        
-//        cell!.galleryCellTitle.text = self.items[indexPath.row].menuName as String
-//        var demoImageName = "demo-\(indexPath.row)"
-//        cell!.galleryCellImage.image  = UIImage(named: demoImageName)!
-//        return cell!;
-        
         
         
         //build the image url
@@ -193,10 +175,6 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
             })
         }
         
-        //cell?.galleryCellTitle.text = itemList[indexPath.row]["title"] as String!
-        
-        //AppDelegate.hideProgressHud()
-        
         return cell!;
     }
     
@@ -208,12 +186,8 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
         {
             var photoViewController = segue.destinationViewController as GalleryItemViewController
             
-            //photoViewController.photoInfo = photoCell.photoInfo
-            
             var index = self.tableView.indexPathForSelectedRow()
             var indexPath = index?.row
-            
-            //var imageName = "demo-\(indexPath!)"
             
             let farm = itemList[indexPath!]["farm"] as String!
             let server = itemList[indexPath!]["server"] as String!

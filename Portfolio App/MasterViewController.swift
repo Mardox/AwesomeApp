@@ -53,7 +53,6 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
 
         self.playlists = dict.objectForKey("Menu") as Array<Dictionary<String, String>>
         
-        
         //Load the first detail view in the plist
         var currentPlaylist = self.playlists[0] as Dictionary
         var indexPath : NSIndexPath =  NSIndexPath(forRow: 0, inSection: 0)
@@ -139,10 +138,11 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
         
         if segue.identifier == "Website" {
             
+            var address : String =  currentMenu["Url"] as String!
             var controller = (segue.destinationViewController as? UINavigationController)?.topViewController as WebViewViewController
             controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
             controller.navigationItem.leftItemsSupplementBackButton = true
-            controller._webAddress = currentMenu["Url"] as String!
+            controller._webAddress = address as String!
             displayAd()
             
         }else if segue.identifier == "Video" {
@@ -185,14 +185,25 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        var currentPlaylist = self.playlists[indexPath.row] as Dictionary
-        if currentPlaylist["Type"] == "Video" {
+        var currentMenu = self.playlists[indexPath.row] as Dictionary
+        if currentMenu["Type"] == "Video" {
             self.performSegueWithIdentifier("Video", sender: indexPath)
-        }else if currentPlaylist["Type"] == "Website" {
-            self.performSegueWithIdentifier("Website", sender: indexPath)
-        }else if currentPlaylist["Type"] == "Flickr" {
+        }else if currentMenu["Type"] == "Website" {
+                
+            var address : String =  currentMenu["Url"] as String!
+            
+            var browser = self.dict.objectForKey("Internal WebView") as Bool!
+            if (browser == true){
+                self.performSegueWithIdentifier("Website", sender: indexPath)
+            }else{
+                var url : NSURL
+                url = NSURL(string: address)!
+                UIApplication.sharedApplication().openURL(url)
+            }
+            
+        }else if currentMenu["Type"] == "Flickr" {
             self.performSegueWithIdentifier("Flickr", sender: indexPath)
-        }else if currentPlaylist["Type"] == "Social" {
+        }else if currentMenu["Type"] == "Social" {
             self.performSegueWithIdentifier("Social", sender: indexPath)
         }
         
@@ -212,11 +223,7 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
         var cell:MenuTableViewCell? = tableView.dequeueReusableCellWithIdentifier("Cell") as? MenuTableViewCell
         
         var currentPlaylist = playlists[indexPath.row] as Dictionary
-//        let menuNames = [String](playlists.keys)
-        
         cell!.menuCellTitle.text = currentPlaylist["Title"] as String!
-        
-//        cell!.menuCellTitle.text = dict.objectForKey(self.items[indexPath.row].menuName) as? String
         cell!.menuCellSubtitle.text = currentPlaylist["Subtitle"]
         cell!.menuCellImage.image  = UIImage(named: currentPlaylist["Icon"] as String!)!
         return cell!;
@@ -230,7 +237,6 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
 
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            //objects.removeObjectAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.

@@ -423,7 +423,6 @@
                                     <outlet property="menuCellImage" destination="a4S-4R-hdv" id="mXp-Sm-Gjf"/>
                                     <outlet property="menuCellSubtitle" destination="jmk-Xb-PNz" id="nBo-3Y-tvW"/>
                                     <outlet property="menuCellTitle" destination="AKy-WE-6YR" id="mM8-qA-ft8"/>
-                                    <segue destination="Od9-GC-8Zt" kind="showDetail" identifier="Social" id="dEX-Z3-5e1"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -433,6 +432,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Social" id="miI-wo-Fpy"/>
+                    <connections>
+                        <segue destination="Od9-GC-8Zt" kind="showDetail" identifier="Social" id="uQ2-y9-6IQ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nkg-PY-4Ij" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -524,6 +526,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="tsl-Nk-0bq"/>
-        <segue reference="vvA-oK-Ctj"/>
+        <segue reference="uQ2-y9-6IQ"/>
     </inferredMetricsTieBreakers>
 </document>

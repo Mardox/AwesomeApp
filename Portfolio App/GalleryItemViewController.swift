@@ -28,9 +28,9 @@ class GalleryItemViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        var demoImageName = "\(_imageName! as String)"
-//        imageView.image  = UIImage(named: demoImageName)!
-        
+        //var demoImageName = "\(_imageName! as String)"
+        //imageView.image  = UIImage(named: demoImageName)!
+                
         var urlString = _imageUrl as String!
         var image = self.imageCache[urlString]
         
@@ -60,21 +60,12 @@ class GalleryItemViewController: UIViewController, UIScrollViewDelegate {
                     self.imageView.image = image
             })
         }
-
-        
-        
-        
-        
-        
-//        imageView.contentMode = UIViewContentMode.ScaleAspectFill
-//        imageView.clipsToBounds = true
         
          view.backgroundColor = UIColor.whiteColor()
         
         
         self.scrollView.minimumZoomScale=1;
         self.scrollView.maximumZoomScale=4.0;
-//        self.scrollView.contentSize=CGSizeMake(1280, 960);
         self.scrollView.delegate=self;
 
         // Do any additional setup after loading the view.
