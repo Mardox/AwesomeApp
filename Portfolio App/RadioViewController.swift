@@ -59,7 +59,7 @@ class RadioViewController: UIViewController, GADBannerViewDelegate, GADInterstit
         
         changePlayState()
         
-       loadAdmobBanner()
+//       loadAdmobBanner()
         
     }
     
