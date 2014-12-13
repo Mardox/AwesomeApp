@@ -68,8 +68,10 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
             self.performSegueWithIdentifier("Radio", sender: indexPath)
         }
 
-        
-        interstitial = createAndLoadInterstitial()
+        let admobActive: Bool = self.dict.objectForKey("Activate Admob") as Bool!
+        if admobActive{
+            interstitial = createAndLoadInterstitial()
+        }
         
         
     }

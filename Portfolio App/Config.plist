@@ -138,11 +138,13 @@
 	</array>
 	<key>appName</key>
 	<string>My Collection</string>
+	<key>Activate Admob</key>
+	<true/>
 	<key>Admob_Interstitial_ID</key>
 	<string>ca-app-pub-7607380003153721/6164025093</string>
 	<key>Admob_probability</key>
-	<real>0.5</real>
+	<real>0.3</real>
 	<key>Internal WebView</key>
-	<true/>
+	<false/>
 </dict>
 </plist>
