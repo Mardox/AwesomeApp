@@ -116,6 +116,7 @@
                         <segue destination="5uz-cb-SsG" kind="showDetail" identifier="Video" id="vJ3-XJ-DjF"/>
                         <segue destination="GuW-hd-M89" kind="show" identifier="Social" id="ZJH-DF-bfp"/>
                         <segue destination="Od9-GC-8Zt" kind="showDetail" identifier="Website" id="vvA-oK-Ctj"/>
+                        <segue destination="5ae-2q-62R" kind="showDetail" identifier="Radio" id="6j4-wJ-WYS"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
@@ -523,9 +524,65 @@
             </objects>
             <point key="canvasLocation" x="1882" y="327"/>
         </scene>
+        <!--Radio View Controller-->
+        <scene sceneID="f1h-FD-4PK">
+            <objects>
+                <viewController id="rae-QW-rI2" customClass="RadioViewController" customModule="Portfolio_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xDD-JX-aqo"/>
+                        <viewControllerLayoutGuide type="bottom" id="4UT-Km-zXW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ALF-ta-NUu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="syp-Zg-S8S">
+                                <rect key="frame" x="164" y="349" width="86" height="38"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <state key="normal" title="Play">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playButton:" destination="rae-QW-rI2" eventType="touchUpInside" id="5vs-ja-hjB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="syp-Zg-S8S" secondAttribute="centerY" id="aFc-VT-hRa"/>
+                            <constraint firstAttribute="centerX" secondItem="syp-Zg-S8S" secondAttribute="centerX" id="kFw-vA-YEw"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="tYB-Bm-5HF"/>
+                    <connections>
+                        <outlet property="playButton" destination="syp-Zg-S8S" id="eGR-7O-Exc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dav-gr-pKu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1950" y="-625"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="A0x-fD-sAc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5ae-2q-62R" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Pbq-Rn-ipf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="rae-QW-rI2" kind="relationship" relationship="rootViewController" id="O7g-l9-4AU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dgb-5i-4m0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1324" y="-625"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="tsl-Nk-0bq"/>
-        <segue reference="uQ2-y9-6IQ"/>
+        <segue reference="vvA-oK-Ctj"/>
     </inferredMetricsTieBreakers>
 </document>

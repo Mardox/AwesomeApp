@@ -6,6 +6,18 @@
 	<array>
 		<dict>
 			<key>Type</key>
+			<string>Radio</string>
+			<key>Title</key>
+			<string>Radio</string>
+			<key>Subtitle</key>
+			<string>Listen to This Awesome Station</string>
+			<key>Url</key>
+			<string>http://173.245.94.219:80</string>
+			<key>Icon</key>
+			<string>Radio</string>
+		</dict>
+		<dict>
+			<key>Type</key>
 			<string>Video</string>
 			<key>PlaylistID</key>
 			<string>PLbMVogVj5nJRgBjyxu0PfH3Ucdq_mDo4o</string>
@@ -30,7 +42,7 @@
 		</dict>
 		<dict>
 			<key>Type</key>
-			<string>Flickr</string>
+			<string>Gallery</string>
 			<key>AlbumID</key>
 			<string>72157622520234988</string>
 			<key>Title</key>
@@ -43,8 +55,6 @@
 		<dict>
 			<key>Type</key>
 			<string>Social</string>
-			<key>AlbumID</key>
-			<string>72157622520234988</string>
 			<key>Title</key>
 			<string>Social</string>
 			<key>Subtitle</key>

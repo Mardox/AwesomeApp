@@ -60,10 +60,12 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
             self.performSegueWithIdentifier("Video", sender: indexPath)
         }else if currentPlaylist["Type"] == "Website" {
             self.performSegueWithIdentifier("Website", sender: indexPath)
-        }else if currentPlaylist["Type"] == "Flickr" {
+        }else if currentPlaylist["Type"] == "Gallery" {
             self.performSegueWithIdentifier("Flickr", sender: indexPath)
         }else if currentPlaylist["Type"] == "Social" {
             self.performSegueWithIdentifier("Social", sender: indexPath)
+        }else if currentPlaylist["Type"] == "Radio" {
+            self.performSegueWithIdentifier("Radio", sender: indexPath)
         }
 
         
@@ -167,6 +169,15 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
             controller?.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
             controller?.navigationItem.leftItemsSupplementBackButton = true
            
+        }else if segue.identifier == "Radio" {
+            
+            var controller = (segue.destinationViewController as? UINavigationController)?.topViewController as RadioViewController
+            controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+            controller.navigationItem.leftItemsSupplementBackButton = true
+            controller._radioUrl = currentMenu["Url"] as String!
+            controller._radioTitle = currentMenu["Title"] as String!
+            displayAd()
+            
         }
         
         
@@ -201,10 +212,12 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
                 UIApplication.sharedApplication().openURL(url)
             }
             
-        }else if currentMenu["Type"] == "Flickr" {
+        }else if currentMenu["Type"] == "Gallery" {
             self.performSegueWithIdentifier("Flickr", sender: indexPath)
         }else if currentMenu["Type"] == "Social" {
             self.performSegueWithIdentifier("Social", sender: indexPath)
+        }else if currentMenu["Type"] == "Radio" {
+            self.performSegueWithIdentifier("Radio", sender: indexPath)
         }
         
         
