@@ -145,6 +145,6 @@
 	<key>Admob_probability</key>
 	<real>0.3</real>
 	<key>Internal WebView</key>
-	<false/>
+	<true/>
 </dict>
 </plist>
