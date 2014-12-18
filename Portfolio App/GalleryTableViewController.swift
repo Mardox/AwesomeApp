@@ -17,6 +17,12 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
         }
     }
     
+    var _flickrAPIKey: AnyObject? {
+        didSet {
+            // Update the view.
+        }
+    }
+    
     
     private var itemList = NSMutableArray()
     let jsonFinalResult: NSDictionary!
@@ -51,9 +57,10 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
         // Flickr API Call: 
 
         let GalleryFlickrPhotosetID: String = self._albumID as String!
+        let FlickrAPIKey: String = self._flickrAPIKey as String!
         
         
-        var url : String = "https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=66c04380d939320f757f730d84fb2f52&photoset_id=\(GalleryFlickrPhotosetID)&format=json&nojsoncallback=1"
+        var url : String = "https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=\(FlickrAPIKey)&photoset_id=\(GalleryFlickrPhotosetID)&format=json&nojsoncallback=1"
         var request : NSMutableURLRequest = NSMutableURLRequest()
         request.URL = NSURL(string: url)
         request.HTTPMethod = "GET"

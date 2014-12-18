@@ -40,6 +40,7 @@
 		E289EA071A16D1DA00BB14D8 /* MR_YouTubeApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E289EA041A16D1DA00BB14D8 /* MR_YouTubeApiManager.swift */; };
 		E2C52F301A293DE500E4FAB9 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C52F2F1A293DE500E4FAB9 /* WebViewViewController.swift */; };
 		E2E21BC01A1750D5001216D0 /* GalleryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E21BBF1A1750D5001216D0 /* GalleryTableViewCell.swift */; };
+		E2F923C81A42E0D10067BAAC /* RSSTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F923C71A42E0D10067BAAC /* RSSTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,7 @@
 		E289EA041A16D1DA00BB14D8 /* MR_YouTubeApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MR_YouTubeApiManager.swift; sourceTree = "<group>"; };
 		E2C52F2F1A293DE500E4FAB9 /* WebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		E2E21BBF1A1750D5001216D0 /* GalleryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryTableViewCell.swift; sourceTree = "<group>"; };
+		E2F923C71A42E0D10067BAAC /* RSSTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,6 +325,7 @@
 				E289E9E61A16C51D00BB14D8 /* GalleryTableViewController.swift */,
 				E289E9E81A16C52C00BB14D8 /* VideosTableViewController.swift */,
 				E289E9EA1A16C54200BB14D8 /* SocialTableViewController.swift */,
+				E2F923C71A42E0D10067BAAC /* RSSTableViewController.swift */,
 			);
 			name = TableViewControllers;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				E289EA061A16D1DA00BB14D8 /* ImageDownloadingTask.swift in Sources */,
 				E27D389F1A3BB9E400A28709 /* RadioViewController.swift in Sources */,
 				E289E9F21A16C60D00BB14D8 /* GalleryItemViewController.swift in Sources */,
+				E2F923C81A42E0D10067BAAC /* RSSTableViewController.swift in Sources */,
 				E289E9E71A16C51D00BB14D8 /* GalleryTableViewController.swift in Sources */,
 				E289E9E11A16392D00BB14D8 /* MenuItem.swift in Sources */,
 				E289E9F41A16CCF300BB14D8 /* VideoTableViewCell.swift in Sources */,

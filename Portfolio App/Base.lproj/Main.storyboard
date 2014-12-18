@@ -282,7 +282,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DDq-Db-ONB" id="yn7-bD-r0N">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QIh-9j-8fU">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QIh-9j-8fU">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="210"/>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rYe-lb-hO1">
@@ -307,16 +307,16 @@
                                                 <constraint firstItem="Oto-0e-lO9" firstAttribute="leading" secondItem="rYe-lb-hO1" secondAttribute="leading" constant="8" id="imt-zk-oB0"/>
                                             </constraints>
                                         </view>
-                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="tKd-oB-2pr">
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="tKd-oB-2pr">
                                             <rect key="frame" x="197" y="95" width="20" height="20"/>
                                         </activityIndicatorView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="QIh-9j-8fU" firstAttribute="leading" secondItem="yn7-bD-r0N" secondAttribute="leadingMargin" constant="-8" id="KS8-EW-oAR"/>
-                                        <constraint firstAttribute="centerY" secondItem="tKd-oB-2pr" secondAttribute="centerY" id="abU-ee-j04"/>
+                                        <constraint firstAttribute="centerY" secondItem="tKd-oB-2pr" secondAttribute="centerY" constant="-10.25" id="abU-ee-j04"/>
                                         <constraint firstItem="rYe-lb-hO1" firstAttribute="top" secondItem="yn7-bD-r0N" secondAttribute="topMargin" constant="-8" id="beI-G8-TOq"/>
                                         <constraint firstItem="QIh-9j-8fU" firstAttribute="top" secondItem="yn7-bD-r0N" secondAttribute="topMargin" constant="-8" id="bzc-2U-mZE"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="QIh-9j-8fU" secondAttribute="bottom" constant="-8" id="fdn-x0-AzH"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="QIh-9j-8fU" secondAttribute="bottom" constant="-28.5" id="fdn-x0-AzH"/>
                                         <constraint firstItem="rYe-lb-hO1" firstAttribute="leading" secondItem="yn7-bD-r0N" secondAttribute="leadingMargin" constant="-8" id="p2B-rh-Ef0"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="rYe-lb-hO1" secondAttribute="trailing" constant="-8" id="rKg-Yt-GI2"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="QIh-9j-8fU" secondAttribute="trailing" constant="-8" id="sN9-VW-ZzH"/>
@@ -583,6 +583,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="tsl-Nk-0bq"/>
-        <segue reference="vvA-oK-Ctj"/>
+        <segue reference="uQ2-y9-6IQ"/>
     </inferredMetricsTieBreakers>
 </document>

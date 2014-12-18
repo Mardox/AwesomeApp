@@ -163,6 +163,7 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
             controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
             controller.navigationItem.leftItemsSupplementBackButton = true
             controller._albumID = currentMenu["AlbumID"] as String!
+            controller._flickrAPIKey = self.dict.objectForKey("Flickr API Key") as String!
             displayAd()
             
         }else if segue.identifier == "Social" {

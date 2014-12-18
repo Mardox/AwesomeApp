@@ -141,10 +141,12 @@
 	<key>Activate Admob</key>
 	<true/>
 	<key>Admob_Interstitial_ID</key>
-	<string>ca-app-pub-7607380003153721/6164025093</string>
+	<string>YOUR ADMOB ID</string>
 	<key>Admob_probability</key>
 	<real>0.3</real>
 	<key>Internal WebView</key>
 	<true/>
+	<key>Flickr API Key</key>
+	<string>YOUR FLICKR API KEY</string>
 </dict>
 </plist>
