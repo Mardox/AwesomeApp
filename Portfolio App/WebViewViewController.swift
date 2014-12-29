@@ -20,11 +20,15 @@ class WebViewViewController: UIViewController, UISplitViewControllerDelegate {
         }
     }
 
-    var address = ""
+    var address : String = ""
     
     func loadAddressURL(){
+
+        address = _webAddress as String!
         
-        let requesturl = NSURL(string: _webAddress as String)!
+        address = address.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        
+        let requesturl = NSURL(string: address)!
         let request = NSURLRequest(URL: requesturl)
         webViewElement.loadRequest(request)
         
@@ -41,17 +45,27 @@ class WebViewViewController: UIViewController, UISplitViewControllerDelegate {
         super.viewDidLoad()
         
         self.splitViewController?.delegate = self
-        
-        loadAddressURL()
 
         //Looks for single or multiple taps.
         var tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
         self.view.addGestureRecognizer(tap)
         
-        
-        
+        startFetching()
         
     }
+    
+    
+    
+    func startFetching(){
+        
+        if AppDelegate.isConnectedToNetwork(){
+            loadAddressURL()
+        }else{
+            AppDelegate.displayInternetError(self)
+        }
+        
+    }
+    
     
 //    func splitViewController(svc: UISplitViewController, shouldHideViewController vc: UIViewController, inOrientation orientation: UIInterfaceOrientation) -> Bool {
 //        return false

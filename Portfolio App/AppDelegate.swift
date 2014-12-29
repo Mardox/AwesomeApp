@@ -18,6 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         var navigationBarAppearace = UINavigationBar.appearance()
         
+        let splitViewController = self.window!.rootViewController as UISplitViewController
+        let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as UINavigationController
+        navigationController.topViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
+        splitViewController.delegate = self
+        
 //        navigationBarAppearace.tintColor = UIColor.whiteColor()
 //        navigationBarAppearace.barTintColor = UIColor(red: 0.2, green: 0.2, blue: 0.5, alpha: 1.0)
 //        navigationBarAppearace.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
@@ -81,6 +86,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             return false
         }
         
+    }
+    
+    
+    class func displayInternetError(viewController :UIViewController){
+        
+        // var handler: (Int) -> Void
+        // handler = fHandler
+        
+        let alertController = UIAlertController(title: "Internet Error", message:
+            "No Internet Connection!", preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+        viewController.presentViewController(alertController, animated: true, completion: nil)
+        
+    }
+    
+    
+    class func isConnectedToNetwork() -> Bool {
+        
+        var zeroAddress = sockaddr_in(sin_len: 0, sin_family: 0, sin_port: 0, sin_addr: in_addr(s_addr: 0), sin_zero: (0, 0, 0, 0, 0, 0, 0, 0))
+        zeroAddress.sin_len = UInt8(sizeofValue(zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        let defaultRouteReachability = withUnsafePointer(&zeroAddress) {
+            SCNetworkReachabilityCreateWithAddress(nil, UnsafePointer($0)).takeRetainedValue()
+        }
+        
+        var flags: SCNetworkReachabilityFlags = 0
+        if SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) == 0 {
+            return false
+        }
+        
+        let isReachable = (flags & UInt32(kSCNetworkFlagsReachable)) != 0
+        let needsConnection = (flags & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
+        
+        return (isReachable && !needsConnection) ? true : false
     }
 
 

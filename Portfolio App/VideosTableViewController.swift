@@ -118,7 +118,18 @@ class VideosTableViewController: UITableViewController, UITableViewDataSource, U
         self.searchYouTubeVideoUrlString = "https://gdata.youtube.com/feeds/api/playlists/\(playlistID)"
         currentPageNumber=0
         videoList = NSMutableArray()
-        self.fetchVideoDetails()
+        startFetching()
+    }
+    
+    
+    func startFetching(){
+        
+        if AppDelegate.isConnectedToNetwork(){
+            //fetch the data
+            self.fetchVideoDetails()
+        }else{
+            AppDelegate.displayInternetError(self)
+        }
         
     }
     
@@ -143,7 +154,7 @@ class VideosTableViewController: UITableViewController, UITableViewDataSource, U
       
         var totalRows : Int!
         if (videoList.count == 0) {
-            totalRows=videoList.count
+            totalRows = videoList.count
         }else {
             totalRows = videoList.count+1
         }
@@ -400,7 +411,7 @@ class VideosTableViewController: UITableViewController, UITableViewDataSource, U
 //        dataDictionary["orderby"] = "relevance" //"published"
         dataDictionary["v"] = "2"
         dataDictionary["alt"] = "json"
-        dataDictionary["max-results"] = 25
+        dataDictionary["max-results"] = 50 as Int
         dataDictionary["start-index"] = currentPageNumber+1
         //dataDictionary["q"] = "PLlPfJp10zfshCSUKAEmixkCFG7SgvY3NZ"
         

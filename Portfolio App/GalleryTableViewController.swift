@@ -32,13 +32,23 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
         self.splitViewController?.delegate = self
+        startFetching()
+    }
+    
+    
+    func startFetching(){
         
-        //fetch the data
-        flickrFetch()
+        if AppDelegate.isConnectedToNetwork(){
+            //fetch the data
+            flickrFetch()
+        }else{
+            AppDelegate.displayInternetError(self)
+        }
         
     }
+    
+
     
     override func didReceiveMemoryWarning()
     {

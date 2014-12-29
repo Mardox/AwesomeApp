@@ -19,6 +19,8 @@ class RadioViewController: UIViewController, GADBannerViewDelegate, GADInterstit
     var bannerDisplayed = false
     var statusbarHeight:CGFloat = 70.0
     
+    var url:NSURL?
+    
     var _radioUrl: AnyObject? {
         didSet {
             // Update the view.
@@ -40,26 +42,42 @@ class RadioViewController: UIViewController, GADBannerViewDelegate, GADInterstit
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.title = _radioTitle as String!
-
-        var url:NSURL = NSURL(string: _radioUrl as String!)!
+        url = NSURL(string: _radioUrl as String!)!
+        startFetching()
+    }
+    
+    
+    
+    func startFetching(){
         
+        if AppDelegate.isConnectedToNetwork(){
+            startRadio()
+        }else{
+            AppDelegate.displayInternetError(self)
+        }
+        
+    }
+
+    
+    func startRadio(){
+    
         moviePlayer = MPMoviePlayerController(contentURL: url)
         
-//        moviePlayer.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
-//        moviePlayer.view.sizeToFit()
+        //        moviePlayer.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+        //        moviePlayer.view.sizeToFit()
         
         moviePlayer.movieSourceType = MPMovieSourceType.Streaming
         
-//        self.view.addSubview(moviePlayer.view)
-//        moviePlayer.fullscreen = true
-
+        //        self.view.addSubview(moviePlayer.view)
+        //        moviePlayer.fullscreen = true
+        
         moviePlayer.controlStyle = MPMovieControlStyle.Embedded
         
         changePlayState()
         
-//       loadAdmobBanner()
+        //       loadAdmobBanner()
+        
         
     }
     

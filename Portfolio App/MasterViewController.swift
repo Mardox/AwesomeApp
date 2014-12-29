@@ -27,7 +27,6 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
     var playlists: [Dictionary<String, String>] = []
     var playlistDetails = [String: String]()
 
-
     var detailViewController: GalleryTableViewController? = nil
    // var objects = NSMutableArray()
 
@@ -66,6 +65,8 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
             self.performSegueWithIdentifier("Social", sender: indexPath)
         }else if currentPlaylist["Type"] == "Radio" {
             self.performSegueWithIdentifier("Radio", sender: indexPath)
+        }else if currentPlaylist["Type"] == "RSS" {
+            self.performSegueWithIdentifier("RSS", sender: indexPath)
         }
 
         let admobActive: Bool = self.dict.objectForKey("Activate Admob") as Bool!
@@ -74,11 +75,12 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
         }
         
         
+        
     }
     
     
     
-    
+   
     
     
     //Interstitial func
@@ -181,6 +183,14 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
             controller._radioTitle = currentMenu["Title"] as String!
             displayAd()
             
+        }else if segue.identifier == "RSS" {
+            
+            var controller = (segue.destinationViewController as? UINavigationController)?.topViewController as RSSTableViewController
+            controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+            controller.navigationItem.leftItemsSupplementBackButton = true
+            controller._RSSUrl = currentMenu["Url"] as String!
+            displayAd()
+            
         }
         
         
@@ -221,6 +231,8 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
             self.performSegueWithIdentifier("Social", sender: indexPath)
         }else if currentMenu["Type"] == "Radio" {
             self.performSegueWithIdentifier("Radio", sender: indexPath)
+        }else if currentMenu["Type"] == "RSS" {
+            self.performSegueWithIdentifier("RSS", sender: indexPath)
         }
         
         
