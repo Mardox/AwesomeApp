@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Portfolio App/VideosTableViewController.swift"
-            timestampString = "441516578.655688"
+            timestampString = "441518723.079043"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "418"
-            endingLineNumber = "418"
+            startingLineNumber = "426"
+            endingLineNumber = "426"
             landmarkName = "fetchVideoDetails()"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Portfolio App/VideosTableViewController.swift"
-            timestampString = "441516868.555028"
+            timestampString = "441518723.079043"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "419"
-            endingLineNumber = "419"
+            startingLineNumber = "427"
+            endingLineNumber = "427"
             landmarkName = "fetchVideoDetails()"
             landmarkType = "5">
          </BreakpointContent>

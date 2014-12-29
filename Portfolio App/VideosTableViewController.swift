@@ -306,6 +306,14 @@ class VideosTableViewController: UITableViewController, UITableViewDataSource, U
         return cell;
     }
     
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        var loadMoreIndex:Int = Int(videoList.count / 2)
+        if indexPath.row ==  loadMoreIndex{
+//            ++self.currentPageNumber
+            startFetching()
+        }
+    }
+    
     //didSelectRowAtIndexPath
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
@@ -412,7 +420,7 @@ class VideosTableViewController: UITableViewController, UITableViewDataSource, U
         dataDictionary["v"] = "2"
         dataDictionary["alt"] = "json"
         dataDictionary["max-results"] = 50 as Int
-        dataDictionary["start-index"] = currentPageNumber+1
+        dataDictionary["start-index"] = currentPageNumber*50+1
         //dataDictionary["q"] = "PLlPfJp10zfshCSUKAEmixkCFG7SgvY3NZ"
         
         let url:NSURL = NSURL(string: searchYouTubeVideoUrlString)!
@@ -420,9 +428,9 @@ class VideosTableViewController: UITableViewController, UITableViewDataSource, U
             if responseObject == nil {
                 //Update UI in main-thread
                 dispatch_async(dispatch_get_main_queue(), {
-                    var alert = UIAlertController(title: "Error", message: "Something wrong going on.", preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Cancel, handler:self.alertViewCancelButtonHandler))
-                    self.presentViewController(alert, animated: true, completion: nil)
+//                    var alert = UIAlertController(title: "Error", message: "Something wrong going on.", preferredStyle: UIAlertControllerStyle.Alert)
+//                    alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Cancel, handler:self.alertViewCancelButtonHandler))
+//                    self.presentViewController(alert, animated: true, completion: nil)
                 })
             }else {
                 //Update UI in main-thread
