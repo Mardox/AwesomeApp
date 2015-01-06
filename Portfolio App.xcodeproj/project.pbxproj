@@ -39,6 +39,11 @@
 		E289EA051A16D1DA00BB14D8 /* HttpServiceDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E289EA021A16D1DA00BB14D8 /* HttpServiceDataTask.swift */; };
 		E289EA061A16D1DA00BB14D8 /* ImageDownloadingTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E289EA031A16D1DA00BB14D8 /* ImageDownloadingTask.swift */; };
 		E289EA071A16D1DA00BB14D8 /* MR_YouTubeApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E289EA041A16D1DA00BB14D8 /* MR_YouTubeApiManager.swift */; };
+		E2BB9C521A5BC37E000396E3 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2BB9C511A5BC37E000396E3 /* Firebase.framework */; };
+		E2BB9C541A5BC3CB000396E3 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E2BB9C531A5BC3CB000396E3 /* libicucore.dylib */; };
+		E2BB9C561A5BC3D7000396E3 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E2BB9C551A5BC3D7000396E3 /* libc++.dylib */; };
+		E2BB9C581A5BC3E1000396E3 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2BB9C571A5BC3E1000396E3 /* CFNetwork.framework */; };
+		E2BB9C5A1A5BC3EC000396E3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2BB9C591A5BC3EC000396E3 /* Security.framework */; };
 		E2C52F301A293DE500E4FAB9 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C52F2F1A293DE500E4FAB9 /* WebViewViewController.swift */; };
 		E2E21BC01A1750D5001216D0 /* GalleryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E21BBF1A1750D5001216D0 /* GalleryTableViewCell.swift */; };
 		E2F923C81A42E0D10067BAAC /* RSSTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F923C71A42E0D10067BAAC /* RSSTableViewController.swift */; };
@@ -121,6 +126,11 @@
 		E289EA021A16D1DA00BB14D8 /* HttpServiceDataTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpServiceDataTask.swift; sourceTree = "<group>"; };
 		E289EA031A16D1DA00BB14D8 /* ImageDownloadingTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloadingTask.swift; sourceTree = "<group>"; };
 		E289EA041A16D1DA00BB14D8 /* MR_YouTubeApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MR_YouTubeApiManager.swift; sourceTree = "<group>"; };
+		E2BB9C511A5BC37E000396E3 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
+		E2BB9C531A5BC3CB000396E3 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		E2BB9C551A5BC3D7000396E3 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		E2BB9C571A5BC3E1000396E3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		E2BB9C591A5BC3EC000396E3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		E2C52F2F1A293DE500E4FAB9 /* WebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		E2E21BBF1A1750D5001216D0 /* GalleryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryTableViewCell.swift; sourceTree = "<group>"; };
 		E2F923C71A42E0D10067BAAC /* RSSTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSTableViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +142,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2BB9C5A1A5BC3EC000396E3 /* Security.framework in Frameworks */,
+				E2BB9C581A5BC3E1000396E3 /* CFNetwork.framework in Frameworks */,
+				E2BB9C561A5BC3D7000396E3 /* libc++.dylib in Frameworks */,
+				E2BB9C541A5BC3CB000396E3 /* libicucore.dylib in Frameworks */,
 				E27D389A1A3A4B6B00A28709 /* SystemConfiguration.framework in Frameworks */,
 				E27D38981A3A4B6200A28709 /* StoreKit.framework in Frameworks */,
 				E27D38961A3A4B5700A28709 /* MessageUI.framework in Frameworks */,
@@ -139,6 +153,7 @@
 				E27D38921A3A4B4100A28709 /* EventKit.framework in Frameworks */,
 				E27D38901A3A4B3200A28709 /* CoreTelephony.framework in Frameworks */,
 				E27D388E1A3A4B2C00A28709 /* CoreGraphics.framework in Frameworks */,
+				E2BB9C521A5BC37E000396E3 /* Firebase.framework in Frameworks */,
 				E27D388C1A3A4B1C00A28709 /* AVFoundation.framework in Frameworks */,
 				E27D388A1A3A4B1700A28709 /* AudioToolbox.framework in Frameworks */,
 				E27D38881A3A4B0800A28709 /* AdSupport.framework in Frameworks */,
@@ -227,6 +242,11 @@
 		E27D389B1A3A4CB600A28709 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E2BB9C591A5BC3EC000396E3 /* Security.framework */,
+				E2BB9C571A5BC3E1000396E3 /* CFNetwork.framework */,
+				E2BB9C551A5BC3D7000396E3 /* libc++.dylib */,
+				E2BB9C531A5BC3CB000396E3 /* libicucore.dylib */,
+				E2BB9C511A5BC37E000396E3 /* Firebase.framework */,
 				E27D38991A3A4B6B00A28709 /* SystemConfiguration.framework */,
 				E27D38971A3A4B6200A28709 /* StoreKit.framework */,
 				E27D38951A3A4B5700A28709 /* MessageUI.framework */,
@@ -625,6 +645,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Portfolio App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -644,6 +668,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Portfolio App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

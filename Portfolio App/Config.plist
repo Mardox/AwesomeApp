@@ -18,6 +18,18 @@
 		</dict>
 		<dict>
 			<key>Type</key>
+			<string>Menu</string>
+			<key>PlaylistID</key>
+			<string>PL1DD10E84B9B08A35</string>
+			<key>Title</key>
+			<string>Main Menu</string>
+			<key>Subtitle</key>
+			<string>Main</string>
+			<key>Icon</key>
+			<string>YouTube</string>
+		</dict>
+		<dict>
+			<key>Type</key>
 			<string>RSS</string>
 			<key>Url</key>
 			<string>http://feeds.mashable.com/Mashable?format=xml</string>
@@ -153,7 +165,7 @@
 	<key>Activate Admob</key>
 	<true/>
 	<key>Admob_Interstitial_ID</key>
-	<string>[YOUR ADMOB ID]</string>
+	<string>ca-app-pub-7607380003153721/6164025093</string>
 	<key>Admob_probability</key>
 	<real>0.3</real>
 	<key>Internal WebView</key>

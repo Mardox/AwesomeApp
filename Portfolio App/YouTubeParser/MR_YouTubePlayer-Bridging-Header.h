@@ -39,4 +39,6 @@
 #import "GADInterstitialDelegate.h"
 #import "GADInterstitial.h"
 
+#import <Firebase/Firebase.h>
+
 #endif

@@ -24,7 +24,7 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
     
     var dict : NSDictionary!
     
-    var playlists: [Dictionary<String, String>] = []
+    var menuContent: [Dictionary<String, String>] = []
     var playlistDetails = [String: String]()
 
     var detailViewController: GalleryTableViewController? = nil
@@ -43,44 +43,53 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
         
         super.viewDidLoad()
         var appName : String
+        
+        
         let path = NSBundle.mainBundle().pathForResource("Config", ofType: "plist")
         self.dict = NSDictionary(contentsOfFile: path!) as NSDictionary!
         
         let title: String = dict.objectForKey("appName") as String!
+        self.menuContent = dict.objectForKey("Menu") as Array<Dictionary<String, String>>
         
         self.title = title
-
-        self.playlists = dict.objectForKey("Menu") as Array<Dictionary<String, String>>
         
         //Load the first detail view in the plist
-        var currentPlaylist = self.playlists[0] as Dictionary
-        var indexPath : NSIndexPath =  NSIndexPath(forRow: 0, inSection: 0)
-        if currentPlaylist["Type"] == "Video" {
-            self.performSegueWithIdentifier("Video", sender: indexPath)
-        }else if currentPlaylist["Type"] == "Website" {
-            self.performSegueWithIdentifier("Website", sender: indexPath)
-        }else if currentPlaylist["Type"] == "Gallery" {
-            self.performSegueWithIdentifier("Flickr", sender: indexPath)
-        }else if currentPlaylist["Type"] == "Social" {
-            self.performSegueWithIdentifier("Social", sender: indexPath)
-        }else if currentPlaylist["Type"] == "Radio" {
-            self.performSegueWithIdentifier("Radio", sender: indexPath)
-        }else if currentPlaylist["Type"] == "RSS" {
-            self.performSegueWithIdentifier("RSS", sender: indexPath)
-        }
+//        var currentPlaylist = self.menuContent[0] as Dictionary
+//        var indexPath : NSIndexPath =  NSIndexPath(forRow: 0, inSection: 0)
+//        if currentPlaylist["Type"] == "Video" {
+//            self.performSegueWithIdentifier("Video", sender: indexPath)
+//        }else if currentPlaylist["Type"] == "Website" {
+//            self.performSegueWithIdentifier("Website", sender: indexPath)
+//        }else if currentPlaylist["Type"] == "Gallery" {
+//            self.performSegueWithIdentifier("Flickr", sender: indexPath)
+//        }else if currentPlaylist["Type"] == "Social" {
+//            self.performSegueWithIdentifier("Social", sender: indexPath)
+//        }else if currentPlaylist["Type"] == "Radio" {
+//            self.performSegueWithIdentifier("Radio", sender: indexPath)
+//        }else if currentPlaylist["Type"] == "RSS" {
+//            self.performSegueWithIdentifier("RSS", sender: indexPath)
+//        }else if currentPlaylist["Type"] == "Menu" {
+//            //self.performSegueWithIdentifier("RSS", sender: indexPath)
+//        }
 
         let admobActive: Bool = self.dict.objectForKey("Activate Admob") as Bool!
         if admobActive{
             interstitial = createAndLoadInterstitial()
         }
         
+        var myRootRef = Firebase(url:"https://awesome-app.firebaseio.com/")
+        
+        //myRootRef.setValue("Do you have data? You'll love Firebase now.")
+        // Read data and react to changes
+        myRootRef.observeEventType(.Value, withBlock: {
+            snapshot in
+            println("\(snapshot.key) -> \(snapshot.value)")
+            println(snapshot.value.objectForKey("title"))
+        })
+
         
         
     }
-    
-    
-    
-   
     
     
     //Interstitial func
@@ -139,8 +148,10 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         
+//        println(self.menuContent)
+        println(sender.row)
         
-        var currentMenu = self.playlists[sender.row] as Dictionary
+        var currentMenu = self.menuContent[sender.row] as Dictionary
         
         if segue.identifier == "Website" {
             
@@ -191,6 +202,12 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
             controller._RSSUrl = currentMenu["Url"] as String!
             displayAd()
             
+        }else if segue.identifier == "Menu" {
+            
+            var controller = segue.destinationViewController as MasterViewController
+            controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+            controller.navigationItem.leftItemsSupplementBackButton = true
+            
         }
         
         
@@ -209,7 +226,9 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        var currentMenu = self.playlists[indexPath.row] as Dictionary
+        var currentMenu = self.menuContent[indexPath.row] as Dictionary
+        
+        println("IndexPath: \(indexPath.row)")
         if currentMenu["Type"] == "Video" {
             self.performSegueWithIdentifier("Video", sender: indexPath)
         }else if currentMenu["Type"] == "Website" {
@@ -233,7 +252,12 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
             self.performSegueWithIdentifier("Radio", sender: indexPath)
         }else if currentMenu["Type"] == "RSS" {
             self.performSegueWithIdentifier("RSS", sender: indexPath)
+        }else if currentMenu["Type"] == "Menu" {
+            self.performSegueWithIdentifier("Menu", sender: indexPath)
         }
+        
+        
+        
         
         
     }
@@ -244,13 +268,13 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return playlists.count
+        return menuContent.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell:MenuTableViewCell? = tableView.dequeueReusableCellWithIdentifier("Cell") as? MenuTableViewCell
         
-        var currentPlaylist = playlists[indexPath.row] as Dictionary
+        var currentPlaylist = menuContent[indexPath.row] as Dictionary
         cell!.menuCellTitle.text = currentPlaylist["Title"] as String!
         cell!.menuCellSubtitle.text = currentPlaylist["Subtitle"]
         cell!.menuCellImage.image  = UIImage(named: currentPlaylist["Icon"] as String!)!

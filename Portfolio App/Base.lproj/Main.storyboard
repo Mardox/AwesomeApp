@@ -123,8 +123,18 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hpt-aI-gyJ">
+                    <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <segue destination="7bK-jq-Zjz" kind="show" identifier="Menu" id="JCq-QV-aqb"/>
+                    </connections>
+                </button>
             </objects>
-            <point key="canvasLocation" x="709" y="-630"/>
+            <point key="canvasLocation" x="697" y="-625"/>
         </scene>
         <!--Gallery-->
         <scene sceneID="iGG-ZH-gjd">
@@ -581,7 +591,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dgb-5i-4m0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1324" y="-625"/>
+            <point key="canvasLocation" x="1328" y="-625"/>
         </scene>
         <!--Feed-->
         <scene sceneID="jdy-76-CC3">
@@ -692,6 +702,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="tsl-Nk-0bq"/>
-        <segue reference="Eg2-Fs-IdJ"/>
+        <segue reference="vvA-oK-Ctj"/>
     </inferredMetricsTieBreakers>
 </document>
