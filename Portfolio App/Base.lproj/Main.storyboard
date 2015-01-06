@@ -120,6 +120,7 @@
                         <segue destination="Od9-GC-8Zt" kind="showDetail" identifier="Website" id="vvA-oK-Ctj"/>
                         <segue destination="5ae-2q-62R" kind="showDetail" identifier="Radio" id="6j4-wJ-WYS"/>
                         <segue destination="B6i-yK-jr0" kind="showDetail" identifier="RSS" id="55j-oA-YHg"/>
+                        <segue destination="loa-ko-K8d" kind="showDetail" identifier="Stream" id="kpr-8a-TRq"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
@@ -698,6 +699,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Wz-EI-QQB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2388" y="315"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="xYq-VF-MjW">
+            <objects>
+                <viewController id="sGP-n4-aTn" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yWr-88-HW1"/>
+                        <viewControllerLayoutGuide type="bottom" id="IMX-YN-1cQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XgB-Rh-gxy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="wps-uM-nTC"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hqw-nh-rAj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2924" y="1163"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="n89-sF-fHB">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="loa-ko-K8d" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QRo-9d-foK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sGP-n4-aTn" kind="relationship" relationship="rootViewController" id="JW5-yh-uTm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tee-Z5-Kpd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2924" y="315"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
