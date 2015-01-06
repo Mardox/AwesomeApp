@@ -76,7 +76,7 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
                 
                 self.fireBaseContent = snapshot as FDataSnapshot
                 let title: String = self.fireBaseContent?.value.objectForKey("title") as String
-                println(self.fireBaseContent?.value.objectForKey("Menu"))
+                //println(self.fireBaseContent?.value.objectForKey("Menu"))
                 self.currentM = [snapshot.value]
                 self.currentM = self.currentM.valueForKey("Menu") as NSArray
                 self.currentM = self.currentM[0] as NSArray
@@ -305,7 +305,23 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
         var currentPlaylist = self.currentM[indexPath.row] as NSDictionary
         cell!.menuCellTitle.text = currentPlaylist.valueForKey("Title") as String!
         cell!.menuCellSubtitle.text = currentPlaylist.valueForKey("Subtitle") as String!
-        cell!.menuCellImage.image  = UIImage(named: currentPlaylist.valueForKey("Icon") as String!)!
+        
+        
+        
+        
+        //let decodedData = NSData(base64EncodedString: currentPlaylist.valueForKey("Icon") as String!, options: NSDataBase64DecodingOptions(rawValue: 0)!)
+        var data = currentPlaylist.valueForKey("Icon") as String!
+        var decodedData = NSData(base64EncodedString: data, options: NSDataBase64DecodingOptions(rawValue: 0))
+        var decodedimage = UIImage(data: decodedData!)
+        //println(decodedimage)
+        cell!.menuCellImage.image = decodedimage as UIImage!
+        
+        
+        
+        //cell!.menuCellImage.image  = UIImage(named: currentPlaylist.valueForKey("Icon") as String!)!
+        
+        
+        
         return cell!;
         
     }
