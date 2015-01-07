@@ -75,7 +75,7 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
                 snapshot in
                 
                 self.fireBaseContent = snapshot as FDataSnapshot
-                let title: String = self.fireBaseContent?.value.objectForKey("title") as String
+                let title: String = self.fireBaseContent?.value.objectForKey("appName") as String
                 //println(self.fireBaseContent?.value.objectForKey("Menu"))
                 self.currentM = [snapshot.value]
                 self.currentM = self.currentM.valueForKey("Menu") as NSArray
