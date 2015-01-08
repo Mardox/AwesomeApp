@@ -304,7 +304,7 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
         
         var currentPlaylist = self.currentM[indexPath.row] as NSDictionary
         cell!.menuCellTitle.text = currentPlaylist.valueForKey("Title") as String!
-        cell!.menuCellSubtitle.text = currentPlaylist.valueForKey("Subtitle") as String!
+        cell!.menuCellSubtitle.text = currentPlaylist.valueForKey("SubTitle") as String!
         
         
         
