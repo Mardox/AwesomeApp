@@ -67,7 +67,11 @@ class GalleryTableViewController: UITableViewController, UITableViewDataSource,U
         // Flickr API Call: 
 
         let GalleryFlickrPhotosetID: String = self._albumID as String!
-        let FlickrAPIKey: String = self._flickrAPIKey as String!
+        
+
+//        let FlickrAPIKey: String = self._flickrAPIKey as String!
+        
+        let FlickrAPIKey: String = NSUserDefaults.standardUserDefaults().objectForKey("FlickrAPI") as String!
         
         
         var url : String = "https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=\(FlickrAPIKey)&photoset_id=\(GalleryFlickrPhotosetID)&format=json&nojsoncallback=1"

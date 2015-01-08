@@ -70,6 +70,7 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
             
         }else{
             
+            
             //Load the menu values
             
             //from firebase
@@ -93,6 +94,10 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
                 self.title = title
                 
                
+                var flickrAPI = self.fireBaseContent?.value.objectForKey("Flickr_API") as String!
+                NSUserDefaults.standardUserDefaults().setObject(flickrAPI, forKey: "FlickrAPI")
+                
+                
                 var adProbability = self.fireBaseContent?.value.objectForKey("Admob_probability") as Double!
                 NSUserDefaults.standardUserDefaults().setObject(adProbability, forKey: "AdProbability")
                 
@@ -101,6 +106,9 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
                 
                 self.admobIntId = self.fireBaseContent?.value.objectForKey("Admob_ID") as String!
                 NSUserDefaults.standardUserDefaults().setObject(self.admobIntId, forKey: "AdmobAdID")
+                
+                
+                
                 NSUserDefaults.standardUserDefaults().synchronize()
                 
                 
