@@ -135,6 +135,8 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
                     self.performSegueWithIdentifier("RSS", sender: indexPath)
                 }else if currentPlaylist.valueForKey("Type") as String == "Menu" {
                     self.performSegueWithIdentifier("Menu", sender: indexPath)
+                }else if currentPlaylist.valueForKey("Type") as String == "Stream" {
+                    self.performSegueWithIdentifier("Stream", sender: indexPath)
                 }
                 
                 
@@ -263,6 +265,15 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
             controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
             controller.navigationItem.leftItemsSupplementBackButton = true
             controller.currentM =  [self.currentM[sender.row]] as NSArray
+        }else if segue.identifier == "Stream" {
+            
+            var controller = (segue.destinationViewController as? UINavigationController)?.topViewController as LiveStreamViewController
+            controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+            controller.navigationItem.leftItemsSupplementBackButton = true
+            controller._streamUrl = currentMenu.valueForKey("Url") as String!
+            controller._streamTitle = currentMenu.valueForKey("Title") as String!
+            displayAd()
+            
         }
         
         
@@ -311,10 +322,9 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
             self.performSegueWithIdentifier("RSS", sender: indexPath)
         }else if currentMenu.valueForKey("Type") as String == "Menu" {
             self.performSegueWithIdentifier("Menu", sender: indexPath)
+        }else if currentMenu.valueForKey("Type") as String == "Stream" {
+            self.performSegueWithIdentifier("Stream", sender: indexPath)
         }
-        
-        
-        
         
         
     }

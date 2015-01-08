@@ -46,6 +46,7 @@
 		E2BB9C5A1A5BC3EC000396E3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2BB9C591A5BC3EC000396E3 /* Security.framework */; };
 		E2C52F301A293DE500E4FAB9 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C52F2F1A293DE500E4FAB9 /* WebViewViewController.swift */; };
 		E2E21BC01A1750D5001216D0 /* GalleryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E21BBF1A1750D5001216D0 /* GalleryTableViewCell.swift */; };
+		E2E94A491A5E83E000B28C05 /* LiveStreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E94A481A5E83E000B28C05 /* LiveStreamViewController.swift */; };
 		E2F923C81A42E0D10067BAAC /* RSSTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F923C71A42E0D10067BAAC /* RSSTableViewController.swift */; };
 		E2F923CA1A42E6680067BAAC /* XmlParserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F923C91A42E6680067BAAC /* XmlParserManager.swift */; };
 /* End PBXBuildFile section */
@@ -133,6 +134,7 @@
 		E2BB9C591A5BC3EC000396E3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		E2C52F2F1A293DE500E4FAB9 /* WebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		E2E21BBF1A1750D5001216D0 /* GalleryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryTableViewCell.swift; sourceTree = "<group>"; };
+		E2E94A481A5E83E000B28C05 /* LiveStreamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveStreamViewController.swift; sourceTree = "<group>"; };
 		E2F923C71A42E0D10067BAAC /* RSSTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSTableViewController.swift; sourceTree = "<group>"; };
 		E2F923C91A42E6680067BAAC /* XmlParserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XmlParserManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -362,6 +364,7 @@
 				E289E9F11A16C60D00BB14D8 /* GalleryItemViewController.swift */,
 				E2C52F2F1A293DE500E4FAB9 /* WebViewViewController.swift */,
 				E27D389E1A3BB9E400A28709 /* RadioViewController.swift */,
+				E2E94A481A5E83E000B28C05 /* LiveStreamViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -502,6 +505,7 @@
 				E289EA061A16D1DA00BB14D8 /* ImageDownloadingTask.swift in Sources */,
 				E27D389F1A3BB9E400A28709 /* RadioViewController.swift in Sources */,
 				E289E9F21A16C60D00BB14D8 /* GalleryItemViewController.swift in Sources */,
+				E2E94A491A5E83E000B28C05 /* LiveStreamViewController.swift in Sources */,
 				E223AC921A43CCCD007986EA /* RSSTableViewCell.swift in Sources */,
 				E2F923CA1A42E6680067BAAC /* XmlParserManager.swift in Sources */,
 				E2F923C81A42E0D10067BAAC /* RSSTableViewController.swift in Sources */,

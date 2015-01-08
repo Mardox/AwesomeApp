@@ -700,10 +700,10 @@
             </objects>
             <point key="canvasLocation" x="2388" y="315"/>
         </scene>
-        <!--View Controller-->
+        <!--Live Stream View Controller-->
         <scene sceneID="xYq-VF-MjW">
             <objects>
-                <viewController id="sGP-n4-aTn" sceneMemberID="viewController">
+                <viewController id="sGP-n4-aTn" customClass="LiveStreamViewController" customModule="Portfolio_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yWr-88-HW1"/>
                         <viewControllerLayoutGuide type="bottom" id="IMX-YN-1cQ"/>
