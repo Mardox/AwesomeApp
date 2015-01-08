@@ -12,6 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
     var window: UIWindow?
+    
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -70,16 +71,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     private class func instance() -> AppDelegate{
         return UIApplication.sharedApplication().delegate as AppDelegate
     }
+    
+    
+    
+    
 
     class func probabilityCalculator()->Bool{
+    
+        let probability: Double = NSUserDefaults.standardUserDefaults().objectForKey("AdProbability") as Double!
+//        let path = NSBundle.mainBundle().pathForResource("Config", ofType: "plist")
+//        let dict = NSDictionary(contentsOfFile: path!) as NSDictionary!
+//        let probability = dict.objectForKey("Admob_probability") as Double!
+//        let probabilityConstant = Int(probability.doubleValue * 10)
         
-        let path = NSBundle.mainBundle().pathForResource("Config", ofType: "plist")
-        let dict = NSDictionary(contentsOfFile: path!) as NSDictionary!
-        
-        let probability = dict.objectForKey("Admob_probability") as Double!
         let probabilityConstant = Int(probability * 10)
         var randomNumber = Int(arc4random_uniform(10))
-        
         if randomNumber < probabilityConstant {
             return true
         }else{

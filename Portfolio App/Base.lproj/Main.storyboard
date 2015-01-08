@@ -112,7 +112,7 @@
                             <outlet property="delegate" destination="7bK-jq-Zjz" id="RA6-mI-bju"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Chimes Photography" id="Zdf-7t-Un8"/>
+                    <navigationItem key="navigationItem" id="Zdf-7t-Un8"/>
                     <connections>
                         <segue destination="sEh-eV-mku" kind="showDetail" identifier="Flickr" id="YNR-lx-TL8"/>
                         <segue destination="5uz-cb-SsG" kind="showDetail" identifier="Video" id="vJ3-XJ-DjF"/>

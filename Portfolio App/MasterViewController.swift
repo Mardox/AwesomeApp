@@ -20,7 +20,8 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
     var loadRequestAllowed = true
     var bannerDisplayed = false
     let statusbarHeight:CGFloat = 20.0
-    
+    var admobIntId: String!
+    var adActive: String!
     
     var dict : NSDictionary!
     
@@ -59,7 +60,11 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
             //Menu values are already set - this is a sub menu
             var tempMainContent : NSDictionary = self.currentM[0] as NSDictionary
             self.currentM = tempMainContent.valueForKey("Menu") as NSArray
-            //self.menuContent = tempMainContent[0].objectForKey("Menu") as? Array<Dictionary<String, String>>
+            
+            self.adActive = NSUserDefaults.standardUserDefaults().objectForKey("AdActive") as String!
+            if (self.adActive! == "True") {
+                self.interstitial = self.createAndLoadInterstitial()
+            }
             
             
         }else{
@@ -75,17 +80,36 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
                 snapshot in
                 
                 self.fireBaseContent = snapshot as FDataSnapshot
-                let title: String = self.fireBaseContent?.value.objectForKey("appName") as String
+                var title = self.fireBaseContent?.value.objectForKey("appName") as String
                 //println(self.fireBaseContent?.value.objectForKey("Menu"))
                 self.currentM = [snapshot.value]
                 self.currentM = self.currentM.valueForKey("Menu") as NSArray
                 self.currentM = self.currentM[0] as NSArray
-                self.menuContent = self.fireBaseContent!.value.objectForKey("Menu") as? Array<Dictionary<String, String>>
-                self.title = title
+//                self.menuContent = self.fireBaseContent!.value.objectForKey("Menu") as? Array<Dictionary<String, String>>
+
                 self.tableView.reloadData()
                 
                 self.title = title
                 
+               
+                var adProbability = self.fireBaseContent?.value.objectForKey("Admob_probability") as Double!
+                NSUserDefaults.standardUserDefaults().setObject(adProbability, forKey: "AdProbability")
+                
+                self.adActive = self.fireBaseContent?.value.objectForKey("Active_Admob") as String!
+                NSUserDefaults.standardUserDefaults().setObject(adProbability, forKey: "AdActive")
+                
+                self.admobIntId = self.fireBaseContent?.value.objectForKey("Admob_ID") as String!
+                NSUserDefaults.standardUserDefaults().setObject(adProbability, forKey: "AdActive")
+                NSUserDefaults.standardUserDefaults().synchronize()
+                
+                
+                if (self.adActive! == "True") {
+                    println("InterstitialIsActive")
+                    self.interstitial = self.createAndLoadInterstitial()
+                }
+
+                
+            
                 //Load the first detail view in the plist
                 var currentPlaylist = self.currentM[0] as NSDictionary
                 var indexPath : NSIndexPath =  NSIndexPath(forRow: 0, inSection: 0)
@@ -105,11 +129,7 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
                     self.performSegueWithIdentifier("Menu", sender: indexPath)
                 }
                 
-                let admobActive: Bool = self.dict.objectForKey("Activate Admob") as Bool!
-                if admobActive{
-                    self.interstitial = self.createAndLoadInterstitial()
-                }
-
+               
                 
             })
             
@@ -127,7 +147,7 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
         println("createAndLoadInterstitial")
         var interstitial = GADInterstitial()
         interstitial.delegate = self
-        interstitial.adUnitID = self.dict.objectForKey("Admob_Interstitial_ID") as String!
+        interstitial.adUnitID = self.admobIntId as String!
         interstitial.loadRequest(GADRequest())
         
         return interstitial
@@ -245,9 +265,11 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
     
     func displayAd(){
         if AppDelegate.probabilityCalculator(){
+            println("ShowIntrestitial")
             presentInterstitial()
         }
     }
+    
     
     
     // MARK: - Table View
