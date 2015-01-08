@@ -62,6 +62,7 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
             self.currentM = tempMainContent.valueForKey("Menu") as NSArray
             
             self.adActive = NSUserDefaults.standardUserDefaults().objectForKey("AdActive") as String!
+            self.admobIntId = NSUserDefaults.standardUserDefaults().objectForKey("AdmobAdID") as String!
             if (self.adActive! == "True") {
                 self.interstitial = self.createAndLoadInterstitial()
             }
@@ -96,10 +97,10 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
                 NSUserDefaults.standardUserDefaults().setObject(adProbability, forKey: "AdProbability")
                 
                 self.adActive = self.fireBaseContent?.value.objectForKey("Active_Admob") as String!
-                NSUserDefaults.standardUserDefaults().setObject(adProbability, forKey: "AdActive")
+                NSUserDefaults.standardUserDefaults().setObject(self.adActive, forKey: "AdActive")
                 
                 self.admobIntId = self.fireBaseContent?.value.objectForKey("Admob_ID") as String!
-                NSUserDefaults.standardUserDefaults().setObject(adProbability, forKey: "AdActive")
+                NSUserDefaults.standardUserDefaults().setObject(self.admobIntId, forKey: "AdmobAdID")
                 NSUserDefaults.standardUserDefaults().synchronize()
                 
                 
@@ -107,7 +108,6 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
                     println("InterstitialIsActive")
                     self.interstitial = self.createAndLoadInterstitial()
                 }
-
                 
             
                 //Load the first detail view in the plist
@@ -129,7 +129,6 @@ class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInt
                     self.performSegueWithIdentifier("Menu", sender: indexPath)
                 }
                 
-               
                 
             })
             
