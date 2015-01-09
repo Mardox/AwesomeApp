@@ -30,6 +30,8 @@ class LiveStreamViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        //Read the string from the backend and start the Player
         //"http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8"
         var url:NSURL = NSURL(string: self._streamUrl as String)!
         player = MPMoviePlayerController()
@@ -42,6 +44,8 @@ class LiveStreamViewController: UIViewController {
         self.player.play()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "doneButtonClick:", name: MPMoviePlayerWillExitFullscreenNotification, object: nil)
         
+        
+        //Section below is for references to the features of the player if needed
 
         
 //        let screenSize: CGRect = UIScreen.mainScreen().bounds
@@ -69,11 +73,8 @@ class LiveStreamViewController: UIViewController {
 //        moviePlayer = MPMoviePlayerController
 
 //        moviePlayer.view.frame = CGRect(x: 0, y: 0, width: 200, height: 150)
-//
 //        self.view.addSubview(moviePlayer.view)
-//
 //        moviePlayer.fullscreen = true
-//
 //        moviePlayer.controlStyle = MPMovieControlStyle.Embedded
         
     }

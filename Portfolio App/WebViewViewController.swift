@@ -9,8 +9,6 @@
 import UIKit
 
 class WebViewViewController: UIViewController, UISplitViewControllerDelegate {
-
-    
     
     @IBOutlet var webViewElement: UIWebView!
     
@@ -22,10 +20,11 @@ class WebViewViewController: UIViewController, UISplitViewControllerDelegate {
 
     var address : String = ""
     
+    
+    //Load the url in the WebView
     func loadAddressURL(){
 
         address = _webAddress as String!
-        
         address = address.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         
         let requesturl = NSURL(string: address)!
@@ -34,6 +33,7 @@ class WebViewViewController: UIViewController, UISplitViewControllerDelegate {
         
     }
     
+    //Open the url in external browser
     @IBAction func openInBrowser(sender: AnyObject) {
         
         var url : NSURL
@@ -55,7 +55,7 @@ class WebViewViewController: UIViewController, UISplitViewControllerDelegate {
     }
     
     
-    
+    //Start fetching the url after testing the internet connection
     func startFetching(){
         
         if AppDelegate.isConnectedToNetwork(){
@@ -87,15 +87,5 @@ class WebViewViewController: UIViewController, UISplitViewControllerDelegate {
         self.view.endEditing(true)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

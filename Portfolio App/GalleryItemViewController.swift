@@ -38,7 +38,6 @@ class GalleryItemViewController: UIViewController, UIScrollViewDelegate {
             
             // If the image does not exist, we need to download it
             var imgURL: NSURL = NSURL(string: urlString)!
-            
             let request: NSURLRequest = NSURLRequest(URL: imgURL)
             NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse!,data: NSData!,error: NSError!) -> Void in
                 if !(error? != nil) {
@@ -77,6 +76,7 @@ class GalleryItemViewController: UIViewController, UIScrollViewDelegate {
     }
     
     
+    // Pinch to zoom function
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
         return self.imageView
     }

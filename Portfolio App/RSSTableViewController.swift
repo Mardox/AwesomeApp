@@ -36,6 +36,8 @@ class RSSTableViewController: UITableViewController, UITableViewDataSource, UITa
         
     }
     
+    
+    //Start fetching the rss feed and do the internet connection test
     func startFetching(){
         
         if AppDelegate.isConnectedToNetwork(){
@@ -54,7 +56,6 @@ class RSSTableViewController: UITableViewController, UITableViewDataSource, UITa
         var myParser : XmlParserManager = XmlParserManager.alloc().initWithURL(data) as XmlParserManager
         // Put feed in array
         myFeed = myParser.feeds
-        
         tableView.reloadData()
     }
     
@@ -70,7 +71,6 @@ class RSSTableViewController: UITableViewController, UITableViewDataSource, UITa
         
         if segue.identifier == "Webpage" {
             
-//           var address = "http://30daylabs.com"
             var address = myFeed.objectAtIndex(indexPath!).objectForKey("link") as String!
             
             var browser = self.dict.objectForKey("Internal WebView") as Bool!

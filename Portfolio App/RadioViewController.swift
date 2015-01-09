@@ -18,8 +18,12 @@ class RadioViewController: UIViewController, GADBannerViewDelegate, GADInterstit
     var loadRequestAllowed = true
     var bannerDisplayed = false
     var statusbarHeight:CGFloat = 70.0
-    
     var url:NSURL?
+    var state = "Stopped"
+    @IBOutlet var playButton: UIButton!
+    var moviePlayer:MPMoviePlayerController!
+    
+    
     
     var _radioUrl: AnyObject? {
         didSet {
@@ -33,13 +37,6 @@ class RadioViewController: UIViewController, GADBannerViewDelegate, GADInterstit
         }
     }
 
-    
-    var state = "Stopped"
-    
-    @IBOutlet var playButton: UIButton!
-    
-    var moviePlayer:MPMoviePlayerController!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = _radioTitle as String!
@@ -60,6 +57,7 @@ class RadioViewController: UIViewController, GADBannerViewDelegate, GADInterstit
     }
 
     
+    //Start the radio stream
     func startRadio(){
     
         moviePlayer = MPMoviePlayerController(contentURL: url)
@@ -100,7 +98,6 @@ class RadioViewController: UIViewController, GADBannerViewDelegate, GADInterstit
         self.view.addSubview(bannerView!)
         bannerView?.loadRequest(GADRequest())
         
-        
     }
     
 
@@ -109,18 +106,21 @@ class RadioViewController: UIViewController, GADBannerViewDelegate, GADInterstit
         // Dispose of any resources that can be recreated.
     }
     
+    //Play/Pause button action
     @IBAction func playButton(sender: AnyObject) {
-        
+
         changePlayState()
         
     }
     
+    //Handle Admob on rotate
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         //reload the banner
-        
         loadAdmobBanner()
     }
     
+    
+    //Change the play state between Play and Pause
     func changePlayState(){
         
         if state == "Stopped" {
@@ -201,11 +201,6 @@ class RadioViewController: UIViewController, GADBannerViewDelegate, GADInterstit
     }
     
 
-    
-    
-    
-    
-    
     
     /*
     // MARK: - Navigation
