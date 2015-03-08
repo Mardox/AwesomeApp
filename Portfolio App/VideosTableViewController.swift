@@ -8,7 +8,7 @@
 
 import UIKit
 import MediaPlayer
-
+import GoogleMobileAds
 
 
 class VideosTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate, UISplitViewControllerDelegate, GADBannerViewDelegate, GADInterstitialDelegate {

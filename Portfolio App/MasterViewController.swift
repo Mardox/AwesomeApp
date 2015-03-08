@@ -8,6 +8,8 @@
 
 import UIKit
 import iAd
+import GoogleMobileAds
+
 
 class MasterViewController: UITableViewController, GADBannerViewDelegate, GADInterstitialDelegate, ADBannerViewDelegate {
     

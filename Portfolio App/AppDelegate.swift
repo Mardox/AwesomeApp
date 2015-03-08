@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Foundation
+import SystemConfiguration
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
